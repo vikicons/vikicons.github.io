@@ -1,0 +1,58 @@
+---
+import Layout from '../layouts/layout.astro';
+---
+
+<Layout title="404 - Trang Đang Cập Nhật | VIKI Construction">
+    <section class="py-20 bg-[#F8F9FA] min-h-[70vh] flex items-center">
+        <div class="container mx-auto px-4"> 
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                
+                <!-- CỘT TRÁI: Gắn ảnh 3D có sẵn trong project (hoặc giữ khung mô phỏng) -->
+                <div class="relative bg-white p-8 border border-[#E6EAF2] shadow-sm flex flex-col items-center justify-center min-h-[380px]">
+                    
+                    <!-- HƯỚNG DẪN GẮN ẢNH 3D: 
+                         Nếu bạn có ảnh 3D trong thư mục public (VD: public/img-3d.png), 
+                         hãy bỏ chú thích (comment) dòng dưới đây và thay thế khung chữ nhật bên dưới: -->
+                    <!-- <img src="/img-3d.png" alt="VIKI 3D Illustration" class="w-full max-w-[420px] object-contain mb-4 transition-transform duration-500 hover:scale-105" /> -->
+
+                    <!-- Khung mô phỏng trực quan (Đang hiển thị mặc định nếu chưa có ảnh) -->
+                    <div class="w-full max-w-[420px] bg-[#16315E] rounded text-white p-6 text-center relative shadow-lg">
+                        <div class="absolute -top-6 left-1/2 -translate-x-1/2 text-amber-400 text-3xl font-bold">🏗️</div>
+                        <div class="text-5xl font-extrabold tracking-widest mb-2 text-[#5FD1C1]">404</div>
+                        <div class="text-amber-400 font-bold tracking-widest uppercase text-sm mb-4">ĐANG CẬP NHẬT DỮ LIỆU</div>
+                        <p class="text-xs text-slate-300">Trang bạn đang truy cập thuộc hệ thống thông tin đang được hoàn thiện nội dung.</p>
+                    </div>
+
+                    <div class="mt-6 flex items-center gap-3 text-slate-500 text-xs font-semibold uppercase tracking-wider">
+                        <span class="w-3 h-3 bg-amber-500 rounded-full animate-ping"></span> VIKI DIGITAL TRANSFORMATION 2026
+                    </div>
+                </div>
+
+                <!-- CỘT PHẢI: Nội dung thông báo chuyên nghiệp ngành xây dựng -->
+                <div>
+                    <span class="text-[#264ABC] text-xs font-bold uppercase tracking-[0.2em] mb-3 block">VIKI SYSTEM PORTAL</span>
+                    <h1 class="text-3xl sm:text-4xl font-extrabold text-[#16315E] mb-4 uppercase leading-tight">
+                        HẠNG MỤC ĐANG <br/>THI CÔNG NỘI DUNG
+                    </h1>
+                    <p class="text-base text-[#5A6E85] leading-relaxed mb-8">
+                        Trang bạn vừa chọn hiện đang trong kế hoạch nâng cấp cơ sở dữ liệu và tích hợp các thông số kỹ thuật mới nhất từ Công Ty Cổ Phần Xây Dựng VIKI. Vui lòng quay lại trang chủ hoặc liên hệ trực tiếp với bộ phận tư vấn để nhận thông tin chi tiết.
+                    </p>
+                    
+                    <!-- Khối chứa 2 nút đã được đồng bộ kích thước và hiệu ứng -->
+                    <div class="flex flex-wrap items-center gap-4">
+                        <!-- Nút Trở Về Trang Chủ: Nền đỏ, viền đỏ, chữ trắng -> Hover chuyển Xanh Dương -->
+                        <a href="/" class="bg-red-600 border-2 border-red-600 text-white hover:bg-[#264ABC] hover:border-[#264ABC] hover:text-white py-3.5 px-6 text-sm font-bold uppercase tracking-wider transition shadow-md block text-center w-full sm:w-60">
+                            TRỞ VỀ TRANG CHỦ
+                        </a>
+                        
+                        <!-- Nút Liên Hệ Hỗ Trợ: Nền trắng, viền Xanh Dương, chữ Xanh Dương -> Hover chuyển nền Xanh Dương, chữ trắng -->
+                        <a href="/contact" class="bg-white border-2 border-[#16315E] text-[#16315E] hover:bg-[#16315E] hover:border-[#16315E] hover:text-white py-3.5 px-6 text-sm font-bold uppercase tracking-wider transition block text-center w-full sm:w-60">
+                            LIÊN HỆ HỖ TRỢ
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</Layout>

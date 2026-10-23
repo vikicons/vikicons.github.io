@@ -1,0 +1,498 @@
+---
+import '../styles/global.css';
+interface Props {
+    title?: string;
+}
+const { title = "VIKI - Công Ty Cổ Phần Xây Dựng  | Xây Giá Trị - Dựng Niềm Tin" } = Astro.props;
+---
+ 
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{title}</title>
+    <!-- Google Fonts: Lexend Deca -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<!-- ĐÃ FIX: Thêm min-h-screen flex flex-col để quản lý chiều cao toàn trang -->
+<body class="bg-white text-[#214080] antialiased overflow-x-hidden font-sans min-h-screen flex flex-col relative">
+
+    <!-- TOP UTILITY BAR -->
+    <div class="bg-[#214080] text-white text-[0.8125rem] py-2.5 border-b border-white/10 hidden md:block relative z-[100]">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            
+            <!-- BÊN TRÁI: Hotline & Email -->
+            <div class="flex items-center gap-6">
+                <a href="tel:0814667501" class="flex items-center gap-2 no-underline" title="Gọi ngay">
+                    <span class="shrink-0 inline-flex items-center">
+                        <img src="/icons/icons8-office-phone-94.png" alt="Phone Icon" class="w-4 h-4 object-contain">Hotline:
+                    </span>
+                    <span class="text-white hover:text-[#ED2424] transition-colors duration-200">0814667501</span>
+                </a>
+                <span class="text-white/20">|</span>
+                <a href="mailto:viki.construction.co@gmail.com" class="flex items-center gap-2 no-underline" title="Gửi email">
+                    <span class="shrink-0 inline-flex items-center">
+                        <img src="/icons/icons8-gmail-logo-94.png" alt="Email Icon" class="w-4 h-4 object-contain">Email:
+                    </span>
+                    <span class="text-white hover:text-[#ED2424] transition-colors duration-200">viki.construction.co@gmail.com</span>
+                </a>
+            </div>
+
+            <!-- BÊN PHẢI: Menu ngôn ngữ & Ô tìm kiếm -->
+            <div class="flex items-center gap-6">
+                <div class="relative">
+                    <button id="langDropdownBtn" class="flex items-center justify-between gap-3 bg-transparent border border-white/30 text-white px-3 py-1.5 text-xs font-semibold cursor-pointer hover:border-[#5FD1C1] transition w-36">
+                        <span class="flex items-center gap-2">
+                        <span class="shrink-0 inline-flex items-center">
+                            <img src="/icons/icons8-language-94.png" alt="Email Icon" class="w-4 h-4 object-contain">
+                        </span>
+                            <span id="currentLangText" class="font-bold">Tiếng Việt</span>
+                        </span>
+                        <span>▼</span>
+                    </button>
+                    
+                    <div id="langMenu" class="hidden absolute top-full left-0 mt-1 w-full bg-[#214080] border border-white/25 shadow-2xl z-[9999]">
+                        <button class="w-full text-left px-3 py-2 text-xs text-white font-bold hover:bg-white/10 transition lang-option cursor-pointer border-none bg-transparent" data-lang="vi">
+                            🇻🇳 Tiếng Việt
+                        </button>
+                        <button class="w-full text-left px-3 py-2 text-xs text-slate-300 font-normal hover:bg-white/10 transition lang-option cursor-pointer border-none bg-transparent" data-lang="en">
+                            en English
+                        </button>
+                    </div>
+                </div>
+
+                <div class="relative flex items-center">
+                    <input 
+                        type="text" 
+                        id="globalSearchInput" 
+                        placeholder="Tìm kiếm..." 
+                        class="bg-transparent border border-white/30 text-white placeholder-slate-400 text-xs px-3 py-1.5 pr-8 outline-none focus:border-[#5FD1C1] w-48 transition"
+                    />
+                    <span class="absolute right-2 text-slate-400 text-xs">🔍</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- MAIN HEADER NAVIGATION -->
+    <header class="sticky top-0 z-[90] bg-white border-b border-[#E6EAF2]">
+        <div class="container mx-auto px-4 flex justify-between items-center h-20">
+            <!-- Logo -->
+            <a href="/" class="flex items-center gap-3 no-underline group">
+                <img src="/logoViki.png" alt="VIKI Logo" class="h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-105" />
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden lg:flex items-center gap-7 list-none m-0 p-0 h-full">
+                
+                <!-- 1. Trang chủ 
+                <div class="relative h-full flex items-center">
+                    <a href="/" data-path="/" class="nav-item text-[#214080] font-bold text-base py-2 uppercase tracking-wide transition flex items-center h-full">
+                        Trang chủ
+                    </a>
+                </div>-->
+
+                <!-- 2. Về VIKI -->
+                <div class="relative group h-full flex items-center">
+                    <a href="/about" data-path="/about" class="nav-item flex items-center gap-1.5 text-[#214080] font-bold text-base uppercase tracking-wide transition h-full">
+                        Về Viki
+                    </a>
+                </div>
+
+                <!-- 3. Lĩnh vực hoạt động -->
+                <div class="relative group h-full flex items-center">
+                    <a href="/services" data-path="/services" class="nav-item flex items-center gap-1.5 text-[#214080] font-bold text-base uppercase tracking-wide transition h-full">
+                        Lĩnh vực hoạt động
+                    </a>
+                </div>
+
+                <!-- 4. Dự án -->
+                <div class="relative group h-full flex items-center">
+                    <a href="/projects" data-path="/projects" class="nav-item flex items-center gap-1.5 text-[#214080] font-bold text-base uppercase tracking-wide transition h-full">
+                        Dự án
+                    </a>
+                </div>
+
+                <!-- 5. Năng lực -->
+                <div class="relative group h-full flex items-center">
+                    <a href="/capabilities" data-path="/capabilities" class="nav-item flex items-center gap-1.5 text-[#214080] font-bold text-base uppercase tracking-wide transition h-full">
+                        Năng lực
+                    </a>
+                </div>
+
+                <!-- 6. Tin tức -->
+                <div class="relative h-full flex items-center">
+                    <a href="/news" data-path="/news" class="nav-item text-[#214080] font-bold text-base py-2 uppercase tracking-wide transition flex items-center h-full">
+                        Tin tức
+                    </a>
+                </div>
+
+                <!-- 6. Tin tức -->
+                <div class="relative h-full flex items-center">
+                    <a href="/careers-vn" data-path="/careers-vn" class="nav-item text-[#214080] font-bold text-base py-2 uppercase tracking-wide transition flex items-center h-full">
+                        Tuyển dụng
+                    </a>
+                </div>
+
+                <!-- 7. Liên hệ -->
+                <div class="relative h-full flex items-center">
+                    <a href="/contact" data-path="/contact" class="nav-item text-[#214080] font-bold text-base py-2 uppercase tracking-wide transition flex items-center h-full">
+                        Liên hệ
+                    </a>
+                </div>
+            </nav>
+
+            <!-- Nút Báo Giá Dự Án -->
+            <div class="flex items-center gap-4">
+                <a href="/bao-gia" class="hidden sm:inline-flex bg-red-600 hover:bg-[#264ABC] text-white px-5 py-3 text-base font-bold uppercase tracking-wider items-center gap-2 transition shadow-md">
+                    Báo Giá Dự Án
+                </a>
+                <button class="lg:hidden text-[#214080] text-2xl bg-transparent border-none cursor-pointer" id="mobileToggleBtn" aria-label="Toggle Menu">☰</button>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer Navigation -->
+        <div id="mobileMenu" class="hidden lg:hidden absolute top-full left-0 right-0 bg-white border-b border-[#E6EAF2] p-6 shadow-xl flex-col gap-4 max-h-[80vh] overflow-y-auto z-[9999]">
+            <a href="/" class="block font-semibold py-2 text-base text-[#214080] uppercase border-b border-[#E6EAF2]">Trang chủ</a>
+            <a href="/abouts" class="block font-semibold py-2 text-base text-[#214080] uppercase border-b border-[#E6EAF2]">Về VIKI</a>
+            <a href="/services" class="block font-semibold py-2 text-base text-[#214080] uppercase border-b border-[#E6EAF2]">Lĩnh vực hoạt động</a>
+            <a href="/projects" class="block font-semibold py-2 text-base text-[#214080] uppercase border-b border-[#E6EAF2]">Dự án</a>
+            <a href="/capabilities" class="block font-semibold py-2 text-base text-[#214080] uppercase border-b border-[#E6EAF2]">Năng lực</a>
+            <a href="/news" class="block font-semibold py-2 text-base text-[#214080] uppercase border-b border-[#E6EAF2]">Tin tức</a>
+            <a href="/careers-vn" class="block font-semibold py-2 text-base text-[#214080] uppercase border-b border-[#E6EAF2]">Tuyển dụng</a>
+            <a href="/contact" class="block font-semibold py-2 text-base text-[#214080] uppercase border-b border-[#E6EAF2]">Liên hệ</a>
+            <a href="/bao-gia" class="block text-center bg-red-600 text-white py-3 font-bold uppercase text-base mt-2">Báo Giá Dự Án</a>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT SLOT -->
+    <main class="flex-grow">
+        <slot />
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-[#214080] text-[#FAF9F9] pt-8 pb-8 border-t-6 border-[#FFC709]">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+                
+                <!-- Cột 1: Thông tin pháp lý & Nhận diện (Brand & Legal) -->
+                <div>
+                    <!-- Badge kính mờ không viền rõ nét cho Logo VIKI -->
+                    <div class="mb-5 inline-block bg-white/[0.08] backdrop-blur-md  rounded-2xl shadow-xl">
+                        <img src="/logoViki.png" alt="VIKI Logo" class="h-25 w-auto object-contain">
+                    </div>
+
+                    <div class="text-sm text-[#FAF9F9]/70 space-y-2.5 leading-relaxed">
+                        <!-- Tên công ty chỉnh thành 16px (text-base) -->
+                        <p class="font-bold text-[#FAF9F9] uppercase text-base tracking-wider">CÔNG TY CỔ PHẦN XÂY DỰNG VIKI</p>
+                        <!-- Các chữ còn lại chỉnh thành 14px (text-sm) -->
+                        <p class="text-sm text-[#FAF9F9]/70">VIKI Construction Corporation</p>
+                        
+                        <!-- Địa chỉ liên kết tới Google Maps -->
+                        <p class="flex items-start gap-2.5 pt-1 text-sm">
+                            <span class="shrink-0 inline-flex items-center mt-0.5">
+                                <img src="/icons/icons8-map-100.png" alt="Map Icon" class="w-4 h-4 object-contain">
+                            </span>
+                            <span>
+                                <a href="https://maps.google.com/?q=54+Phan+Đăng+Lưu,+phường+Đức+Nhuận,+TP.HCM" 
+                                target="_blank" 
+                                rel="noopener noreferrer" 
+                                class="text-[#FAF9F9]/70 hover:text-[#ED2424] hover:underline transition-colors duration-200 no-underline">
+                                    Tầng 3 - Tòa Nhà Văn Oanh - Số 54 Phan Đăng Lưu, phường Đức Nhuận, TP.HCM
+                                </a>
+                            </span>
+                        </p>
+
+                        <!-- Số điện thoại gọi trực tiếp -->
+                        <p class="flex items-center gap-2.5 text-sm">
+                            <span class="shrink-0 inline-flex items-center">
+                                <img src="/icons/icons8-office-phone-94.png" alt="Phone Icon" class="w-4 h-4 object-contain">
+                            </span>
+                            <span>
+                                <a href="tel:0814667501" 
+                                class="text-[#FAF9F9]/70 hover:text-[#ED2424] hover:underline transition-colors duration-200 no-underline">
+                                    0814667501
+                                </a>
+                            </span>
+                        </p>
+
+                        <!-- Email gửi thư trực tiếp -->
+                        <p class="flex items-center gap-2.5 text-sm">
+                            <span class="shrink-0 inline-flex items-center">
+                                <img src="/icons/icons8-gmail-logo-94.png" alt="Email Icon" class="w-4 h-4 object-contain">
+                            </span>
+                            <span>
+                                <a href="mailto:viki.construction.co@gmail.com" 
+                                class="text-[#FAF9F9]/70 hover:text-[#ED2424] hover:underline transition-colors duration-200 no-underline">
+                                    viki.construction.co@gmail.com
+                                </a>
+                            </span>
+                        </p>
+
+                        <!-- Website chính thức -->
+                        <p class="flex items-center gap-2.5 text-sm">
+                            <span class="shrink-0 inline-flex items-center">
+                                <img src="/icons/icons8-asia-94.png" alt="Website Icon" class="w-4 h-4 object-contain">
+                            </span>
+                            <span>
+                                <a href="https://www.vikicons.vn" 
+                                target="_blank" 
+                                rel="noopener noreferrer" 
+                                class="text-[#FAF9F9]/70 hover:text-[#ED2424] hover:underline transition-colors duration-200 no-underline">
+                                    www.vikicons.vn
+                                </a>
+                            </span>
+                        </p>
+
+                        <!-- Mã số thuế -->
+                        <p class="flex items-center gap-2.5 text-sm">
+                            <span class="shrink-0 inline-flex items-center">
+                                <img src="/icons/icons8-company-94.png" alt="Tax Icon" class="w-4 h-4 object-contain">
+                            </span>
+                            <span>
+                                <span class="text-[#FAF9F9]/70">Mã số thuế: </span>
+                                <span class="text-[#FAF9F9]/70 font-semibold">0316297300</span>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Cột 2: Lĩnh vực hoạt động (Business Sectors) -->
+                <div>
+                    <h4 class="text-[#FAF9F9] text-base font-bold uppercase tracking-wider mb-5 pb-2 border-b border-white/15">
+                        Lĩnh Vực Hoạt Động
+                    </h4>
+                    <ul class="list-none space-y-2.5 m-0 p-0 text-sm">
+                        <li><a href="/services#civil" class="text-[#FAF9F9]/70 hover:text-[#ED2424] hover:underline transition-colors duration-200 no-underline block">Xây dựng Dân dụng & Công nghiệp</a></li>
+                        <li><a href="/services#industrial" class="text-[#FAF9F9]/70 hover:text-[#ED2424] hover:underline transition-colors duration-200 no-underline block">Mảng Công nghiệp (Nhà máy, KCN, Kết cấu thép)</a></li>
+                        <li><a href="/services#farm" class="text-[#FAF9F9]/70 hover:text-[#ED2424] hover:underline transition-colors duration-200 no-underline block">Mảng Chăn nuôi (Hạ tầng trang trại công nghệ cao)</a></li>
+                        <li><a href="/services#design" class="text-[#FAF9F9]/70 hover:text-[#ED2424] hover:underline transition-colors duration-200 no-underline block">Tư vấn Thiết kế Xây dựng</a></li>
+                    </ul>
+                </div>
+
+                <!-- Cột 3: Dự án tiêu biểu & Năng lực -->
+                <div>
+                    <h4 class="text-[#FAF9F9] text-base font-bold uppercase tracking-wider mb-5 pb-2 border-b border-white/15">
+                        Dự Án & Năng Lực
+                    </h4>
+                    <ul class="list-none space-y-2.5 m-0 p-0 text-sm">
+                        <li><a href="/projects/ksp-hai-duong" class="text-[#FAF9F9]/70 hover:text-[#ED2424] hover:underline transition-colors duration-200 no-underline block">Dự án Nhà máy KSP Hải Dương</a></li>
+                        <li><a href="/projects/aac-factory" class="text-[#FAF9F9]/70 hover:text-[#ED2424] hover:underline transition-colors duration-200 no-underline block">Nhà máy linh kiện điện tử AAC (Vĩnh Phúc, Bắc Giang)</a></li>
+                        <li><a href="/projects/cp-binh-dinh" class="text-[#FAF9F9]/70 hover:text-[#ED2424] hover:underline transition-colors duration-200 no-underline block">Nhà máy Giết mổ CP Bình Định</a></li>
+                        <li><a href="/projects/bff-factory" class="text-[#FAF9F9]/70 hover:text-[#ED2424] hover:underline transition-colors duration-200 no-underline block">Nhà máy & Kho BFF (TP.HCM)</a></li>
+                    </ul>
+                </div>
+
+                <!-- Cột 4: Về VIKI & Phát triển bền vững -->
+                <div>
+                    <h4 class="text-[#FAF9F9] text-base font-bold uppercase tracking-wider mb-5 pb-2 border-b border-white/15">
+                        Về VIKI & Phát Triển
+                    </h4>
+                    <ul class="list-none space-y-2.5 m-0 p-0 text-sm">
+                        <li><a href="/about" class="text-[#FAF9F9]/70 hover:text-[#ED2424] hover:underline transition-colors duration-200 no-underline block">Về chúng tôi (Tầm nhìn 2030 - Top 100)</a></li>
+                        <li><a href="/about#core-values" class="text-[#FAF9F9]/70 hover:text-[#ED2424] hover:underline transition-colors duration-200 no-underline block">Giá trị cốt lõi (Uy tín - Chất lượng - Sức trẻ)</a></li>
+                        <li><a href="/careers" class="text-[#FAF9F9]/70 hover:text-[#ED2424] hover:underline transition-colors duration-200 no-underline block">Tin tức & Sự kiện / Tuyển dụng (Gia nhập VIKI)</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- Copyright & Bottom Bar -->
+            <div class="pt-4 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center text-sm text-[#FAF9F9]/70 gap-4">
+                <div>© 2026 VIKI Construction Joint Stock Company. All rights reserved.</div>
+                <div class="flex gap-6">
+                    <a href="/privacy" class="text-[#FAF9F9]/70 hover:text-[#ED2424] hover:underline transition-colors duration-200 no-underline">Điều khoản bảo mật</a>
+                    <a href="/terms" class="text-[#FAF9F9]/70 hover:text-[#ED2424] hover:underline transition-colors duration-200 no-underline">Chính sách chất lượng</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- BACK TO TOP BUTTON -->
+    <button 
+        id="backToTopBtn" 
+        aria-label="Quay lại đầu trang"
+        class="fixed bottom-6 right-6 z-[1999] bg-[#FAF9F9] hover:bg-[#ED2424] text-white w-12 h-12 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 opacity-0 invisible translate-y-4 hover:scale-110 border-2 border-white/20 cursor-pointer group"
+    >
+        <svg class="w-5 h-5 transition-transform duration-300 group-hover:-translate-y-1 text-[#214080]" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"></path>
+        </svg>
+    </button>
+
+    <!-- GENERAL MODAL CONTAINER -->
+    <div class="fixed inset-0 bg-[#214080]/85 backdrop-blur-[2px] z-[2000] flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300 p-4" id="globalModal">
+        <div class="bg-white w-full max-w-[750px] max-h-[90vh] overflow-y-auto relative p-6 sm:p-10 border border-[#E6EAF2]">
+            <button class="absolute top-5 right-5 bg-[#F4F6FA] border border-[#E6EAF2] text-[#214080] w-9 h-9 text-lg font-bold cursor-pointer flex items-center justify-center hover:bg-[#264ABC] hover:text-white transition" id="modalCloseBtn">✕</button>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <!-- GLOBAL SCRIPT -->
+    <script>
+        // Hàm áp dụng ngôn ngữ toàn trang
+        function applyLanguage(lang) {
+            const currentLangText = document.getElementById('currentLangText');
+            if (currentLangText) {
+                currentLangText.innerText = lang === 'en' ? 'English' : 'Tiếng Việt';
+            }
+
+            // Cập nhật trạng thái active cho dropdown menu
+            document.querySelectorAll('.lang-option').forEach(opt => {
+                const optEl = opt as HTMLElement;
+                const optLang = optEl.getAttribute('data-lang');
+                if (optLang === lang) {
+                    optEl.classList.remove('font-normal', 'text-slate-300');
+                    optEl.classList.add('font-bold', 'text-white');
+                } else {
+                    optEl.classList.remove('font-bold', 'text-white');
+                    optEl.classList.add('font-normal', 'text-slate-300');
+                }
+            });
+
+            // Thay thế text và placeholder dựa trên data attribute
+            document.querySelectorAll('[data-vi]').forEach(el => {
+                const text = el.getAttribute(`data-${lang}`);
+                if (text) {
+                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                        (el as HTMLInputElement).placeholder = text;
+                    } else {
+                        (el as HTMLElement).innerText = text;
+                    }
+                }
+            });
+        }
+
+        // 1. Khi trang vừa load xong, kiểm tra ngôn ngữ đã lưu trong localStorage
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('viki_lang') || 'vi';
+            applyLanguage(savedLang);
+        });
+
+        // 2. Xử lý sự kiện click chọn ngôn ngữ
+        const langDropdownBtn = document.getElementById('langDropdownBtn');
+        const langMenu = document.getElementById('langMenu');
+
+        langDropdownBtn?.addEventListener('click', (e) => {
+            e.stopPropagation();
+            langMenu?.classList.toggle('hidden');
+        });
+
+        window.addEventListener('click', () => {
+            langMenu?.classList.add('hidden');
+        });
+
+        document.querySelectorAll('.lang-option').forEach(option => {
+            option.addEventListener('click', (e) => {
+                const targetOpt = e.currentTarget as HTMLElement;
+                const selectedLang = targetOpt.getAttribute('data-lang') || 'vi';
+                
+                // Lưu vào localStorage để các trang khác cùng nhớ
+                localStorage.setItem('viki_lang', selectedLang);
+                
+                // Áp dụng ngôn ngữ
+                applyLanguage(selectedLang);
+                langMenu?.classList.add('hidden');
+            });
+        });
+
+        // Mobile Menu Toggle
+        const mobileToggleBtn = document.getElementById('mobileToggleBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        mobileToggleBtn?.addEventListener('click', () => {
+            if (mobileMenu) {
+                if (mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.remove('hidden');
+                    mobileMenu.classList.add('flex');
+                } else {
+                    mobileMenu.classList.remove('flex');
+                    mobileMenu.classList.add('hidden');
+                }
+            }
+        });
+
+        mobileMenu?.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('flex');
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Newsletter & Global Search
+        document.getElementById('newsletterForm')?.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Đăng ký nhận bản tin thành công!');
+        });
+
+        const searchInput = document.getElementById('globalSearchInput') as HTMLInputElement;
+        searchInput?.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                const keyword = searchInput.value.trim().toLowerCase();
+                if (!keyword) return;
+
+                const contentElements = document.querySelectorAll('h2, h3, p');
+                let foundElement: HTMLElement | null = null;
+
+                for (let el of contentElements) {
+                    if (el.textContent?.toLowerCase().includes(keyword)) {
+                        foundElement = el as HTMLElement;
+                        break;
+                    }
+                }
+
+                if (foundElement) {
+                    foundElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    foundElement.style.backgroundColor = '#5FD1C1';
+                    foundElement.style.color = '#214080';
+                    setTimeout(() => {
+                        foundElement.style.backgroundColor = '';
+                        foundElement.style.color = '';
+                    }, 2000);
+                } else {
+                    alert(`Không tìm thấy kết quả cho từ khóa: "${keyword}"`);
+                }
+            }
+        });
+
+        // Tự động gạch chân mục menu tương ứng với trang đang truy cập
+        document.addEventListener('DOMContentLoaded', () => {
+            const currentPath = window.location.pathname;
+            const navItems = document.querySelectorAll('.nav-item');
+            
+            navItems.forEach(item => {
+                const itemPath = item.getAttribute('data-path');
+                if (itemPath) {
+                    if (itemPath === '/' && currentPath === '/') {
+                        item.classList.add('active-menu');
+                    } else if (itemPath !== '/' && currentPath.startsWith(itemPath)) {
+                        item.classList.add('active-menu');
+                    }
+                }
+            });
+        });
+
+        // BACK TO TOP SCRIPT
+        const backToTopBtn = document.getElementById('backToTopBtn');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn?.classList.remove('opacity-0', 'invisible', 'translate-y-4');
+                backToTopBtn?.classList.add('opacity-100', 'visible', 'translate-y-0');
+            } else {
+                backToTopBtn?.classList.add('opacity-0', 'invisible', 'translate-y-4');
+                backToTopBtn?.classList.remove('opacity-100', 'visible', 'translate-y-0');
+            }
+        });
+
+        backToTopBtn?.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+
+</body>
+</html>

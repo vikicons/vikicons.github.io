@@ -1,0 +1,305 @@
+@import "tailwindcss";
+
+/* =================================================
+   1. CẤU HÌNH CHUNG & NAVIGATION MENU (Đã cấu hình trước đó)
+   ================================================= */
+body {
+    font-family: 'Lexend Deca', sans-serif;
+    background-color: #ffffff;
+    color: #16315E;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-item::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background-color: #214080;
+    transition: width 0.25s ease-in-out;
+}
+
+.nav-item:hover::after,
+.nav-item.active-menu::after {
+    width: 100%;
+}
+
+
+/* =================================================
+   2. HIỆU ỨNG SECTION: CHÚNG TÔI LÀM GÌ (WWD CARDS)
+   ================================================= */
+.progress-bar {
+    will-change: width;
+}
+
+.wwd-card {
+    transform: translateZ(0);
+    will-change: transform;
+}
+
+/* Hiệu ứng màn hình lớn (PC) - Phần Chúng tôi làm gì */
+@media (min-width: 1024px) {
+    .wwd-card .wwd-card-content-box {
+        transform: translateY(105px);
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .wwd-card.active-card .wwd-card-content-box,
+    .wwd-card:hover .wwd-card-content-box {
+        transform: translateY(0);
+    }
+
+    .wwd-arrow {
+        opacity: 0;
+        transform: scale(0.9);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .wwd-card.active-card .wwd-arrow,
+    .wwd-card:hover .wwd-arrow {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    .wwd-card-desc-wrapper {
+        position: relative;
+        overflow: hidden;
+        margin-top: 10px;
+    }
+
+    .wwd-card-desc {
+        opacity: 0;
+        transform: translateY(15px);
+        transition: opacity 0.35s ease, transform 0.35s ease;
+    }
+
+    .wwd-card.active-card .wwd-card-desc,
+    .wwd-card:hover .wwd-card-desc {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hiệu ứng màn hình nhỏ (Mobile / Tablet) - Phần Chúng tôi làm gì */
+@media (max-width: 1023px) {
+    .wwd-card .wwd-card-content-box {
+        transform: translateY(0) !important;
+    }
+
+    .wwd-card .wwd-card-desc-wrapper {
+        max-height: 0px;
+        opacity: 0;
+        overflow: hidden;
+        transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s ease-in-out;
+        margin-top: 0px;
+    }
+
+    .wwd-card.mobile-active .wwd-card-desc-wrapper {
+        max-height: 180px;
+        opacity: 1;
+        margin-top: 10px;
+    }
+
+    .wwd-card .wwd-card-desc {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =================================================
+   3. KHUNG ẢNH ĐỒNG BỘ (VIKI CLIP PATH)
+   ================================================= */
+.viki-clip-box {
+    position: relative;
+    overflow: hidden;
+    clip-path: polygon(20px 0%, 100% 0%, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0% 100%, 0% 20px);
+}
+
+
+/* =================================================
+   4. HIỆU ỨNG DỰ ÁN BIỂU TƯỢNG (FEATURED PROJECTS)
+   ================================================= */
+@media (min-width: 1024px) {
+    .featured-projects-container {
+        display: flex;
+        align-items: stretch; 
+    }
+
+    .featured-projects-container .project-card {
+        flex: 1 1 0%; 
+        border-radius: 0px; 
+        transition: flex 0.5s cubic-bezier(0.4, 0, 0.2, 1), all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .featured-projects-container .project-card.active {
+        flex: 2.8 1 0%; 
+        border-radius: 24px;
+    }
+
+    .featured-projects-container .project-card:not(.active) .project-desc-wrapper {
+        max-height: 0px !important;
+        opacity: 0;
+        margin-top: 0px;
+    }
+
+    .featured-projects-container .project-card:not(.active) .project-arrow,
+    .featured-projects-container .project-card:not(.active) .project-underline {
+        display: none !important;
+    }
+
+    .featured-projects-container .project-card.active .project-desc-wrapper {
+        max-height: 150px;
+        opacity: 1;
+    }
+}
+
+@media (max-width: 1023px) {
+    .featured-projects-container .project-card {
+        width: 100%;
+        border-radius: 16px;
+        transition: all 0.4s ease;
+    }
+
+    .featured-projects-container .project-card:not(.mobile-expanded) .project-desc-wrapper {
+        max-height: 0px;
+        opacity: 0;
+        margin-top: 0px;
+        overflow: hidden;
+    }
+
+    .featured-projects-container .project-card.mobile-expanded .project-desc-wrapper {
+        max-height: 180px;
+        opacity: 1;
+        margin-top: 12px;
+        overflow: hidden;
+    }
+}
+
+
+/* =================================================
+   5. SCOPED CSS: SECTION ĐỘI NGŨ / NHÂN SỰ TẠI VIKI
+   ================================================= */
+@media (min-width: 1024px) {
+    .viki-people-content {
+        display: grid;
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+    }
+}
+
+.viki-people-btn .viki-svc-arrow {
+    position: relative;
+    display: inline-block;
+    width: 18px;
+    height: 16px;
+}
+
+
+/* =================================================
+   6. SCOPED CSS: PHẦN PHÁT TRIỂN BỀN VỮNG (ESG)
+   ================================================= */
+.esg-slider-wrapper {
+    touch-action: pan-y;
+    will-change: transform;
+}
+
+.esg-cards-container {
+    will-change: transform;
+}
+
+.esg-card {
+    transform: translateZ(0);
+    will-change: transform;
+}
+
+@media (min-width: 1024px) {
+    .esg-card {
+        width: calc((100% - (3 * 1.5rem)) / 4);
+        height: 480px;
+    }
+
+    .esg-card .esg-card-desc-wrapper {
+        max-height: 0px;
+        opacity: 0;
+        overflow: hidden;
+        transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s ease-in-out;
+        will-change: max-height, opacity;
+    }
+
+    .esg-card:hover .esg-card-desc-wrapper {
+        max-height: 120px;
+        opacity: 1;
+        margin-top: 8px;
+    }
+
+    .esg-card:hover .esg-card-arrow {
+        transform: translate(3px, -3px) scale(1.1);
+    }
+}
+
+@media (max-width: 1023px) {
+    .esg-card {
+        width: 100%;
+        height: 480px;
+    }
+
+    .esg-card-arrow {
+        display: none !important;
+    }
+
+    .esg-mobile-btn-box {
+        display: block !important;
+    }
+
+    .esg-card .esg-card-desc-wrapper {
+        max-height: 0px;
+        opacity: 0;
+        overflow: hidden;
+        transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s ease-in-out;
+        will-change: max-height, opacity;
+    }
+
+    .esg-card.mobile-expanded .esg-card-desc-wrapper {
+        max-height: 180px;
+        opacity: 1;
+        margin-top: 8px;
+    }
+}
+
+
+/* =================================================
+   7. CỐ ĐỊNH CHIỀU CAO CỤM ẢNH "VỀ CHÚNG TÔI"
+   ================================================= */
+.about-collage-container {
+    height: 340px;
+}
+@media (max-width: 1023px) {
+    .about-collage-container {
+        height: auto;
+    }
+}
+
+
+/* =================================================
+   8. HIỆU ỨNG TỰ ĐỘNG ĐỔI ẢNH PHẦN VỀ CHÚNG TÔI
+   ================================================= */
+.about-collage-img {
+    transition: opacity 0.6s ease-in-out;
+}
+
+
+/* =================================================
+   9. SỬA LỖI HIỂN THỊ CHỮ VIỀN RỖNG (OUTLINE TEXT - COTECCONS STYLE)
+   ================================================= */
+.outline-text {
+    color: transparent !important;
+    -webkit-text-stroke: 2px #ffffff;
+    text-stroke: 2px #ffffff;
+    -webkit-text-fill-color: transparent !important;
+    paint-order: stroke fill;
+}

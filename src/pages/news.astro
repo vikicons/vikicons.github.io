@@ -1,0 +1,184 @@
+---
+import Layout from '../layouts/layout.astro';
+---
+
+<Layout title="Tin Tức | VIKI Construction Corporation">
+
+    <div class="bg-[#FAF9F9] min-h-screen py-12">
+        <div class="container mx-auto px-4 max-w-7xl">
+            
+            <!-- PAGE TITLE -->
+            <div class="mb-8">
+                <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold uppercase text-[#16315E] tracking-tight">
+                    TIN TỨC
+                </h1>
+                <div class="w-16 h-1 bg-[#ED2424] mt-3"></div>
+            </div>
+
+            <!-- FEATURED NEWS HERO (Bài viết nổi bật hàng đầu) -->
+            <div class="bg-white border border-[#E6EAF2] rounded-xl overflow-hidden shadow-sm mb-10 group">
+                <div class="h-[320px] sm:h-[450px] w-full overflow-hidden bg-slate-200">
+                    <img src="/img/doiNguVikiHome001.png" alt="Tin tức nổi bật VIKI" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                </div>
+                <div class="p-6 sm:p-8">
+                    <div class="flex items-center gap-4 text-xs font-bold text-[#214080] uppercase mb-2">
+                        <span class="bg-[#214080] text-white px-2.5 py-1 rounded">Tin ESG</span>
+                        <span class="text-[#5A6E85]">28/08/2026</span>
+                    </div>
+                    <h2 class="text-xl sm:text-2xl font-bold uppercase text-[#16315E] leading-snug group-hover:text-[#264ABC] transition">
+                        Báo Nhân Dân, Trung tâm Đào tạo và Truyền thông, VIKI cùng các đơn vị trao học bổng "Xây nền ước mơ": Lan tỏa cơ hội học tập tới con em công nhân xây dựng.
+                    </h2>
+                </div>
+            </div>
+
+            <!-- FILTER NAVIGATION BAR -->
+            <div class="flex flex-wrap items-center justify-between gap-4 mb-10 pb-4 border-b border-gray-200 text-xs sm:text-sm">
+                <div class="flex flex-wrap items-center gap-2 sm:gap-6 font-semibold uppercase text-[#5A6E85]">
+                    <a href="#" class="text-[#214080] font-bold border-b-2 border-[#214080] pb-1 no-underline">Tất cả tin tức</a>
+                    <a href="#" class="hover:text-[#214080] transition no-underline">Tiêu điểm</a>
+                    <a href="#" class="hover:text-[#214080] transition no-underline">Tin công ty</a>
+                    <a href="#" class="hover:text-[#214080] transition no-underline">Thông cáo báo chí</a>
+                    <a href="#" class="hover:text-[#214080] transition no-underline">Cập nhật dự án</a>
+                    <a href="#" class="hover:text-[#214080] transition no-underline">Tin ESG</a>
+                    <a href="#" class="hover:text-[#214080] transition no-underline">Thư viện</a>
+                </div>
+                <div class="flex items-center gap-2 text-xs font-bold text-[#16315E]">
+                    <span>NĂM</span>
+                    <select class="bg-white border border-gray-300 rounded px-2 py-1 text-xs outline-none cursor-pointer">
+                        <option>Tất cả</option>
+                        <option>2026</option>
+                        <option>2025</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- NEWS GRID (Lưới bài viết tin tức) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                
+                <!-- Card 1 -->
+                <div class="bg-white border border-[#E6EAF2] rounded-xl overflow-hidden shadow-sm hover:shadow-md transition flex flex-col group">
+                    <div class="h-48 overflow-hidden bg-slate-200">
+                        <img src="/img/nhaMayKspHaiDuong001.png" alt="Tin tức VIKI" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between text-[11px] font-bold text-[#5A6E85] mb-2 uppercase">
+                                <span class="text-[#214080]">Thông cáo báo chí</span>
+                                <span>21/10/2026</span>
+                            </div>
+                            <h3 class="text-base font-bold uppercase text-[#16315E] leading-snug group-hover:text-[#264ABC] transition">
+                                TỪ BACKLOG KỶ LỤC GẦN 70.000 TỶ ĐỒNG ĐẾN CHIẾN LƯỢC TĂNG TRƯỞNG MỚI CỦA VIKI
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-white border border-[#E6EAF2] rounded-xl overflow-hidden shadow-sm hover:shadow-md transition flex flex-col group">
+                    <div class="h-48 overflow-hidden bg-slate-200">
+                        <img src="/img/nhaMayAacBacGiang001.png" alt="Tin tức VIKI" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between text-[11px] font-bold text-[#5A6E85] mb-2 uppercase">
+                                <span class="text-[#214080]">Thông cáo báo chí</span>
+                                <span>17/10/2026</span>
+                            </div>
+                            <h3 class="text-base font-bold uppercase text-[#16315E] leading-snug group-hover:text-[#264ABC] transition">
+                                LẦN THỨ HAI ĐƯỢC CÔNG NHẬN THƯƠNG HIỆU QUỐC GIA VIỆT NAM, VIKI KHẲNG ĐỊNH CAM KẾT ĐỒNG HÀNH CÙNG CÁC DỰ ÁN TRỌNG...
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-white border border-[#E6EAF2] rounded-xl overflow-hidden shadow-sm hover:shadow-md transition flex flex-col group">
+                    <div class="h-48 overflow-hidden bg-slate-200">
+                        <img src="/img/trangTraiVinhTanBinhDuong001.png" alt="Tin tức VIKI" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between text-[11px] font-bold text-[#5A6E85] mb-2 uppercase">
+                                <span class="text-[#214080]">Tin công ty</span>
+                                <span>16/10/2026</span>
+                            </div>
+                            <h3 class="text-base font-bold uppercase text-[#16315E] leading-snug group-hover:text-[#264ABC] transition">
+                                VIKI TẠI APEA 2026: LAN TỎA GIÁ TRỊ THƯƠNG HIỆU TỪ CON NGƯỜI ĐẾN CỘNG ĐỒNG
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="bg-white border border-[#E6EAF2] rounded-xl overflow-hidden shadow-sm hover:shadow-md transition flex flex-col group">
+                    <div class="h-48 overflow-hidden bg-slate-200">
+                        <img src="/img/nhaMayBff001.png" alt="Tin tức VIKI" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between text-[11px] font-bold text-[#5A6E85] mb-2 uppercase">
+                                <span class="text-[#214080]">Tin công ty</span>
+                                <span>14/10/2026</span>
+                            </div>
+                            <h3 class="text-base font-bold uppercase text-[#16315E] leading-snug group-hover:text-[#264ABC] transition">
+                                VIKI NHẬN GIẢI THƯƠNG HIỆU VÀNG TP.HCM 2026: GHI DẤU ẤN TỪ NIỀM TIN CỘNG ĐỒNG
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="bg-white border border-[#E6EAF2] rounded-xl overflow-hidden shadow-sm hover:shadow-md transition flex flex-col group">
+                    <div class="h-48 overflow-hidden bg-slate-200">
+                        <img src="/img/thietBiThiCong001.png" alt="Tin tức VIKI" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between text-[11px] font-bold text-[#5A6E85] mb-2 uppercase">
+                                <span class="text-[#214080]">Tin công ty</span>
+                                <span>11/10/2026</span>
+                            </div>
+                            <h3 class="text-base font-bold uppercase text-[#16315E] leading-snug group-hover:text-[#264ABC] transition">
+                                TÁI LẬP "HAT TRICK" TẠI VIETNAM CONSTRUCTION AWARDS 2026, VIKI GHI DẤU ẤN Ở 3 HẠNG MỤC TRỌNG ĐIỂM
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="bg-white border border-[#E6EAF2] rounded-xl overflow-hidden shadow-sm hover:shadow-md transition flex flex-col group">
+                    <div class="h-48 overflow-hidden bg-slate-200">
+                        <img src="/img/anToanChatLuong001.png" alt="Tin tức VIKI" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between text-[11px] font-bold text-[#5A6E85] mb-2 uppercase">
+                                <span class="text-[#214080]">Tiêu điểm</span>
+                                <span>07/10/2026</span>
+                            </div>
+                            <h3 class="text-base font-bold uppercase text-[#16315E] leading-snug group-hover:text-[#264ABC] transition">
+                                THÔNG TIN ĐẠI HỘI ĐỒNG CỔ ĐÔNG THƯỜNG NIÊN VIKI 2026
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- PAGINATION -->
+            <div class="flex items-center justify-center gap-2 pt-4 pb-8">
+                <button class="w-10 h-10 flex items-center justify-center border border-gray-300 bg-white text-gray-500 hover:bg-gray-100 transition rounded">&larr;</button>
+                <button class="w-10 h-10 flex items-center justify-center bg-[#214080] text-white font-bold rounded">1</button>
+                <button class="w-10 h-10 flex items-center justify-center border border-gray-300 bg-white text-[#214080] hover:bg-gray-100 transition rounded font-semibold">2</button>
+                <button class="w-10 h-10 flex items-center justify-center border border-gray-300 bg-white text-[#214080] hover:bg-gray-100 transition rounded font-semibold">3</button>
+                <button class="w-10 h-10 flex items-center justify-center border border-gray-300 bg-white text-[#214080] hover:bg-gray-100 transition rounded font-semibold">4</button>
+                <button class="w-10 h-10 flex items-center justify-center border border-gray-300 bg-white text-[#214080] hover:bg-gray-100 transition rounded font-semibold">5</button>
+                <span class="px-2 text-gray-400">...</span>
+                <button class="w-10 h-10 flex items-center justify-center border border-gray-300 bg-white text-[#214080] hover:bg-gray-100 transition rounded font-semibold">57</button>
+                <button class="w-10 h-10 flex items-center justify-center border border-gray-300 bg-white text-gray-500 hover:bg-gray-100 transition rounded">&rarr;</button>
+            </div>
+
+        </div>
+    </div>
+
+</Layout>
