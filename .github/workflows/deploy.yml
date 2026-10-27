@@ -4,7 +4,7 @@ on:
   push:
     branches: [ main ]
 
-  # Cho phép bạn chạy workflow này thủ công từ tab Actions trên GitHub
+  # Cho phép chạy workflow thủ công từ tab Actions trên GitHub
   workflow_dispatch:
 
 # Đặt quyền cho GITHUB_TOKEN để có thể deploy lên GitHub Pages
@@ -45,7 +45,7 @@ jobs:
           cache: ${{ steps.detect-package-manager.outputs.manager }}
 
       - name: Setup Pages
-        uses: actions/configure-pages@v4
+        uses: actions/configure-pages@v5
 
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
