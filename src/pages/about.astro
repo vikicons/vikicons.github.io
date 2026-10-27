@@ -4,39 +4,36 @@ import Layout from '../layouts/layout.astro';
 
 <Layout title="Về Chúng Tôi | VIKI Construction Corporation">
 
-    <!-- HERO BANNER / SUB-NAV (Bám sát phong cách thiết kế about.jpg) -->
+    <!-- HERO BANNER -->
     <section class="bg-[#16315E] text-white pt-12 pb-16 relative overflow-hidden border-b-4 border-[#FFC709]">
         <div class="container mx-auto px-4 relative z-10">
             
-            <!-- Sub Navigation Bar -->
-            <div class="flex flex-wrap items-center justify-between gap-4 mb-12 pb-4 border-b border-white/15 text-xs sm:text-sm">
-                <div class="flex items-center gap-2 sm:gap-6 font-semibold uppercase tracking-wider overflow-x-auto">
-                    <a href="#about-overview" class="text-white hover:text-[#5FD1C1] transition no-underline whitespace-nowrap">Tổng quan</a>
-                    <span class="text-white/30">|</span>
-                    <a href="#core-values" class="text-white/80 hover:text-[#5FD1C1] transition no-underline whitespace-nowrap">Giá trị cốt lõi</a>
-                    <span class="text-white/30">|</span>
-                    <a href="#vision-mission" class="text-white/80 hover:text-[#5FD1C1] transition no-underline whitespace-nowrap">Tầm nhìn & Sứ mệnh</a>
-                    <span class="text-white/30">|</span>
-                    <a href="#leadership" class="text-white/80 hover:text-[#5FD1C1] transition no-underline whitespace-nowrap">Ban lãnh đạo</a>
-                    <span class="text-white/30">|</span>
-                    <a href="#organization" class="text-white/80 hover:text-[#5FD1C1] transition no-underline whitespace-nowrap">Sơ đồ tổ chức</a>
+            <!-- Hero Main Headline kết hợp nút Hồ Sơ Năng Lực 2026 bên phải -->
+            <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
+                
+                <!-- Phần tiêu đề và mô tả bên trái -->
+                <div class="max-w-4xl">
+                    <div class="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-[#5FD1C1] mb-3">BUILDING FUTURES</div>
+                    <h1 class="text-[59px] font-extrabold uppercase tracking-tight leading-[1.15] mb-6">
+                        <span class="block mb-2">Chúng tôi là VIKI</span>
+                        <span class="text-[#38B6FF] whitespace-nowrap block">Xây Giá Trị – Dựng Niềm Tin</span>
+                    </h1>
+                    <p class="text-base sm:text-lg text-slate-200 leading-relaxed font-light text-justify max-w-3xl">
+                        Công ty Cổ phần Xây dựng VIKI chính thức thành lập vào ngày 01 tháng 6 năm 2020. Dù ra đời trong bối cảnh thị trường nhiều thách thức, VIKI đã chọn con đường phát triển lấy uy tín và chất lượng làm nền tảng hàng đầu, không ngừng vươn mình trở thành đối tác tin cậy của các tập đoàn đa quốc gia.
+                    </p>
                 </div>
-                <a href="https://drive.google.com/file/d/1cxkXAJ90zEEOfl1jduVt6gi3GFYggogX/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="hidden md:inline-flex items-center gap-2 bg-[#264ABC] hover:bg-[#214080] text-white px-4 py-2 text-xs font-bold uppercase tracking-wider transition no-underline border border-white/20">
-                    <span>HỒ SƠ NĂNG LỰC 2026</span>
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-                </a>
-            </div>
 
-            <!-- Hero Main Headline -->
-            <div class="max-w-4xl">
-                <div class="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-[#5FD1C1] mb-3">BUILDING FUTURES</div>
-                <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold uppercase tracking-tight leading-none mb-6">
-                    Chúng tôi là VIKI <br />
-                    <span class="text-[#38B6FF]">Xây Giá Trị – Dựng Niềm Tin</span>
-                </h1>
-                <p class="text-base sm:text-lg text-slate-200 leading-relaxed font-light text-justify max-w-3xl">
-                    Công ty Cổ phần Xây dựng VIKI chính thức thành lập vào ngày 01 tháng 6 năm 2020. Dù ra đời trong bối cảnh thị trường nhiều thách thức, VIKI đã chọn con đường phát triển lấy uy tín và chất lượng làm nền tảng hàng đầu, không ngừng vươn mình trở thành đối tác tin cậy của các tập đoàn đa quốc gia.
-                </p>
+                <!-- Nút Tải Hồ Sơ Năng Lực 2026 nằm ở chính giữa bên phải -->
+                <div class="flex lg:justify-center shrink-0">
+                    <a href="https://drive.google.com/file/d/1cxkXAJ90zEEOfl1jduVt6gi3GFYggogX/view?usp=sharing" 
+                       target="_blank" 
+                       rel="noopener noreferrer" 
+                       class="inline-flex items-center justify-center gap-3 bg-[#264ABC] hover:bg-[#214080] text-white px-6 py-4 text-sm font-bold uppercase tracking-wider transition no-underline border border-white/20 rounded shadow-lg">
+                        <span>HỒ SƠ NĂNG LỰC 2026</span>
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                    </a>
+                </div>
+
             </div>
 
         </div>
@@ -244,8 +241,6 @@ import Layout from '../layouts/layout.astro';
 
         </div>
     </section>
-
-    
 
     <!-- SECTION 6: ĐỘI NGŨ NHÂN SỰ & NĂNG LỰC CON NGƯỜI -->
     <section class="py-20 bg-[#F4F6FA] border-b border-[#E6EAF2]" id="team-capabilities">
