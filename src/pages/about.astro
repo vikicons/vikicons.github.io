@@ -5,18 +5,18 @@ import Layout from '../layouts/layout.astro';
 <Layout title="Về Chúng Tôi | VIKI Construction Corporation">
 
     <!-- HERO BANNER -->
-    <section class="bg-[#16315E] text-white pt-12 pb-16 relative overflow-hidden border-b-4 border-[#FFC709]">
-        <div class="container mx-auto px-4 relative z-10">
+    <section class="bg-[#16315E] text-white pt-12 pb-16 relative overflow-hidden border-b-4 border-[#FFC709] w-full max-w-full">
+        <div class="max-w-7xl mx-auto px-4 sm:px-28 lg:px-8 relative z-10 w-full">
             
             <!-- Hero Main Headline kết hợp nút Hồ Sơ Năng Lực 2026 bên phải -->
-            <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
+            <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8 w-full max-w-full">
                 
                 <!-- Phần tiêu đề và mô tả bên trái -->
-                <div class="max-w-4xl">
+                <div class="max-w-4xl w-full">
                     <div class="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-[#5FD1C1] mb-3">BUILDING FUTURES</div>
-                    <h1 class="text-[59px] font-extrabold uppercase tracking-tight leading-[1.15] mb-6">
+                    <h1 class="text-3xl sm:text-5xl lg:text-[59px] font-extrabold uppercase tracking-tight leading-[1.15] mb-6 break-words">
                         <span class="block mb-2">Chúng tôi là VIKI</span>
-                        <span class="text-[#38B6FF] whitespace-nowrap block">Xây Giá Trị – Dựng Niềm Tin</span>
+                        <span class="text-[#38B6FF] block">Xây Giá Trị – Dựng Niềm Tin</span>
                     </h1>
                     <p class="text-base sm:text-lg text-slate-200 leading-relaxed font-light text-justify max-w-3xl">
                         Công ty Cổ phần Xây dựng VIKI chính thức thành lập vào ngày 01 tháng 6 năm 2020. Dù ra đời trong bối cảnh thị trường nhiều thách thức, VIKI đã chọn con đường phát triển lấy uy tín và chất lượng làm nền tảng hàng đầu, không ngừng vươn mình trở thành đối tác tin cậy của các tập đoàn đa quốc gia.
@@ -29,311 +29,310 @@ import Layout from '../layouts/layout.astro';
     </section>
 
     <!-- SECTION 3: SƠ ĐỒ NHÂN SỰ & TỔ CHỨC -->
-    <section class="py-12 sm:py-16 bg-white border-b border-[#E6EAF2] viki-org-chart">
-            <div class="container mx-auto px-4">
+    <section class="py-12 sm:py-16 bg-white border-b border-[#E6EAF2] viki-org-chart w-full max-w-full overflow-hidden">
+        <div class="container mx-auto px-4 w-full max-w-full">
 
-                <!-- Section Header -->
-                <div class="flex items-center gap-3 mb-12 pb-4 border-b-2 border-[#16315E]">
-                    <img src="/icon-hamburger-blue.png" alt="Icon" class="w-8 h-8 object-contain">
-                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#16315E] m-0 uppercase tracking-wide">
-                        SƠ ĐỒ NHÂN SỰ &amp; TỔ CHỨC
-                    </h2>
-                </div>
+            <!-- Section Header -->
+            <div class="flex items-center gap-3 mb-12 pb-4 border-b-2 border-[#16315E]">
+                <img src="/icon-hamburger-blue.png" alt="Icon" class="w-8 h-8 object-contain">
+                <h2 class="text-xl sm:text-3xl md:text-4xl font-extrabold text-[#16315E] m-0 uppercase tracking-wide break-words">
+                    SƠ ĐỒ NHÂN SỰ &amp; TỔ CHỨC
+                </h2>
+            </div>
 
-                <p class="text-sm sm:text-base text-[#5A6E85] max-w-3xl mb-12 leading-relaxed">
-                    Cơ cấu tổ chức của VIKI được xây dựng theo mô hình quản trị doanh nghiệp hiện đại, tinh gọn và chuyên môn hóa cao, đảm bảo sự phối hợp nhịp nhàng giữa các khối văn phòng và ban quản lý dự án công trường.
-                </p>
+            <p class="text-sm sm:text-base text-[#5A6E85] max-w-3xl mb-12 leading-relaxed">
+                Cơ cấu tổ chức của VIKI được xây dựng theo mô hình quản trị doanh nghiệp hiện đại, tinh gọn và chuyên môn hóa cao, đảm bảo sự phối hợp nhịp nhàng giữa các khối văn phòng và ban quản lý dự án công trường.
+            </p>
 
-                <!-- ================= KHU VỰC HIỂN THỊ TRÊN DESKTOP & IPAD (Medium trở lên) ================= -->
-                <div class="hidden md:block overflow-x-auto pb-8 pt-2 px-2 scrollbar-thin">
-                    <div class="min-w-[1100px] flex flex-col items-center">
+            <!-- ================= KHU VỰC HIỂN THỊ TRÊN DESKTOP RỘNG (Màn hình từ 1280px trở lên) ================= -->
+            <div class="hidden xl:block overflow-x-auto pb-8 pt-2 px-2 scrollbar-thin w-full max-w-full">
+                <div class="min-w-[1100px] flex flex-col items-center">
 
-                        <!-- TẦNG 1: HỘI ĐỒNG CỔ ĐÔNG -->
-                        <div class="flex flex-col items-center">
-                            <div class="bg-white border-2 border-[#214080] rounded-lg overflow-hidden shadow-xl w-[253px] text-center relative group transition-all duration-300 flex flex-col">
-                                <div class="w-[253px] h-[285px] bg-slate-100 overflow-hidden">
-                                    <img src="/img/anhSoDoNhanSu001.webp" alt="Hội đồng cổ đông" class="w-full h-full object-cover" onerror="this.src='/img/anhErrorSoDoNhanSuHDCD.webp'">
-                                </div>
-                                <div class="bg-[#214080] text-white h-16 px-2 flex flex-col justify-center">
-                                    <div class="text-sm font-extrabold uppercase mt-1">HỘI ĐỒNG CỔ ĐÔNG</div>
-                                </div>
+                    <!-- TẦNG 1: HỘI ĐỒNG CỔ ĐÔNG -->
+                    <div class="flex flex-col items-center">
+                        <div class="bg-white border-2 border-[#214080] rounded-lg overflow-hidden shadow-xl w-[253px] text-center relative group transition-all duration-300 flex flex-col">
+                            <div class="w-[253px] h-[285px] bg-slate-100 overflow-hidden">
+                                <img src="/img/anhSoDoNhanSu001.webp" alt="Hội đồng cổ đông" class="w-full h-full object-cover" onerror="this.src='/img/anhErrorSoDoNhanSuHDCD.webp'">
+                            </div>
+                            <div class="bg-[#214080] text-white h-16 px-2 flex flex-col justify-center">
+                                <div class="text-sm font-extrabold uppercase mt-1">HỘI ĐỒNG CỔ ĐÔNG</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- DẤU NỐI SVG TỪ HỘI ĐỒNG CỔ ĐÔNG XUỐNG CHỦ TỊCH -->
+                    <div class="w-full h-6 relative">
+                        <svg class="w-full h-full overflow-visible" xmlns="http://www.w3.org/2000/svg">
+                            <line x1="50%" y1="0" x2="50%" y2="100%" stroke="#214080" stroke-width="2" />
+                        </svg>
+                    </div>
+
+                    <!-- TẦNG 2: CHỦ TỊCH HĐQT -->
+                    <div class="flex flex-col items-center">
+                        <div class="bg-white border-2 border-[#214080] rounded-lg overflow-hidden shadow-xl w-[253px] text-center relative group transition-all duration-300 flex flex-col">
+                            <div class="w-[253px] h-[285px] bg-slate-100 overflow-hidden">
+                                <img src="/img/anhSoDoNhanSu002.webp" alt="Chủ tịch HĐQT Lê Mạnh Toàn" class="w-full h-full object-cover" onerror="this.src='/img/anhErrorSoDoNhanSuMen.webp'">
+                            </div>
+                            <div class="bg-[#214080] text-white h-16 px-2 flex flex-col justify-center">
+                                <div class="text-xs font-bold uppercase tracking-wider">CHỦ TỊCH HỘI ĐỒNG QUẢN TRỊ</div>
+                                <div class="text-sm font-extrabold uppercase mt-1">Ông LÊ MẠNH TOÀN</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- DẤU NỐI SVG TỪ CHỦ TỊCH XUỐNG GIÁM ĐỐC -->
+                    <div class="w-full h-6 relative">
+                        <svg class="w-full h-full overflow-visible" xmlns="http://www.w3.org/2000/svg">
+                            <line x1="50%" y1="0" x2="50%" y2="100%" stroke="#214080" stroke-width="2" />
+                        </svg>
+                    </div>
+
+                    <!-- TẦNG 3: GIÁM ĐỐC -->
+                    <div class="flex flex-col items-center w-full max-w-[1100px]">
+                        <div class="bg-white border-2 border-[#214080] rounded-lg overflow-hidden shadow-xl w-[253px] text-center relative group transition-all duration-300 flex flex-col mx-auto">
+                            <div class="w-[253px] h-[285px] bg-slate-100 overflow-hidden">
+                                <img src="/img/anhSoDoNhanSu003.webp" alt="Giám đốc Trần Văn Quân" class="w-full h-full object-cover" onerror="this.src='/img/anhErrorSoDoNhanSuMen.webp'">
+                            </div>
+                            <div class="bg-[#214080] text-white h-16 px-2 flex flex-col justify-center">
+                                <div class="text-xs font-bold uppercase tracking-wider">GIÁM ĐỐC</div>
+                                <div class="text-sm font-extrabold uppercase mt-1">Ông TRẦN VĂN QUÂN</div>
                             </div>
                         </div>
 
-                        <!-- DẤU NỐI SVG TỪ HỘI ĐỒNG CỔ ĐÔNG XUỐNG CHỦ TỊCH -->
-                        <div class="w-full h-6 relative">
+                        <!-- DẤU NỐI SVG TỪ GIÁM ĐỐC ĐẾN 5 THẺ BÊN DƯỚI -->
+                        <div class="w-full h-8 relative">
                             <svg class="w-full h-full overflow-visible" xmlns="http://www.w3.org/2000/svg">
-                                <line x1="50%" y1="0" x2="50%" y2="100%" stroke="#214080" stroke-width="2" />
+                                <line x1="50%" y1="0" x2="50%" y2="16" stroke="#214080" stroke-width="2" />
+                                <line x1="10%" y1="16" x2="90%" y2="16" stroke="#214080" stroke-width="2" />
+                                <line x1="10%" y1="16" x2="10%" y2="32" stroke="#214080" stroke-width="2" />
+                                <line x1="30%" y1="16" x2="30%" y2="32" stroke="#214080" stroke-width="2" />
+                                <line x1="50%" y1="16" x2="50%" y2="32" stroke="#214080" stroke-width="2" />
+                                <line x1="70%" y1="16" x2="70%" y2="32" stroke="#214080" stroke-width="2" />
+                                <line x1="90%" y1="16" x2="90%" y2="32" stroke="#214080" stroke-width="2" />
                             </svg>
                         </div>
+                    </div>
 
-                        <!-- TẦNG 2: CHỦ TỊCH HĐQT -->
-                        <div class="flex flex-col items-center">
-                            <div class="bg-white border-2 border-[#214080] rounded-lg overflow-hidden shadow-xl w-[253px] text-center relative group transition-all duration-300 flex flex-col">
-                                <div class="w-[253px] h-[285px] bg-slate-100 overflow-hidden">
-                                    <img src="/img/anhSoDoNhanSu002.webp" alt="Chủ tịch HĐQT Lê Mạnh Toàn" class="w-full h-full object-cover" onerror="this.src='/img/anhErrorSoDoNhanSuMen.webp'">
-                                </div>
-                                <div class="bg-[#214080] text-white h-16 px-2 flex flex-col justify-center">
-                                    <div class="text-xs font-bold uppercase tracking-wider">CHỦ TỊCH HỘI ĐỒNG QUẢN TRỊ</div>
-                                    <div class="text-sm font-extrabold uppercase mt-1">Ông LÊ MẠNH TOÀN</div>
-                                </div>
+                    <!-- TẦNG 4: 5 THẺ PHÒNG BAN & BAN ĐIỀU HÀNH DỰ ÁN -->
+                    <div class="grid grid-cols-5 gap-5 w-full max-w-[1100px] items-stretch">
+
+                        <!-- Thẻ 1 -->
+                        <div class="bg-white border-2 border-[#214080] rounded-lg overflow-hidden shadow-md flex flex-col text-center h-full">
+                            <div class="w-full h-[253px] bg-slate-100 overflow-hidden shrink-0">
+                                <img src="/img/anhSoDoNhanSu004.webp" alt="Các ban điều hành dự án" class="w-full h-full object-cover" onerror="this.src='/img/anhErrorSoDoNhanSuMen.webp'">
+                            </div>
+                            <div class="bg-[#214080] text-white h-28 px-2 flex flex-col justify-center shrink-0">
+                                <div class="text-xs font-bold uppercase tracking-normal whitespace-nowrap leading-snug">CÁC BAN ĐIỀU HÀNH DỰ ÁN</div>
                             </div>
                         </div>
 
-                        <!-- DẤU NỐI SVG TỪ CHỦ TỊCH XUỐNG GIÁM ĐỐC -->
-                        <div class="w-full h-6 relative">
-                            <svg class="w-full h-full overflow-visible" xmlns="http://www.w3.org/2000/svg">
-                                <line x1="50%" y1="0" x2="50%" y2="100%" stroke="#214080" stroke-width="2" />
-                            </svg>
-                        </div>
-
-                        <!-- TẦNG 3: GIÁM ĐỐC -->
-                        <div class="flex flex-col items-center w-full max-w-[1100px]">
-                            <div class="bg-white border-2 border-[#214080] rounded-lg overflow-hidden shadow-xl w-[253px] text-center relative group transition-all duration-300 flex flex-col mx-auto">
-                                <div class="w-[253px] h-[285px] bg-slate-100 overflow-hidden">
-                                    <img src="/img/anhSoDoNhanSu003.webp" alt="Giám đốc Trần Văn Quân" class="w-full h-full object-cover" onerror="this.src='/img/anhErrorSoDoNhanSuMen.webp'">
-                                </div>
-                                <div class="bg-[#214080] text-white h-16 px-2 flex flex-col justify-center">
-                                    <div class="text-xs font-bold uppercase tracking-wider">GIÁM ĐỐC</div>
-                                    <div class="text-sm font-extrabold uppercase mt-1">Ông TRẦN VĂN QUÂN</div>
-                                </div>
+                        <!-- Thẻ 2 -->
+                        <div class="bg-white border-2 border-[#214080] rounded-lg overflow-hidden shadow-md flex flex-col text-center h-full">
+                            <div class="w-full h-[253px] bg-slate-100 overflow-hidden shrink-0">
+                                <img src="/img/anhSoDoNhanSu005.webp" alt="Phòng Quản lý Dự án" class="w-full h-full object-cover" onerror="this.src='/img/anhErrorSoDoNhanSuMen.webp'">
                             </div>
-
-                            <!-- DẤU NỐI SVG TỪ GIÁM ĐỐC ĐẾN 5 THẺ BÊN DƯỚI -->
-                            <div class="w-full h-8 relative">
-                                <svg class="w-full h-full overflow-visible" xmlns="http://www.w3.org/2000/svg">
-                                    <line x1="50%" y1="0" x2="50%" y2="16" stroke="#214080" stroke-width="2" />
-                                    <line x1="10%" y1="16" x2="90%" y2="16" stroke="#214080" stroke-width="2" />
-                                    <line x1="10%" y1="16" x2="10%" y2="32" stroke="#214080" stroke-width="2" />
-                                    <line x1="30%" y1="16" x2="30%" y2="32" stroke="#214080" stroke-width="2" />
-                                    <line x1="50%" y1="16" x2="50%" y2="32" stroke="#214080" stroke-width="2" />
-                                    <line x1="70%" y1="16" x2="70%" y2="32" stroke="#214080" stroke-width="2" />
-                                    <line x1="90%" y1="16" x2="90%" y2="32" stroke="#214080" stroke-width="2" />
-                                </svg>
+                            <div class="bg-[#214080] text-white h-28 px-2 flex flex-col justify-center shrink-0">
+                                <div class="text-xs font-bold uppercase tracking-normal whitespace-nowrap leading-snug">PHÒNG QUẢN LÝ DỰ ÁN</div>
+                                <div class="text-xs font-extrabold uppercase mt-1">ÔNG NGUYỄN HUY TIỆP</div>
                             </div>
                         </div>
 
-                        <!-- TẦNG 4: 5 THẺ PHÒNG BAN & BAN ĐIỀU HÀNH DỰ ÁN -->
-                        <div class="grid grid-cols-5 gap-5 w-full max-w-[1100px] items-stretch">
-
-                            <!-- Thẻ 1 -->
-                            <div class="bg-white border-2 border-[#214080] rounded-lg overflow-hidden shadow-md flex flex-col text-center h-full">
-                                <div class="w-full h-[253px] bg-slate-100 overflow-hidden shrink-0">
-                                    <img src="/img/anhSoDoNhanSu004.webp" alt="Các ban điều hành dự án" class="w-full h-full object-cover" onerror="this.src='/img/anhErrorSoDoNhanSuMen.webp'">
-                                </div>
-                                <div class="bg-[#214080] text-white h-28 px-2 flex flex-col justify-center shrink-0">
-                                    <div class="text-xs font-bold uppercase tracking-wider leading-snug">CÁC BAN ĐIỀU HÀNH DỰ ÁN</div>
-                                </div>
+                        <!-- Thẻ 3 -->
+                        <div class="bg-white border-2 border-[#214080] rounded-lg overflow-hidden shadow-md flex flex-col text-center h-full">
+                            <div class="w-full h-[253px] bg-slate-100 overflow-hidden shrink-0">
+                                <img src="/img/anhSoDoNhanSu006.webp" alt="Phòng Tổ chức - Hành chính" class="w-full h-full object-cover" onerror="this.src='/img/anhErrorSoDoNhanSuWomen.webp'">
                             </div>
-
-                            <!-- Thẻ 2 -->
-                            <div class="bg-white border-2 border-[#214080] rounded-lg overflow-hidden shadow-md flex flex-col text-center h-full">
-                                <div class="w-full h-[253px] bg-slate-100 overflow-hidden shrink-0">
-                                    <img src="/img/anhSoDoNhanSu005.webp" alt="Phòng Quản lý Dự án" class="w-full h-full object-cover" onerror="this.src='/img/anhErrorSoDoNhanSuMen.webp'">
-                                </div>
-                                <div class="bg-[#214080] text-white h-28 px-2 flex flex-col justify-center shrink-0">
-                                    <div class="text-xs font-bold uppercase tracking-wider leading-snug">PHÒNG QUẢN LÝ DỰ ÁN</div>
-                                    <div class="text-xs font-extrabold uppercase mt-1">Ông NGUYỄN HUY TIỆP</div>
-                                </div>
+                            <div class="bg-[#214080] text-white h-28 px-2 flex flex-col justify-center shrink-0">
+                                <div class="text-xs font-bold uppercase tracking-normal whitespace-nowrap leading-snug">PHÒNG TỔ CHỨC - HÀNH CHÍNH</div>
+                                <div class="text-xs font-extrabold uppercase mt-1">BÀ TRẦN THỊ SUM</div>
                             </div>
+                        </div>
 
-                            <!-- Thẻ 3 -->
-                            <div class="bg-white border-2 border-[#214080] rounded-lg overflow-hidden shadow-md flex flex-col text-center h-full">
-                                <div class="w-full h-[253px] bg-slate-100 overflow-hidden shrink-0">
-                                    <img src="/img/anhSoDoNhanSu006.webp" alt="Phòng Tổ chức - Hành chính" class="w-full h-full object-cover" onerror="this.src='/img/anhErrorSoDoNhanSuWomen.webp'">
-                                </div>
-                                <div class="bg-[#214080] text-white h-28 px-2 flex flex-col justify-center shrink-0">
-                                    <div class="text-xs font-bold uppercase tracking-wider leading-snug">PHÒNG TỔ CHỨC - HÀNH CHÍNH</div>
-                                    <div class="text-xs font-extrabold uppercase mt-1">Bà TRẦN THỊ SUM</div>
-                                </div>
+                        <!-- Thẻ 4 -->
+                        <div class="bg-white border-2 border-[#214080] rounded-lg overflow-hidden shadow-md flex flex-col text-center h-full">
+                            <div class="w-full h-[253px] bg-slate-100 overflow-hidden shrink-0">
+                                <img src="/img/anhSoDoNhanSu007.webp" alt="Phòng Tài chính - Kế toán" class="w-full h-full object-cover" onerror="this.src='/img/anhErrorSoDoNhanSuWomen.webp'">
                             </div>
-
-                            <!-- Thẻ 4 -->
-                            <div class="bg-white border-2 border-[#214080] rounded-lg overflow-hidden shadow-md flex flex-col text-center h-full">
-                                <div class="w-full h-[253px] bg-slate-100 overflow-hidden shrink-0">
-                                    <img src="/img/anhSoDoNhanSu007.webp" alt="Phòng Tài chính - Kế toán" class="w-full h-full object-cover" onerror="this.src='/img/anhErrorSoDoNhanSuWomen.webp'">
-                                </div>
-                                <div class="bg-[#214080] text-white h-28 px-2 flex flex-col justify-center shrink-0">
-                                    <div class="text-xs font-bold uppercase tracking-wider leading-snug">PHÒNG TÀI CHÍNH - KẾ TOÁN</div>
-                                    <div class="text-xs font-extrabold uppercase mt-1">Bà TRẦN THANH HƯƠNG</div>
-                                </div>
+                            <div class="bg-[#214080] text-white h-28 px-2 flex flex-col justify-center shrink-0">
+                                <div class="text-xs font-bold uppercase tracking-normal whitespace-nowrap leading-snug">PHÒNG TÀI CHÍNH - KẾ TOÁN</div>
+                                <div class="text-xs font-extrabold uppercase mt-1">BÀ TRẦN THANH HƯƠNG</div>
                             </div>
+                        </div>
 
-                            <!-- Thẻ 5 -->
-                            <div class="bg-white border-2 border-[#214080] rounded-lg overflow-hidden shadow-md flex flex-col text-center h-full">
-                                <div class="w-full h-[253px] bg-slate-100 overflow-hidden shrink-0">
-                                    <img src="/img/anhSoDoNhanSu008.webp" alt="Phòng Vật tư - Thiết bị" class="w-full h-full object-cover" onerror="this.src='/img/anhErrorSoDoNhanSuWomen.webp'">
-                                </div>
-                                <div class="bg-[#214080] text-white h-28 px-2 flex flex-col justify-center shrink-0">
-                                    <div class="text-xs font-bold uppercase tracking-wider leading-snug">PHÒNG VẬT TƯ - THIẾT BỊ</div>
-                                    <div class="text-xs font-extrabold uppercase mt-1">Bà NGUYỄN THỊ CẨM TÚ</div>
-                                </div>
+                        <!-- Thẻ 5 -->
+                        <div class="bg-white border-2 border-[#214080] rounded-lg overflow-hidden shadow-md flex flex-col text-center h-full">
+                            <div class="w-full h-[253px] bg-slate-100 overflow-hidden shrink-0">
+                                <img src="/img/anhSoDoNhanSu008.webp" alt="Phòng Vật tư - Thiết bị" class="w-full h-full object-cover" onerror="this.src='/img/anhErrorSoDoNhanSuWomen.webp'">
                             </div>
-
+                            <div class="bg-[#214080] text-white h-28 px-2 flex flex-col justify-center shrink-0">
+                                <div class="text-xs font-bold uppercase tracking-normal whitespace-nowrap leading-snug">PHÒNG VẬT TƯ - THIẾT BỊ</div>
+                                <div class="text-xs font-extrabold uppercase mt-1">BÀ NGUYỄN THỊ CẨM TÚ</div>
+                            </div>
                         </div>
 
                     </div>
+
+                </div>
+            </div>
+
+
+            <!-- ================= KHU VỰC HIỂN THỊ TRÊN MOBILE & TẤT CẢ CÁC DÒNG IPAD (Dưới 1280px) ================= -->
+            <div class="block xl:hidden flex flex-col items-center w-full max-w-full overflow-hidden">
+                
+                <!-- 1. Hội đồng cổ đông -->
+                <div class="bg-white border-2 border-[#214080] rounded-xl overflow-hidden shadow-lg text-center w-full max-w-[253px]">
+                    <div class="w-full h-[285px] bg-slate-100 overflow-hidden">
+                        <img src="/img/anhSoDoNhanSu001.webp" alt="Hội đồng cổ đông" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=400&q=80'">
+                    </div>
+                    <div class="bg-[#214080] text-white py-3 px-2">
+                        <div class="text-[10px] font-bold uppercase tracking-wider">CƠ QUAN QUYẾT ĐỊNH CAO NHẤT</div>
+                        <div class="text-xs font-extrabold uppercase mt-1">HỘI ĐỒNG CỔ ĐÔNG</div>
+                    </div>
                 </div>
 
+                <!-- Line nối -->
+                <div class="w-full h-6 relative -my-[2px] z-10">
+                    <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                        <line x1="50%" y1="0" x2="50%" y2="100%" stroke="#214080" stroke-width="2.5" />
+                    </svg>
+                </div>
 
-                <!-- ================= KHU VỰC HIỂN THỊ TRÊN MOBILE & IPAD (Dưới kích thước Medium - Tự động tương thích tỉ lệ 253x285) ================= -->
-                <div class="block md:hidden flex flex-col items-center">
+                <!-- 2. Chủ tịch HĐQT -->
+                <div class="bg-white border-2 border-[#214080] rounded-xl overflow-hidden shadow-lg text-center w-full max-w-[253px]">
+                    <div class="w-full h-[285px] bg-slate-100 overflow-hidden">
+                        <img src="/img/anhSoDoNhanSu002.webp" alt="Chủ tịch HĐQT Lê Mạnh Toàn" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80'">
+                    </div>
+                    <div class="bg-[#214080] text-white py-3 px-2">
+                        <div class="text-[10px] font-bold uppercase tracking-wider">CHỦ TỊCH HỘI ĐỒNG QUẢN TRỊ</div>
+                        <div class="text-xs font-extrabold uppercase mt-1">LÊ MẠNH TOÀN</div>
+                    </div>
+                </div>
+
+                <!-- Line nối -->
+                <div class="w-full h-6 relative -my-[2px] z-10">
+                    <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                        <line x1="50%" y1="0" x2="50%" y2="100%" stroke="#214080" stroke-width="2.5" />
+                    </svg>
+                </div>
+
+                <!-- 3. Giám đốc -->
+                <div class="bg-white border-2 border-[#214080] rounded-xl overflow-hidden shadow-lg text-center w-full max-w-[253px]">
+                    <div class="w-full h-[285px] bg-slate-100 overflow-hidden">
+                        <img src="/img/anhSoDoNhanSu003.webp" alt="Giám đốc Trần Văn Quân" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&q=80'">
+                    </div>
+                    <div class="bg-[#214080] text-white py-3 px-2">
+                        <div class="text-[10px] font-bold uppercase tracking-wider">GIÁM ĐỐC</div>
+                        <div class="text-xs font-extrabold uppercase mt-1">TRẦN VĂN QUÂN</div>
+                    </div>
+                </div>
+
+                <!-- Line nối -->
+                <div class="w-full h-6 relative -my-[2px] z-10">
+                    <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                        <line x1="50%" y1="0" x2="50%" y2="100%" stroke="#214080" stroke-width="2.5" />
+                    </svg>
+                </div>
+
+                <!-- Tiêu đề phân khu khối phòng ban -->
+                <div class="text-center text-xs font-bold text-[#214080] uppercase tracking-wider bg-slate-100 py-2.5 rounded-lg border border-gray-300 w-full max-w-[253px] shadow-sm relative z-20">
+                    ▼ CÁC BAN ĐIỀU HÀNH &amp; PHÒNG BAN ▼
+                </div>
+
+                <!-- 4. KHU VỰC SLIDER -->
+                <div class="relative w-full max-w-[253px] overflow-hidden rounded-xl shadow-md border-2 border-[#214080] bg-white mt-4 viki-mobile-slider">
                     
-                    <!-- 1. Hội đồng cổ đông -->
-                    <div class="bg-white border-2 border-[#214080] rounded-xl overflow-hidden shadow-lg text-center w-full max-w-[253px]">
-                        <div class="w-full h-[285px] bg-slate-100 overflow-hidden">
-                            <img src="/img/anhSoDoNhanSu008.webp" alt="Hội đồng cổ đông" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=400&q=80'">
-                        </div>
-                        <div class="bg-[#214080] text-white py-3 px-2">
-                            <div class="text-[10px] font-bold uppercase tracking-wider">CƠ QUAN QUYẾT ĐỊNH CAO NHẤT</div>
-                            <div class="text-xs font-extrabold uppercase mt-1">HỘI ĐỒNG CỔ ĐÔNG</div>
-                        </div>
-                    </div>
-
-                    <!-- Line nối không khoảng hở -->
-                    <div class="w-full h-6 relative -my-[2px] z-10">
-                        <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-                            <line x1="50%" y1="0" x2="50%" y2="100%" stroke="#214080" stroke-width="2.5" />
-                        </svg>
-                    </div>
-
-                    <!-- 2. Chủ tịch HĐQT -->
-                    <div class="bg-white border-2 border-[#214080] rounded-xl overflow-hidden shadow-lg text-center w-full max-w-[253px]">
-                        <div class="w-full h-[285px] bg-slate-100 overflow-hidden">
-                            <img src="/img/anhSoDoNhanSu001.webp" alt="Chủ tịch HĐQT Lê Mạnh Toàn" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80'">
-                        </div>
-                        <div class="bg-[#214080] text-white py-3 px-2">
-                            <div class="text-[10px] font-bold uppercase tracking-wider">CHỦ TỊCH HỘI ĐỒNG QUẢN TRỊ</div>
-                            <div class="text-xs font-extrabold uppercase mt-1">LÊ MẠNH TOÀN</div>
-                        </div>
-                    </div>
-
-                    <!-- Line nối không khoảng hở -->
-                    <div class="w-full h-6 relative -my-[2px] z-10">
-                        <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-                            <line x1="50%" y1="0" x2="50%" y2="100%" stroke="#214080" stroke-width="2.5" />
-                        </svg>
-                    </div>
-
-                    <!-- 3. Giám đốc -->
-                    <div class="bg-white border-2 border-[#214080] rounded-xl overflow-hidden shadow-lg text-center w-full max-w-[253px]">
-                        <div class="w-full h-[285px] bg-slate-100 overflow-hidden">
-                            <img src="/img/anhSoDoNhanSu002.webp" alt="Giám đốc Trần Văn Quân" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&q=80'">
-                        </div>
-                        <div class="bg-[#214080] text-white py-3 px-2">
-                            <div class="text-[10px] font-bold uppercase tracking-wider">GIÁM ĐỐC</div>
-                            <div class="text-xs font-extrabold uppercase mt-1">TRẦN VĂN QUÂN</div>
-                        </div>
-                    </div>
-
-                    <!-- Line nối không khoảng hở -->
-                    <div class="w-full h-6 relative -my-[2px] z-10">
-                        <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-                            <line x1="50%" y1="0" x2="50%" y2="100%" stroke="#214080" stroke-width="2.5" />
-                        </svg>
-                    </div>
-
-                    <!-- Tiêu đề phân khu khối phòng ban -->
-                    <div class="text-center text-xs font-bold text-[#214080] uppercase tracking-wider bg-slate-100 py-2.5 rounded-lg border border-gray-300 w-full max-w-[253px] shadow-sm relative z-20">
-                        ▼ CÁC BAN ĐIỀU HÀNH &amp; PHÒNG BAN ▼
-                    </div>
-
-                    <!-- 4. KHU VỰC SLIDER (Trượt đổi thẻ hình ảnh chuẩn tỉ lệ 253x285 trên Mobile) -->
-                    <div class="relative w-full max-w-[253px] overflow-hidden rounded-xl shadow-md border-2 border-[#214080] bg-white mt-4 viki-mobile-slider">
+                    <!-- Wrapper chứa các slide -->
+                    <div id="vikiSliderTrack" class="flex transition-transform duration-500 ease-in-out">
                         
-                        <!-- Wrapper chứa các slide -->
-                        <div id="vikiSliderTrack" class="flex transition-transform duration-500 ease-in-out">
-                            
-                            <!-- Slide 1 -->
-                            <div class="w-full shrink-0 text-center">
-                                <div class="w-full h-[285px] bg-slate-100 overflow-hidden">
-                                    <img src="/img/anhSoDoNhanSu007.webp" alt="Các ban điều hành dự án" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=300&q=80'">
-                                </div>
-                                <div class="bg-[#214080] text-white py-3 px-2 h-20 flex flex-col justify-center">
-                                    <div class="text-[11px] font-bold uppercase tracking-wider">CÁC BAN ĐIỀU HÀNH DỰ ÁN</div>
-                                    <div class="text-xs font-extrabold uppercase mt-1">BAN QUẢN LÝ CÔNG TRÌNH</div>
-                                </div>
+                        <!-- Slide 1 -->
+                        <div class="w-full shrink-0 text-center">
+                            <div class="w-full h-[285px] bg-slate-100 overflow-hidden">
+                                <img src="/img/anhSoDoNhanSu004.webp" alt="Các ban điều hành dự án" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=300&q=80'">
                             </div>
-
-                            <!-- Slide 2 -->
-                            <div class="w-full shrink-0 text-center">
-                                <div class="w-full h-[285px] bg-slate-100 overflow-hidden">
-                                    <img src="/img/anhSoDoNhanSu006.webp" alt="Phòng Quản lý Dự án" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=300&q=80'">
-                                </div>
-                                <div class="bg-[#214080] text-white py-3 px-2 h-20 flex flex-col justify-center">
-                                    <div class="text-[11px] font-bold uppercase tracking-wider">PHÒNG QUẢN LÝ DỰ ÁN</div>
-                                    <div class="text-xs font-extrabold uppercase mt-1">NGUYỄN HUY TIỆP</div>
-                                </div>
+                            <div class="bg-[#214080] text-white py-3 px-2 h-20 flex flex-col justify-center">
+                                <div class="text-[11px] font-bold uppercase tracking-wider">CÁC BAN ĐIỀU HÀNH DỰ ÁN</div>
+                                <div class="text-xs font-extrabold uppercase mt-1">BAN QUẢN LÝ CÔNG TRÌNH</div>
                             </div>
-
-                            <!-- Slide 3 -->
-                            <div class="w-full shrink-0 text-center">
-                                <div class="w-full h-[285px] bg-slate-100 overflow-hidden">
-                                    <img src="/img/anhSoDoNhanSu003.webp" alt="Phòng Tổ chức - Hành chính" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=300&q=80'">
-                                </div>
-                                <div class="bg-[#214080] text-white py-3 px-2 h-20 flex flex-col justify-center">
-                                    <div class="text-[11px] font-bold uppercase tracking-wider">PHÒNG TỔ CHỨC - HÀNH CHÍNH</div>
-                                    <div class="text-xs font-extrabold uppercase mt-1">TRẦN THỊ SUM</div>
-                                </div>
-                            </div>
-
-                            <!-- Slide 4 -->
-                            <div class="w-full shrink-0 text-center">
-                                <div class="w-full h-[285px] bg-slate-100 overflow-hidden">
-                                    <img src="/img/anhSoDoNhanSu004.webp" alt="Phòng Tài chính - Kế toán" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80'">
-                                </div>
-                                <div class="bg-[#214080] text-white py-3 px-2 h-20 flex flex-col justify-center">
-                                    <div class="text-[11px] font-bold uppercase tracking-wider">PHÒNG TÀI CHÍNH - KẾ TOÁN</div>
-                                    <div class="text-xs font-extrabold uppercase mt-1">TRẦN THANH HƯƠNG</div>
-                                </div>
-                            </div>
-
-                            <!-- Slide 5 -->
-                            <div class="w-full shrink-0 text-center">
-                                <div class="w-full h-[285px] bg-slate-100 overflow-hidden">
-                                    <img src="/img/anhSoDoNhanSu005.webp" alt="Phòng Vật tư - Thiết bị" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=300&q=80'">
-                                </div>
-                                <div class="bg-[#214080] text-white py-3 px-2 h-20 flex flex-col justify-center">
-                                    <div class="text-[11px] font-bold uppercase tracking-wider">PHÒNG VẬT TƯ - THIẾT BỊ</div>
-                                    <div class="text-xs font-extrabold uppercase mt-1">NGUYỄN THỊ CẨM TƯ</div>
-                                </div>
-                            </div>
-
                         </div>
 
-                        <!-- Nút điều hướng Slide trái/phải -->
-                        <button onclick="vikiPrevSlide()" class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/75 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm shadow-md transition">‹</button>
-                        <button onclick="vikiNextSlide()" class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/75 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm shadow-md transition">›</button>
-
-                        <!-- Các chấm chỉ mục (Dots indicator) -->
-                        <div class="absolute bottom-24 left-0 right-0 flex justify-center gap-1.5 pointer-events-none">
-                            <span class="viki-dot w-2 h-2 rounded-full bg-white/60 transition-all duration-300"></span>
-                            <span class="viki-dot w-2 h-2 rounded-full bg-white/60 transition-all duration-300"></span>
-                            <span class="viki-dot w-2 h-2 rounded-full bg-white/60 transition-all duration-300"></span>
-                            <span class="viki-dot w-2 h-2 rounded-full bg-white/60 transition-all duration-300"></span>
-                            <span class="viki-dot w-2 h-2 rounded-full bg-white/60 transition-all duration-300"></span>
+                        <!-- Slide 2 -->
+                        <div class="w-full shrink-0 text-center">
+                            <div class="w-full h-[285px] bg-slate-100 overflow-hidden">
+                                <img src="/img/anhSoDoNhanSu005.webp" alt="Phòng Quản lý Dự án" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=300&q=80'">
+                            </div>
+                            <div class="bg-[#214080] text-white py-3 px-2 h-20 flex flex-col justify-center">
+                                <div class="text-[11px] font-bold uppercase tracking-wider">PHÒNG QUẢN LÝ DỰ ÁN</div>
+                                <div class="text-xs font-extrabold uppercase mt-1">NGUYỄN HUY TIỆP</div>
+                            </div>
                         </div>
+
+                        <!-- Slide 3 -->
+                        <div class="w-full shrink-0 text-center">
+                            <div class="w-full h-[285px] bg-slate-100 overflow-hidden">
+                                <img src="/img/anhSoDoNhanSu006.webp" alt="Phòng Tổ chức - Hành chính" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=300&q=80'">
+                            </div>
+                            <div class="bg-[#214080] text-white py-3 px-2 h-20 flex flex-col justify-center">
+                                <div class="text-[11px] font-bold uppercase tracking-wider">PHÒNG TỔ CHỨC - HÀNH CHÍNH</div>
+                                <div class="text-xs font-extrabold uppercase mt-1">TRẦN THỊ SUM</div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 4 -->
+                        <div class="w-full shrink-0 text-center">
+                            <div class="w-full h-[285px] bg-slate-100 overflow-hidden">
+                                <img src="/img/anhSoDoNhanSu007.webp" alt="Phòng Tài chính - Kế toán" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80'">
+                            </div>
+                            <div class="bg-[#214080] text-white py-3 px-2 h-20 flex flex-col justify-center">
+                                <div class="text-[11px] font-bold uppercase tracking-wider">PHÒNG TÀI CHÍNH - KẾ TOÁN</div>
+                                <div class="text-xs font-extrabold uppercase mt-1">TRẦN THANH HƯƠNG</div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 5 -->
+                        <div class="w-full shrink-0 text-center">
+                            <div class="w-full h-[285px] bg-slate-100 overflow-hidden">
+                                <img src="/img/anhSoDoNhanSu008.webp" alt="Phòng Vật tư - Thiết bị" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=300&q=80'">
+                            </div>
+                            <div class="bg-[#214080] text-white py-3 px-2 h-20 flex flex-col justify-center">
+                                <div class="text-[11px] font-bold uppercase tracking-wider">PHÒNG VẬT TƯ - THIẾT BỊ</div>
+                                <div class="text-xs font-extrabold uppercase mt-1">NGUYỄN THỊ CẨM TÚ</div>
+                            </div>
+                        </div>
+
                     </div>
 
+                    <!-- Nút điều hướng Slide trái/phải -->
+                    <button onclick="vikiPrevSlide()" class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/75 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm shadow-md transition">‹</button>
+                    <button onclick="vikiNextSlide()" class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/75 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm shadow-md transition">›</button>
+
+                    <!-- Các chấm chỉ mục (Dots indicator) -->
+                    <div class="absolute bottom-24 left-0 right-0 flex justify-center gap-1.5 pointer-events-none">
+                        <span class="viki-dot w-2 h-2 rounded-full bg-white/60 transition-all duration-300"></span>
+                        <span class="viki-dot w-2 h-2 rounded-full bg-white/60 transition-all duration-300"></span>
+                        <span class="viki-dot w-2 h-2 rounded-full bg-white/60 transition-all duration-300"></span>
+                        <span class="viki-dot w-2 h-2 rounded-full bg-white/60 transition-all duration-300"></span>
+                        <span class="viki-dot w-2 h-2 rounded-full bg-white/60 transition-all duration-300"></span>
+                    </div>
                 </div>
 
             </div>
+
+        </div>
     </section>
 
     <!-- SECTION 1: GIÁ TRỊ CỐT LÕI (CORE VALUES) -->
-    <section class="py-20 bg-white border-b border-[#E6EAF2]" id="core-values">
-        <div class="container mx-auto px-4">
+    <section class="py-20 bg-white border-b border-[#E6EAF2] w-full max-w-full overflow-hidden" id="core-values">
+        <div class="container mx-auto px-4 w-full max-w-full">
             
             <div class="flex items-center gap-3 mb-12 pb-4 border-b-2 border-[#16315E]">
                 <img src="/icon-hamburger-blue.png" alt="Icon" class="w-8 h-8 object-contain">
-                <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#16315E] m-0 uppercase tracking-wide">
+                <h2 class="text-xl sm:text-3xl md:text-4xl font-extrabold text-[#16315E] m-0 uppercase tracking-wide break-words">
                     GIÁ TRỊ CỐT LÕI
                 </h2>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
                 
-                <!-- Giá trị 1: Uy tín -->
                 <div class="p-8 bg-[#FAF9F9] border-t-4 border-[#214080] shadow-sm hover:shadow-md transition">
                     <div class="text-4xl mb-4 font-black text-[#214080]">01</div>
                     <h3 class="text-xl font-bold uppercase text-[#16315E] mb-3">REPUTATION — UY TÍN</h3>
@@ -342,7 +341,6 @@ import Layout from '../layouts/layout.astro';
                     </p>
                 </div>
 
-                <!-- Giá trị 2: Chất lượng -->
                 <div class="p-8 bg-[#FAF9F9] border-t-4 border-[#38B6FF] shadow-sm hover:shadow-md transition">
                     <div class="text-4xl mb-4 font-black text-[#38B6FF]">02</div>
                     <h3 class="text-xl font-bold uppercase text-[#16315E] mb-3">QUALITY — CHẤT LƯỢNG</h3>
@@ -351,7 +349,6 @@ import Layout from '../layouts/layout.astro';
                     </p>
                 </div>
 
-                <!-- Giá trị 3: Sức trẻ -->
                 <div class="p-8 bg-[#FAF9F9] border-t-4 border-[#ED2424] shadow-sm hover:shadow-md transition">
                     <div class="text-4xl mb-4 font-black text-[#ED2424]">03</div>
                     <h3 class="text-xl font-bold uppercase text-[#16315E] mb-3">YOUTHFULNESS — SỨC TRẺ</h3>
@@ -366,16 +363,15 @@ import Layout from '../layouts/layout.astro';
     </section>
 
     <!-- SECTION 2: TẦM NHÌN VÀ SỨ MỆNH (VISION & MISSION) -->
-    <section class="py-20 bg-[#F4F6FA] border-b border-[#E6EAF2]" id="vision-mission">
-        <div class="container mx-auto px-4">
+    <section class="py-20 bg-[#F4F6FA] border-b border-[#E6EAF2] w-full max-w-full overflow-hidden" id="vision-mission">
+        <div class="container mx-auto px-4 w-full max-w-full">
             
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch w-full">
                 
-                <!-- Cột Trái: Tầm Nhìn -->
                 <div class="lg:col-span-5 bg-[#16315E] text-white p-8 sm:p-10 flex flex-col justify-between shadow-xl relative overflow-hidden">
                     <div>
                         <div class="text-xs font-bold text-[#5FD1C1] uppercase tracking-widest mb-2">ĐỊNH HƯỚNG TƯƠNG LAI</div>
-                        <h2 class="text-3xl font-extrabold uppercase tracking-wide mb-6">TẦM NHÌN STRATEGIC</h2>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold uppercase tracking-wide mb-6">TẦM NHÌN STRATEGIC</h2>
                         
                         <div class="space-y-6">
                             <div class="flex items-start gap-4 pb-4 border-b border-white/15">
@@ -399,11 +395,10 @@ import Layout from '../layouts/layout.astro';
                     </div>
                 </div>
 
-                <!-- Cột Phải: Sứ Mệnh 4 Bên -->
                 <div class="lg:col-span-7 bg-white p-8 sm:p-10 border border-[#E6EAF2] shadow-sm flex flex-col justify-between">
                     <div>
                         <div class="text-xs font-bold text-[#264ABC] uppercase tracking-widest mb-2">TRÁCH NHIỆM & CAM KẾT</div>
-                        <h2 class="text-3xl font-extrabold uppercase text-[#16315E] tracking-wide mb-6">SỨ MỆNH VIKI</h2>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold uppercase text-[#16315E] tracking-wide mb-6">SỨ MỆNH VIKI</h2>
 
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                             
@@ -436,22 +431,21 @@ import Layout from '../layouts/layout.astro';
         </div>
     </section>
 
-    <!-- SECTION 3: THÔNG ĐIỆP BAN LÃNH ĐẠO (PREFACE / BAN LÃNH ĐẠO) -->
-    <section class="py-20 bg-white border-b border-[#E6EAF2]" id="leadership">
-        <div class="container mx-auto px-4">
+    <!-- SECTION 3: THÔNG ĐIỆP BAN LÃNH ĐẠO -->
+    <section class="py-20 bg-white border-b border-[#E6EAF2] w-full max-w-full overflow-hidden" id="leadership">
+        <div class="container mx-auto px-4 w-full max-w-full">
             
             <div class="flex items-center gap-3 mb-12 pb-4 border-b-2 border-[#16315E]">
                 <img src="/icon-hamburger-blue.png" alt="Icon" class="w-8 h-8 object-contain">
-                <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#16315E] m-0 uppercase tracking-wide">
+                <h2 class="text-xl sm:text-3xl md:text-4xl font-extrabold text-[#16315E] m-0 uppercase tracking-wide break-words">
                     THÔNG ĐIỆP TỪ BAN LÃNH ĐẠO
                 </h2>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center w-full">
                 
-                <!-- Ảnh Đại Diện / Ban Lãnh Đạo -->
-                <div class="lg:col-span-5">
-                    <div class="relative rounded-xl overflow-hidden shadow-2xl border-4 border-[#F4F6FA]">
+                <div class="lg:col-span-5 w-full">
+                    <div class="relative rounded-xl overflow-hidden shadow-2xl border-4 border-[#F4F6FA] w-full">
                         <img src="/img/anhSoDoNhanSu001.webp" alt="Ban Lãnh Đạo VIKI" class="w-full h-[420px] object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-[#16315E]/90 via-transparent to-transparent flex flex-col justify-end p-6 text-white">
                             <h3 class="text-xl font-bold uppercase m-0">BAN LÃNH ĐẠO VIKI</h3>
@@ -460,8 +454,7 @@ import Layout from '../layouts/layout.astro';
                     </div>
                 </div>
 
-                <!-- Thư Ngỏ Content -->
-                <div class="lg:col-span-7 space-y-4 text-[#5A6E85] text-sm sm:text-base leading-relaxed text-justify">
+                <div class="lg:col-span-7 space-y-4 text-[#5A6E85] text-sm sm:text-base leading-relaxed text-justify w-full">
                     <p class="italic text-[#16315E] font-semibold text-lg border-l-4 border-[#264ABC] pl-4 py-1">
                         "Trong thời gian tới, Việt Nam tiếp tục hội nhập mạnh mẽ với thế giới, mang đến vô vàn cơ hội lẫn thách thức phía trước..."
                     </p>
@@ -482,17 +475,17 @@ import Layout from '../layouts/layout.astro';
     </section>
 
     <!-- SECTION 4: HÀNH TRÌNH VÀ CỘT MỐC CỦA CHÚNG TÔI -->
-    <section class="py-20 bg-[#FAF9F9] border-b border-[#E6EAF2]" id="milestones">
-        <div class="container mx-auto px-4">
+    <section class="py-20 bg-[#FAF9F9] border-b border-[#E6EAF2] w-full max-w-full overflow-hidden" id="milestones">
+        <div class="container mx-auto px-4 w-full max-w-full">
             
             <div class="flex items-center gap-3 mb-12 pb-4 border-b-2 border-[#16315E]">
                 <img src="/icon-hamburger-blue.png" alt="Icon" class="w-8 h-8 object-contain">
-                <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#16315E] m-0 uppercase tracking-wide">
+                <h2 class="text-xl sm:text-3xl md:text-4xl font-extrabold text-[#16315E] m-0 uppercase tracking-wide break-words">
                     HÀNH TRÌNH PHÁT TRIỂN
                 </h2>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
                 
                 <div class="bg-white p-8 border border-[#E6EAF2] shadow-sm relative">
                     <div class="text-xs font-bold text-[#264ABC] uppercase tracking-widest mb-1">01/06/2020</div>
@@ -524,17 +517,17 @@ import Layout from '../layouts/layout.astro';
     </section>
 
     <!-- SECTION 6: ĐỘI NGŨ NHÂN SỰ & NĂNG LỰC CON NGƯỜI -->
-    <section class="py-20 bg-[#F4F6FA] border-b border-[#E6EAF2]" id="team-capabilities">
-        <div class="container mx-auto px-4">
+    <section class="py-20 bg-[#F4F6FA] border-b border-[#E6EAF2] w-full max-w-full overflow-hidden" id="team-capabilities">
+        <div class="container mx-auto px-4 w-full max-w-full">
             
             <div class="flex items-center gap-3 mb-12 pb-4 border-b-2 border-[#16315E]">
                 <img src="/icon-hamburger-blue.png" alt="Icon" class="w-8 h-8 object-contain">
-                <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#16315E] m-0 uppercase tracking-wide">
+                <h2 class="text-xl sm:text-3xl md:text-4xl font-extrabold text-[#16315E] m-0 uppercase tracking-wide break-words">
                     ĐỘI NGŨ VIKI & NĂNG LỰC CON NGƯỜI
                 </h2>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 w-full">
                 
                 <div class="bg-white p-8 border border-[#E6EAF2] shadow-sm">
                     <div class="w-12 h-12 bg-[#16315E] text-white flex items-center justify-center font-bold text-xl mb-4">1</div>
@@ -564,5 +557,51 @@ import Layout from '../layouts/layout.astro';
 
         </div>
     </section>
+
+    <!-- Script điều khiển Slider trên Mobile & CSS tùy chỉnh -->
+    <script is:inline>
+        let currentSlide = 0;
+        const totalSlides = 5;
+        let slideInterval;
+
+        function updateSlide() {
+            const track = document.getElementById('vikiSliderTrack');
+            const dots = document.querySelectorAll('.viki-dot');
+            if (track) {
+                track.style.transform = `translateX(-${currentSlide * 100}%)`;
+            }
+            dots.forEach((dot, index) => {
+                if (index === currentSlide) {
+                    dot.classList.remove('bg-white/60', 'w-2');
+                    dot.classList.add('bg-[#214080]', 'w-4');
+                } else {
+                    dot.classList.remove('bg-[#214080]', 'w-4');
+                    dot.classList.add('bg-white/60', 'w-2');
+                }
+            });
+        }
+
+        function vikiNextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateSlide();
+            resetInterval();
+        }
+
+        function vikiPrevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateSlide();
+            resetInterval();
+        }
+
+        function resetInterval() {
+            clearInterval(slideInterval);
+            slideInterval = setInterval(vikiNextSlide, 4000);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            updateSlide();
+            slideInterval = setInterval(vikiNextSlide, 4000);
+        });
+    </script>
 
 </Layout>

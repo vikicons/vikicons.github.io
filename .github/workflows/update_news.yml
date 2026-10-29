@@ -1,0 +1,32 @@
+name: Auto Update News from Baoxaydung RSS
+
+on:
+  schedule:
+    - cron: "0 23 * * *" # Chạy tự động lúc 23:00 UTC mỗi ngày (tương đương 06:00 sáng giờ Việt Nam)
+  workflow_dispatch: # Cho phép bấm chạy thủ công kiểm tra bất cứ lúc nào trong tab Actions của GitHub
+
+jobs:
+  update-news:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: Install dependencies (feedparser, beautifulsoup4)
+        run: pip install feedparser beautifulsoup4
+
+      - name: Run Python script to fetch RSS and update JSON
+        run: python scripts/update_news.py
+
+      - name: Commit and push updated JSON back to repository
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add src/data/latest_news.json
+          git commit -m "chore: auto-update latest news json from rss [skip ci]" || echo "No changes to commit"
+          git push

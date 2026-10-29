@@ -1,5 +1,21 @@
 ---
 import Layout from '../layouts/layout.astro';
+import rawNewsData from '../data/all_news.json';
+
+// Kiểm tra dữ liệu an toàn phòng ngừa file JSON rỗng hoặc lỗi cú pháp
+const allNews = Array.isArray(rawNewsData) ? rawNewsData : [];
+
+// Bài viết nổi bật đầu tiên làm Hero
+const featuredNews = allNews[0] || {
+    title: "Đang cập nhật tin tức xây dựng...",
+    link: "https://baoxaydung.vn/xay-dung.htm",
+    date: "29/10/2026",
+    category: "construction-news",
+    image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80"
+};
+
+// Các bài viết tiếp theo đưa vào lưới tin tức
+const gridNews = allNews.slice(1);
 ---
 
 <Layout title="Tin Tức | VIKI Construction Corporation">
@@ -9,176 +25,250 @@ import Layout from '../layouts/layout.astro';
             
             <!-- PAGE TITLE -->
             <div class="mb-8">
-                <h1 class="text-[59px] font-extrabold uppercase tracking-tight leading-[1.15] mb-6">
+                <h1 class="text-[40px] sm:text-[59px] font-extrabold uppercase tracking-tight leading-[1.15] mb-6 text-[#16315E]">
                     TIN TỨC
                 </h1>
                 <div class="w-16 h-1 bg-[#ED2424] mt-3"></div>
             </div>
 
-            <!-- FEATURED NEWS HERO (Bài viết nổi bật hàng đầu) -->
-            <div class="bg-white border border-[#E6EAF2] rounded-xl overflow-hidden shadow-sm mb-10 group">
+            <!-- FEATURED NEWS HERO -->
+            <div class="bg-white border border-[#E6EAF2] rounded-xl overflow-hidden shadow-sm mb-10 group cursor-pointer" onclick={`window.open('${featuredNews.link}', '_blank')`}>
                 <div class="h-[320px] sm:h-[450px] w-full overflow-hidden bg-slate-200">
-                    <img src="/img/doiNguVikiHome001.png" alt="Tin tức nổi bật VIKI" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    <img src={featuredNews.image} alt={featuredNews.title} class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                 </div>
                 <div class="p-6 sm:p-8">
                     <div class="flex items-center gap-4 text-xs font-bold text-[#214080] uppercase mb-2">
-                        <span class="bg-[#214080] text-white px-2.5 py-1 rounded">Tin ESG</span>
-                        <span class="text-[#5A6E85]">28/08/2026</span>
+                        <span class="bg-[#214080] text-white px-2.5 py-1 rounded">Tin Xây Dựng</span>
+                        <span class="text-[#5A6E85]">{featuredNews.date}</span>
                     </div>
                     <h2 class="text-xl sm:text-2xl font-bold uppercase text-[#16315E] leading-snug group-hover:text-[#264ABC] transition">
-                        Báo Nhân Dân, Trung tâm Đào tạo và Truyền thông, VIKI cùng các đơn vị trao học bổng "Xây nền ước mơ": Lan tỏa cơ hội học tập tới con em công nhân xây dựng.
+                        {featuredNews.title}
                     </h2>
                 </div>
             </div>
 
             <!-- FILTER NAVIGATION BAR -->
-            <div class="flex flex-wrap items-center justify-between gap-4 mb-10 pb-4 border-b border-gray-200 text-xs sm:text-sm">
-                <div class="flex flex-wrap items-center gap-2 sm:gap-6 font-semibold uppercase text-[#5A6E85]">
-                    <a href="#" class="text-[#214080] font-bold border-b-2 border-[#214080] pb-1 no-underline">Tất cả tin tức</a>
-                    <a href="#" class="hover:text-[#214080] transition no-underline">Tiêu điểm</a>
-                    <a href="#" class="hover:text-[#214080] transition no-underline">Tin công ty</a>
-                    <a href="#" class="hover:text-[#214080] transition no-underline">Thông cáo báo chí</a>
-                    <a href="#" class="hover:text-[#214080] transition no-underline">Cập nhật dự án</a>
-                    <a href="#" class="hover:text-[#214080] transition no-underline">Tin ESG</a>
-                    <a href="#" class="hover:text-[#214080] transition no-underline">Thư viện</a>
+            <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-10 pb-4 border-b border-gray-200 text-xs sm:text-sm">
+                <div class="flex flex-wrap items-center gap-2 sm:gap-6 font-semibold uppercase text-[#5A6E85]" id="category-filters">
+                    <button class="cat-btn text-[#214080] font-bold border-b-2 border-[#214080] pb-1 bg-transparent cursor-pointer transition" data-category="all">Tất cả tin tức</button>
+                    <button class="cat-btn hover:text-[#214080] transition bg-transparent cursor-pointer" data-category="executive-direction">Chỉ đạo điều hành</button>
+                    <button class="cat-btn hover:text-[#214080] transition bg-transparent cursor-pointer" data-category="architecture-planning">Quy hoạch kiến trúc</button>
+                    <button class="cat-btn hover:text-[#214080] transition bg-transparent cursor-pointer" data-category="building-materials">Vật liệu xây dựng</button>
+                    <button class="cat-btn hover:text-[#214080] transition bg-transparent cursor-pointer" data-category="quality-inspection">Giám định chất lượng</button>
+                    <button class="cat-btn hover:text-[#214080] transition bg-transparent cursor-pointer" data-category="urban-management">Quản lý đô thị</button>
                 </div>
+
+                <!-- Bộ lọc Sắp xếp -->
                 <div class="flex items-center gap-2 text-xs font-bold text-[#16315E]">
-                    <span>NĂM</span>
-                    <select class="bg-white border border-gray-300 rounded px-2 py-1 text-xs outline-none cursor-pointer">
-                        <option>Tất cả</option>
-                        <option>2026</option>
-                        <option>2025</option>
+                    <span>SẮP XẾP:</span>
+                    <select id="sort-order" class="bg-white border border-gray-300 rounded px-3 py-1.5 text-xs outline-none cursor-pointer">
+                        <option value="newest">Mới nhất trước</option>
+                        <option value="oldest">Cũ nhất trước</option>
                     </select>
                 </div>
             </div>
 
-            <!-- NEWS GRID (Lưới bài viết tin tức) -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-                
-                <!-- Card 1 -->
-                <div class="bg-white border border-[#E6EAF2] rounded-xl overflow-hidden shadow-sm hover:shadow-md transition flex flex-col group">
-                    <div class="h-48 overflow-hidden bg-slate-200">
-                        <img src="/img/nhaMayKspHaiDuong001.png" alt="Tin tức VIKI" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                    </div>
-                    <div class="p-6 flex-1 flex flex-col justify-between">
-                        <div>
-                            <div class="flex items-center justify-between text-[11px] font-bold text-[#5A6E85] mb-2 uppercase">
-                                <span class="text-[#214080]">Thông cáo báo chí</span>
-                                <span>21/10/2026</span>
+            <!-- NEWS GRID -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12" id="news-grid">
+                {gridNews.map((item) => {
+                    const parts = item.date.split('/');
+                    const isoDate = parts.length === 3 ? `${parts[2]}-${parts[1]}-${parts[0]}` : '';
+                    const timestamp = parts.length === 3 ? new Date(isoDate).getTime() : 0;
+                    
+                    return (
+                        <div class="news-card bg-white border border-[#E6EAF2] rounded-xl overflow-hidden shadow-sm hover:shadow-md transition flex flex-col group cursor-pointer" 
+                             data-category={item.category || ''} 
+                             data-timestamp={timestamp}
+                             onclick={`window.open('${item.link}', '_blank')`}>
+                            <div class="h-48 overflow-hidden bg-slate-200">
+                                <img src={item.image} alt={item.title} class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                             </div>
-                            <h3 class="text-base font-bold uppercase text-[#16315E] leading-snug group-hover:text-[#264ABC] transition">
-                                TỪ BACKLOG KỶ LỤC GẦN 70.000 TỶ ĐỒNG ĐẾN CHIẾN LƯỢC TĂNG TRƯỞNG MỚI CỦA VIKI
-                            </h3>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 2 -->
-                <div class="bg-white border border-[#E6EAF2] rounded-xl overflow-hidden shadow-sm hover:shadow-md transition flex flex-col group">
-                    <div class="h-48 overflow-hidden bg-slate-200">
-                        <img src="/img/nhaMayAacBacGiang001.png" alt="Tin tức VIKI" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                    </div>
-                    <div class="p-6 flex-1 flex flex-col justify-between">
-                        <div>
-                            <div class="flex items-center justify-between text-[11px] font-bold text-[#5A6E85] mb-2 uppercase">
-                                <span class="text-[#214080]">Thông cáo báo chí</span>
-                                <span>17/10/2026</span>
+                            <div class="p-6 flex-1 flex flex-col justify-between">
+                                <div>
+                                    <div class="flex items-center justify-between text-[11px] font-bold text-[#5A6E85] mb-2 uppercase">
+                                        <span class="text-[#214080]">
+                                            {item.category === 'executive-direction' ? 'Chỉ đạo điều hành' :
+                                             item.category === 'architecture-planning' ? 'Quy hoạch kiến trúc' :
+                                             item.category === 'building-materials' ? 'Vật liệu xây dựng' :
+                                             item.category === 'quality-inspection' ? 'Giám định chất lượng' :
+                                             item.category === 'urban-management' ? 'Quản lý đô thị' : 'Tin Xây Dựng'}
+                                        </span>
+                                        <span>{item.date}</span>
+                                    </div>
+                                    <h3 class="text-base font-bold uppercase text-[#16315E] leading-snug group-hover:text-[#264ABC] transition line-clamp-3">
+                                        {item.title}
+                                    </h3>
+                                </div>
                             </div>
-                            <h3 class="text-base font-bold uppercase text-[#16315E] leading-snug group-hover:text-[#264ABC] transition">
-                                LẦN THỨ HAI ĐƯỢC CÔNG NHẬN THƯƠNG HIỆU QUỐC GIA VIỆT NAM, VIKI KHẲNG ĐỊNH CAM KẾT ĐỒNG HÀNH CÙNG CÁC DỰ ÁN TRỌNG...
-                            </h3>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="bg-white border border-[#E6EAF2] rounded-xl overflow-hidden shadow-sm hover:shadow-md transition flex flex-col group">
-                    <div class="h-48 overflow-hidden bg-slate-200">
-                        <img src="/img/trangTraiVinhTanBinhDuong001.png" alt="Tin tức VIKI" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                    </div>
-                    <div class="p-6 flex-1 flex flex-col justify-between">
-                        <div>
-                            <div class="flex items-center justify-between text-[11px] font-bold text-[#5A6E85] mb-2 uppercase">
-                                <span class="text-[#214080]">Tin công ty</span>
-                                <span>16/10/2026</span>
-                            </div>
-                            <h3 class="text-base font-bold uppercase text-[#16315E] leading-snug group-hover:text-[#264ABC] transition">
-                                VIKI TẠI APEA 2026: LAN TỎA GIÁ TRỊ THƯƠNG HIỆU TỪ CON NGƯỜI ĐẾN CỘNG ĐỒNG
-                            </h3>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 4 -->
-                <div class="bg-white border border-[#E6EAF2] rounded-xl overflow-hidden shadow-sm hover:shadow-md transition flex flex-col group">
-                    <div class="h-48 overflow-hidden bg-slate-200">
-                        <img src="/img/nhaMayBff001.png" alt="Tin tức VIKI" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                    </div>
-                    <div class="p-6 flex-1 flex flex-col justify-between">
-                        <div>
-                            <div class="flex items-center justify-between text-[11px] font-bold text-[#5A6E85] mb-2 uppercase">
-                                <span class="text-[#214080]">Tin công ty</span>
-                                <span>14/10/2026</span>
-                            </div>
-                            <h3 class="text-base font-bold uppercase text-[#16315E] leading-snug group-hover:text-[#264ABC] transition">
-                                VIKI NHẬN GIẢI THƯƠNG HIỆU VÀNG TP.HCM 2026: GHI DẤU ẤN TỪ NIỀM TIN CỘNG ĐỒNG
-                            </h3>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 5 -->
-                <div class="bg-white border border-[#E6EAF2] rounded-xl overflow-hidden shadow-sm hover:shadow-md transition flex flex-col group">
-                    <div class="h-48 overflow-hidden bg-slate-200">
-                        <img src="/img/thietBiThiCong001.png" alt="Tin tức VIKI" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                    </div>
-                    <div class="p-6 flex-1 flex flex-col justify-between">
-                        <div>
-                            <div class="flex items-center justify-between text-[11px] font-bold text-[#5A6E85] mb-2 uppercase">
-                                <span class="text-[#214080]">Tin công ty</span>
-                                <span>11/10/2026</span>
-                            </div>
-                            <h3 class="text-base font-bold uppercase text-[#16315E] leading-snug group-hover:text-[#264ABC] transition">
-                                TÁI LẬP "HAT TRICK" TẠI VIETNAM CONSTRUCTION AWARDS 2026, VIKI GHI DẤU ẤN Ở 3 HẠNG MỤC TRỌNG ĐIỂM
-                            </h3>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 6 -->
-                <div class="bg-white border border-[#E6EAF2] rounded-xl overflow-hidden shadow-sm hover:shadow-md transition flex flex-col group">
-                    <div class="h-48 overflow-hidden bg-slate-200">
-                        <img src="/img/anToanChatLuong001.png" alt="Tin tức VIKI" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                    </div>
-                    <div class="p-6 flex-1 flex flex-col justify-between">
-                        <div>
-                            <div class="flex items-center justify-between text-[11px] font-bold text-[#5A6E85] mb-2 uppercase">
-                                <span class="text-[#214080]">Tiêu điểm</span>
-                                <span>07/10/2026</span>
-                            </div>
-                            <h3 class="text-base font-bold uppercase text-[#16315E] leading-snug group-hover:text-[#264ABC] transition">
-                                THÔNG TIN ĐẠI HỘI ĐỒNG CỔ ĐÔNG THƯỜNG NIÊN VIKI 2026
-                            </h3>
-                        </div>
-                    </div>
-                </div>
-
+                    );
+                })}
             </div>
 
-            <!-- PAGINATION -->
-            <div class="flex items-center justify-center gap-2 pt-4 pb-8">
-                <button class="w-10 h-10 flex items-center justify-center border border-gray-300 bg-white text-gray-500 hover:bg-gray-100 transition rounded">&larr;</button>
-                <button class="w-10 h-10 flex items-center justify-center bg-[#214080] text-white font-bold rounded">1</button>
-                <button class="w-10 h-10 flex items-center justify-center border border-gray-300 bg-white text-[#214080] hover:bg-gray-100 transition rounded font-semibold">2</button>
-                <button class="w-10 h-10 flex items-center justify-center border border-gray-300 bg-white text-[#214080] hover:bg-gray-100 transition rounded font-semibold">3</button>
-                <button class="w-10 h-10 flex items-center justify-center border border-gray-300 bg-white text-[#214080] hover:bg-gray-100 transition rounded font-semibold">4</button>
-                <button class="w-10 h-10 flex items-center justify-center border border-gray-300 bg-white text-[#214080] hover:bg-gray-100 transition rounded font-semibold">5</button>
-                <span class="px-2 text-gray-400">...</span>
-                <button class="w-10 h-10 flex items-center justify-center border border-gray-300 bg-white text-[#214080] hover:bg-gray-100 transition rounded font-semibold">57</button>
-                <button class="w-10 h-10 flex items-center justify-center border border-gray-300 bg-white text-gray-500 hover:bg-gray-100 transition rounded">&rarr;</button>
-            </div>
+            <!-- PAGINATION CONTAINER -->
+            <div class="flex items-center justify-center gap-2 pt-4 pb-8" id="pagination-container"></div>
 
         </div>
     </div>
 
 </Layout>
+
+<script>
+    const catButtons = document.querySelectorAll('.cat-btn');
+    const sortOrderSelect = document.getElementById('sort-order') as HTMLSelectElement;
+    const newsGrid = document.getElementById('news-grid');
+    const paginationContainer = document.getElementById('pagination-container');
+
+    let currentCategory = 'all';
+    let currentPage = 1;
+    const itemsPerPage = 6;
+
+    function filterAndPaginate() {
+        if (!newsGrid || !paginationContainer) return;
+
+        const cardsArray = Array.from(newsGrid.querySelectorAll('.news-card')) as HTMLElement[];
+
+        // Lọc thông minh: Cho phép khớp chính xác hoặc chứa từ khóa tương ứng
+        const filteredCards = cardsArray.filter(card => {
+            const cardCat = (card.getAttribute('data-category') || '').trim().toLowerCase();
+            if (currentCategory === 'all') return true;
+
+            const mapping: Record<string, string[]> = {
+                'executive-direction': ['executive-direction', 'chi-dao-dieu-hanh', 'chỉ đạo điều hành'],
+                'architecture-planning': ['architecture-planning', 'quy-hoach-kien-truc', 'quy hoạch kiến trúc'],
+                'building-materials': ['building-materials', 'vat-lieu-xay-dung', 'vật liệu xây dựng'],
+                'quality-inspection': ['quality-inspection', 'giam-dinh-chat-luong', 'giám định chất lượng'],
+                'urban-management': ['urban-management', 'quan-ly-do-thi', 'quản lý đô thị']
+            };
+
+            const allowedValues = mapping[currentCategory] || [currentCategory];
+            return allowedValues.some(val => cardCat.includes(val) || val.includes(cardCat));
+        });
+
+        // Sắp xếp thứ tự Mới nhất / Cũ nhất
+        const sortOrder = sortOrderSelect ? sortOrderSelect.value : 'newest';
+        filteredCards.sort((a, b) => {
+            const timeA = parseInt(a.getAttribute('data-timestamp') || '0', 10);
+            const timeB = parseInt(b.getAttribute('data-timestamp') || '0', 10);
+            if (sortOrder === 'newest') {
+                return timeB - timeA;
+            } else {
+                return timeA - timeB;
+            }
+        });
+
+        newsGrid.innerHTML = '';
+
+        // Nếu danh mục rỗng (chưa có bài), hiển thị thông báo thay vì để trắng trang
+        if (filteredCards.length === 0) {
+            newsGrid.innerHTML = `
+                <div class="col-span-full py-16 text-center text-gray-500 bg-white rounded-xl border border-[#E6EAF2]">
+                    <p class="text-base font-semibold">Hiện tại danh mục này chưa có bản tin nào.</p>
+                    <p class="text-xs mt-1 text-gray-400">Vui lòng chạy lệnh cào dữ liệu Python hoặc chọn mục "Tất cả tin tức".</p>
+                </div>
+            `;
+            paginationContainer.innerHTML = '';
+            return;
+        }
+
+        filteredCards.forEach(card => newsGrid.appendChild(card));
+
+        const totalPages = Math.ceil(filteredCards.length / itemsPerPage);
+        if (currentPage > totalPages && totalPages > 0) {
+            currentPage = totalPages;
+        }
+        if (currentPage < 1) currentPage = 1;
+
+        renderPagination(filteredCards, totalPages);
+        updateView(filteredCards);
+    }
+
+    function renderPagination(filteredCards: HTMLElement[], totalPages: number) {
+        if (!paginationContainer) return;
+        paginationContainer.innerHTML = '';
+
+        if (totalPages <= 1) return;
+
+        const prevBtn = document.createElement('button');
+        prevBtn.innerHTML = '&larr;';
+        prevBtn.className = `w-10 h-10 flex items-center justify-center border border-gray-300 bg-white text-gray-500 hover:bg-gray-100 transition rounded cursor-pointer ${currentPage === 1 ? 'opacity-50 cursor-not-allowed' : ''}`;
+        prevBtn.onclick = () => {
+            if (currentPage > 1) {
+                currentPage--;
+                renderPagination(filteredCards, totalPages);
+                updateView(filteredCards);
+            }
+        };
+        paginationContainer.appendChild(prevBtn);
+
+        const maxVisiblePages = 10;
+        let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
+        let endPage = startPage + maxVisiblePages - 1;
+
+        if (endPage > totalPages) {
+            endPage = totalPages;
+            startPage = Math.max(1, endPage - maxVisiblePages + 1);
+        }
+
+        for (let i = startPage; i <= endPage; i++) {
+            const pageBtn = document.createElement('button');
+            pageBtn.innerText = i.toString();
+
+            if (i === currentPage) {
+                pageBtn.className = 'w-10 h-10 flex items-center justify-center bg-[#214080] text-white font-bold rounded cursor-pointer shadow-sm';
+            } else {
+                pageBtn.className = 'w-10 h-10 flex items-center justify-center border border-gray-300 bg-white text-[#214080] hover:bg-gray-100 transition rounded font-semibold cursor-pointer';
+            }
+
+            pageBtn.onclick = () => {
+                currentPage = i;
+                renderPagination(filteredCards, totalPages);
+                updateView(filteredCards);
+            };
+            paginationContainer.appendChild(pageBtn);
+        }
+
+        const nextBtn = document.createElement('button');
+        nextBtn.innerHTML = '&rarr;';
+        nextBtn.className = `w-10 h-10 flex items-center justify-center border border-gray-300 bg-white text-gray-500 hover:bg-gray-100 transition rounded cursor-pointer ${currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : ''}`;
+        nextBtn.onclick = () => {
+            if (currentPage < totalPages) {
+                currentPage++;
+                renderPagination(filteredCards, totalPages);
+                updateView(filteredCards);
+            }
+        };
+        paginationContainer.appendChild(nextBtn);
+    }
+
+    function updateView(filteredCards: HTMLElement[]) {
+        filteredCards.forEach(card => card.style.display = 'none');
+        const startIndex = (currentPage - 1) * itemsPerPage;
+        const endIndex = startIndex + itemsPerPage;
+        const currentCards = filteredCards.slice(startIndex, endIndex);
+
+        currentCards.forEach(card => {
+            card.style.display = 'flex';
+        });
+    }
+
+    catButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            catButtons.forEach(b => {
+                b.className = 'cat-btn hover:text-[#214080] transition bg-transparent cursor-pointer';
+            });
+            (e.currentTarget as HTMLElement).className = 'cat-btn text-[#214080] font-bold border-b-2 border-[#214080] pb-1 bg-transparent cursor-pointer';
+            
+            currentCategory = (e.currentTarget as HTMLElement).getAttribute('data-category') || 'all';
+            currentPage = 1;
+            filterAndPaginate();
+        });
+    });
+
+    sortOrderSelect?.addEventListener('change', () => {
+        currentPage = 1;
+        filterAndPaginate();
+    });
+
+    filterAndPaginate();
+</script>

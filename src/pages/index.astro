@@ -1,5 +1,21 @@
 ---
 import Layout from '../layouts/layout.astro';
+// Import trực tiếp tệp JSON chứa danh sách bài viết được cập nhật tự động từ RSS
+import rawNewsData from '../data/latest_news.json';
+
+// Kiểm tra nếu file JSON rỗng hoặc không phải mảng thì dùng mảng rỗng phòng lỗi
+const newsData = Array.isArray(rawNewsData) ? rawNewsData : [];
+
+const featuredNews = newsData[0] || {
+    title: "Đang cập nhật tin tức mới...",
+    link: "https://baoxaydung.vn/xay-dung.htm",
+    date: "29/10/2026",
+    category: "Tin Xây Dựng",
+    image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80"
+};
+
+const subNewsList = newsData.slice(1, 5);
+const mobileNewsList = newsData.slice(0, 3);
 ---
 
 <Layout title="VIKI - Công Ty Cổ Phần Xây Dựng  | Xây Giá Trị - Dựng Niềm Tin">
@@ -880,7 +896,7 @@ import Layout from '../layouts/layout.astro';
         </div>
     </section>
 
-    <!-- TIN TỨC SECTION -->
+    <!-- TIN TỨC SECTION (ĐÃ TÍCH HỢP DỮ LIỆU ĐỘNG TỪ JSON) -->
     <section class="py-[80px] bg-white border-b border-[#E6EAF2]" id="news">
         <div class="container mx-auto px-4">
             
@@ -891,120 +907,66 @@ import Layout from '../layouts/layout.astro';
                     <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#16315E] m-0 uppercase tracking-tight">TIN TỨC</h2>
                 </div>
                 
-                <a href="/tin-tuc" class="inline-flex items-center justify-center gap-2 bg-[#264ABC] hover:bg-[#16315E] text-white px-6 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider transition-all duration-300 shadow-md no-underline w-fit">
+                <a href="/news" class="inline-flex items-center justify-center gap-2 bg-[#264ABC] hover:bg-[#16315E] text-white px-6 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider transition-all duration-300 shadow-md no-underline w-fit">
                     <span>XEM TẤT CẢ TIN TỨC</span>
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H3M13 1V11" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </a>
             </div>
 
-            <!-- 1. PC VIEW: 2 Cột cân xứng -->
+            <!-- 1. PC VIEW: 2 Cột cân xứng (Dữ liệu động) -->
             <div class="hidden lg:grid grid-cols-12 gap-8 items-stretch">
                 
-                <!-- Cột trái: Tin nổi bật -->
-                <div class="col-span-6 flex flex-col justify-between group cursor-pointer" onclick="window.location.href='/tin-tuc/chi-tiet-1'">
+                <!-- Cột trái: Tin nổi bật (Bài viết số 1) -->
+                <div class="col-span-6 flex flex-col justify-between group cursor-pointer" onclick={`window.open('${featuredNews.link}', '_blank')`}>
                     <div>
-                        <div class="overflow-hidden rounded-lg shadow-md mb-4 h-[340px]">
-                            <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80" alt="Tin nổi bật" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="overflow-hidden rounded-lg shadow-md mb-4 h-[340px] bg-slate-100">
+                            <img src={featuredNews.image} alt={featuredNews.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                         </div>
                         <div class="flex items-center justify-between text-sm mb-2">
-                            <span class="text-[#264ABC] font-bold uppercase tracking-wider">Tin ESG</span>
-                            <span class="text-[#5A6E85]">29/09/2026</span>
+                            <span class="text-[#264ABC] font-bold uppercase tracking-wider">{featuredNews.category}</span>
+                            <span class="text-[#5A6E85]">{featuredNews.date}</span>
                         </div>
                         <h3 class="text-xl font-bold text-[#16315E] leading-snug group-hover:text-[#264ABC] transition-colors m-0 line-clamp-2">
-                            VIKI mang Trung Thu đến với hơn 1.400 trẻ em qua “Hái trăng về làng”: Lan tỏa tinh thần đồng hành cùng cộng đồng địa phương
+                            {featuredNews.title}
                         </h3>
                     </div>
                 </div>
 
-                <!-- Cột phải: Danh sách tin tức phụ -->
+                <!-- Cột phải: Danh sách tin tức phụ (4 bài tiếp theo: từ bài 2 đến bài 5) -->
                 <div class="col-span-6 flex flex-col justify-between divide-y divide-[#E6EAF2]">
-                    <div class="py-2.5 first:pt-0 last:pb-0 group cursor-pointer" onclick="window.location.href='/tin-tuc/chi-tiet-2'">
-                        <div class="flex items-center justify-between text-xs mb-1">
-                            <span class="text-[#264ABC] font-bold uppercase tracking-wider">Thông cáo báo chí</span>
-                            <span class="text-[#5A6E85]">17/10/2026</span>
+                    {subNewsList.map((item) => (
+                        <div class="py-2.5 first:pt-0 last:pb-0 group cursor-pointer" onclick={`window.open('${item.link}', '_blank')`}>
+                            <div class="flex items-center justify-between text-xs mb-1">
+                                <span class="text-[#264ABC] font-bold uppercase tracking-wider">{item.category}</span>
+                                <span class="text-[#5A6E85]">{item.date}</span>
+                            </div>
+                            <h4 class="text-sm sm:text-base font-bold text-[#16315E] leading-snug group-hover:text-[#264ABC] transition-colors m-0 line-clamp-2">
+                                {item.title}
+                            </h4>
                         </div>
-                        <h4 class="text-sm sm:text-base font-bold text-[#16315E] leading-snug group-hover:text-[#264ABC] transition-colors m-0 line-clamp-2">
-                            LẦN THỨ HAI ĐƯỢC CÔNG NHẬN THƯƠNG HIỆU QUỐC GIA VIỆT NAM, VIKI KHẲNG ĐỊNH CAM KẾT ĐỒNG HÀNH CÙNG CÁC DỰ ÁN...
-                        </h4>
-                    </div>
-
-                    <div class="py-2.5 group cursor-pointer" onclick="window.location.href='/tin-tuc/chi-tiet-3'">
-                        <div class="flex items-center justify-between text-xs mb-1">
-                            <span class="text-[#264ABC] font-bold uppercase tracking-wider">Tin công ty</span>
-                            <span class="text-[#5A6E85]">16/10/2026</span>
-                        </div>
-                        <h4 class="text-sm sm:text-base font-bold text-[#16315E] leading-snug group-hover:text-[#264ABC] transition-colors m-0 line-clamp-2">
-                            VIKI TẠI APEA 2026: LAN TỎA GIÁ TRỊ THƯƠNG HIỆU TỪ CON NGƯỜI ĐẾN CỘNG ĐỒNG
-                        </h4>
-                    </div>
-
-                    <div class="py-2.5 group cursor-pointer" onclick="window.location.href='/tin-tuc/chi-tiet-4'">
-                        <div class="flex items-center justify-between text-xs mb-1">
-                            <span class="text-[#264ABC] font-bold uppercase tracking-wider">Tin công ty</span>
-                            <span class="text-[#5A6E85]">14/10/2026</span>
-                        </div>
-                        <h4 class="text-sm sm:text-base font-bold text-[#16315E] leading-snug group-hover:text-[#264ABC] transition-colors m-0 line-clamp-2">
-                            VIKI NHẬN GIẢI THƯỞNG THƯƠNG HIỆU VÀNG TP.HCM 2026: GHI DẤU ẤN TỪ NIỀM TIN CỘNG ĐỒNG
-                        </h4>
-                    </div>
-
-                    <div class="py-2.5 group cursor-pointer" onclick="window.location.href='/tin-tuc/chi-tiet-5'">
-                        <div class="flex items-center justify-between text-xs mb-1">
-                            <span class="text-[#264ABC] font-bold uppercase tracking-wider">Tin công ty</span>
-                            <span class="text-[#5A6E85]">11/10/2026</span>
-                        </div>
-                        <h4 class="text-sm sm:text-base font-bold text-[#16315E] leading-snug group-hover:text-[#264ABC] transition-colors m-0 line-clamp-2">
-                            TÁI LẬP "HAT TRICK" TẠI VIETNAM CONSTRUCTION AWARDS 2026, VIKI GHI DẤU ẤN Ở 3 HẠNG MỤC TRỌNG ĐIỂM
-                        </h4>
-                    </div>
+                    ))}
                 </div>
 
             </div>
 
-            <!-- 2. MOBILE VIEW: Slider & Pagination -->
+            <!-- 2. MOBILE VIEW: Slider & Pagination (Dữ liệu động 3 bài đầu) -->
             <div class="block lg:hidden">
                 <div class="news-mobile-slider relative overflow-hidden bg-white border border-[#E6EAF2] rounded-lg shadow-sm mb-6">
                     <div id="news-slides-container" class="flex transition-transform duration-500 ease-out">
-                        
-                        <div class="news-mobile-slide min-w-full p-4 flex flex-col cursor-pointer" onclick="window.location.href='/tin-tuc/chi-tiet-1'">
-                            <div class="overflow-hidden rounded-md h-[240px] mb-3">
-                                <img src="https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80" alt="Tin tức" class="w-full h-full object-cover">
+                        {mobileNewsList.map((item) => (
+                            <div class="news-mobile-slide min-w-full p-4 flex flex-col cursor-pointer" onclick={`window.open('${item.link}', '_blank')`}>
+                                <div class="overflow-hidden rounded-md h-[240px] mb-3 bg-slate-100">
+                                    <img src={item.image} alt={item.title} class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex items-center justify-between text-xs mb-2">
+                                    <span class="text-[#264ABC] font-bold uppercase tracking-wider">{item.category}</span>
+                                    <span class="text-[#5A6E85]">{item.date}</span>
+                                </div>
+                                <h4 class="text-sm font-bold text-[#16315E] leading-snug m-0 line-clamp-3">
+                                    {item.title}
+                                </h4>
                             </div>
-                            <div class="flex items-center justify-between text-xs mb-2">
-                                <span class="text-[#264ABC] font-bold uppercase tracking-wider">Tin ESG</span>
-                                <span class="text-[#5A6E85]">29/09/2026</span>
-                            </div>
-                            <h4 class="text-sm font-bold text-[#16315E] leading-snug m-0 line-clamp-3">
-                                VIKI mang Trung Thu đến với hơn 1.400 trẻ em qua “Hái trăng về làng”: Lan tỏa tinh thần đồng hành cùng cộng đồng địa phương
-                            </h4>
-                        </div>
-
-                        <div class="news-mobile-slide min-w-full p-4 flex flex-col cursor-pointer" onclick="window.location.href='/tin-tuc/chi-tiet-2'">
-                            <div class="overflow-hidden rounded-md h-[240px] mb-3">
-                                <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80" alt="Tin tức" class="w-full h-full object-cover">
-                            </div>
-                            <div class="flex items-center justify-between text-xs mb-2">
-                                <span class="text-[#264ABC] font-bold uppercase tracking-wider">Thông cáo báo chí</span>
-                                <span class="text-[#5A6E85]">17/10/2026</span>
-                            </div>
-                            <h4 class="text-sm font-bold text-[#16315E] leading-snug m-0 line-clamp-3">
-                                LẦN THỨ HAI ĐƯỢC CÔNG NHẬN THƯƠNG HIỆU QUỐC GIA VIỆT NAM, VIKI KHẲNG ĐỊNH CAM KẾT ĐỒNG HÀNH CÙNG CÁC DỰ ÁN...
-                            </h4>
-                        </div>
-
-                        <div class="news-mobile-slide min-w-full p-4 flex flex-col cursor-pointer" onclick="window.location.href='/tin-tuc/chi-tiet-3'">
-                            <div class="overflow-hidden rounded-md h-[240px] mb-3">
-                                <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80" alt="Tin tức" class="w-full h-full object-cover">
-                            </div>
-                            <div class="flex items-center justify-between text-xs mb-2">
-                                <span class="text-[#264ABC] font-bold uppercase tracking-wider">Tin công ty</span>
-                                <span class="text-[#5A6E85]">16/10/2026</span>
-                            </div>
-                            <h4 class="text-sm font-bold text-[#16315E] leading-snug m-0 line-clamp-3">
-                                VIKI TẠI APEA 2026: LAN TỎA GIÁ TRỊ THƯƠNG HIỆU TỪ CON NGƯỜI ĐẾN CỘNG ĐỒNG
-                            </h4>
-                        </div>
-
+                        ))}
                     </div>
                 </div>
 

@@ -77,51 +77,6 @@ import Layout from '../layouts/layout.astro';
 
     </div>
 
-    <!-- Script điều khiển Slider trên Mobile & CSS tùy chỉnh -->
-    <script is:inline>
-        let currentSlide = 0;
-        const totalSlides = 5;
-        let slideInterval;
-
-        function updateSlide() {
-            const track = document.getElementById('vikiSliderTrack');
-            const dots = document.querySelectorAll('.viki-dot');
-            if (track) {
-                track.style.transform = `translateX(-${currentSlide * 100}%)`;
-            }
-            dots.forEach((dot, index) => {
-                if (index === currentSlide) {
-                    dot.classList.remove('bg-white/60', 'w-2');
-                    dot.classList.add('bg-[#214080]', 'w-4');
-                } else {
-                    dot.classList.remove('bg-[#214080]', 'w-4');
-                    dot.classList.add('bg-white/60', 'w-2');
-                }
-            });
-        }
-
-        function vikiNextSlide() {
-            currentSlide = (currentSlide + 1) % totalSlides;
-            updateSlide();
-            resetInterval();
-        }
-
-        function vikiPrevSlide() {
-            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-            updateSlide();
-            resetInterval();
-        }
-
-        function resetInterval() {
-            clearInterval(slideInterval);
-            slideInterval = setInterval(vikiNextSlide, 4000); // Tự động trượt sau mỗi 4 giây
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            updateSlide();
-            slideInterval = setInterval(vikiNextSlide, 4000);
-        });
-    </script>
 
     <style>
         .viki-org-chart .scrollbar-thin::-webkit-scrollbar {

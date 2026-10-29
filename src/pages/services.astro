@@ -5,17 +5,20 @@ import Layout from '../layouts/layout.astro';
 <Layout title="Lĩnh Vực Hoạt Động | VIKI Construction Corporation">
 
     <!-- HERO BANNER -->
-    <section class="bg-[#16315E] text-white pt-12 pb-16 relative overflow-hidden border-b-4 border-[#FFC709]">
-        <div class="container mx-auto px-4 relative z-10">
+    <section class="bg-[#16315E] text-white pt-12 pb-16 relative overflow-hidden border-b-4 border-[#FFC709] w-full max-w-full">
+        <!-- Sử dụng px-6 cho mobile/ipad nhỏ, px-10 cho ipad lớn/tablet ngang, và px-16 cho PC để cách xa mép trái một khoảng đẹp mắt -->
+        <div class="w-full max-w-7xl mx-auto px-6 sm:px-28 lg:px-8 relative z-10">
             
             <!-- Hero Main Headline -->
-            <div class="max-w-4xl">
+            <div class="max-w-4xl w-full">
                 <div class="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-[#5FD1C1] mb-3">VIKI BUSINESS SECTORS</div>
-                <h1 class="text-[59px] font-extrabold uppercase tracking-tight leading-tight mb-6">
+                
+                <h1 class="text-2xl sm:text-4xl lg:text-[59px] font-extrabold uppercase tracking-tight leading-[1.15] mb-6 break-words">
                     <span class="block mb-2">LĨNH VỰC HOẠT ĐỘNG</span>
-                    <span class="text-[#38B6FF] whitespace-nowrap">Chuyên Nghiệp & Bền Vững</span>
+                    <span class="text-[#38B6FF] block">Chuyên Nghiệp & Bền Vững</span>
                 </h1>
-                <p class="text-base sm:text-lg text-slate-200 leading-relaxed font-light text-justify max-w-3xl">
+                
+                <p class="text-sm sm:text-base lg:text-lg text-slate-200 leading-relaxed font-light text-justify max-w-3xl">
                     Công ty Cổ phần Xây dựng VIKI cung cấp các giải pháp toàn diện trong lĩnh vực xây dựng dân dụng, công nghiệp, tư vấn thiết kế và phát triển trang trại chăn nuôi công nghệ cao.
                 </p>
             </div>
