@@ -80,21 +80,21 @@ const { title = "VIKI - Công Ty Cổ Phần Xây Dựng  | Xây Giá Trị - D�
 
     <!-- MAIN HEADER NAVIGATION -->
     <header class="sticky top-0 z-[90] bg-white border-b border-[#E6EAF2]">
-        <div class="container mx-auto px-4 flex justify-between items-center h-20">
+        <div class="container mx-auto px-2 flex justify-between items-center h-20">
             <!-- Logo -->
             <a href="/" class="flex items-center gap-3 no-underline group">
                 <img src="/logoViki.webp" alt="VIKI Logo" class="h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-105" />
             </a>
 
             <!-- Desktop Navigation -->
-            <nav class="hidden lg:flex items-center gap-7 list-none m-0 p-0 h-full">
+            <nav class="hidden lg:flex items-center gap-6 list-none m-0 p-0 h-full">
                 
-                <!-- 1. Trang chủ 
+                <!-- 1. Trang chủ (Đổi thành Icon Home) -->
                 <div class="relative h-full flex items-center">
-                    <a href="/" data-path="/" class="nav-item text-[#214080] font-bold text-base py-2 uppercase tracking-wide transition flex items-center h-full">
-                        Trang chủ
+                    <a href="/" data-path="/" class="nav-item bg-white text-[#214080] font-bold text-base py-2 px-3 transition flex items-center justify-center h-full group" title="Trang chủ">
+                        <img src="/icons/icons8-home-50.png" alt="Home Icon" class="w-5 h-5 object-contain [filter:brightness(0)_saturate(100%)_invert(21%)_sepia(47%)_saturate(2541%)_hue-rotate(203deg)_brightness(94%)_contrast(98%)] transition-transform duration-300 group-hover:scale-110" />
                     </a>
-                </div>-->
+                </div>
 
                 <!-- 2. Về VIKI -->
                 <div class="relative group h-full flex items-center">
@@ -148,7 +148,7 @@ const { title = "VIKI - Công Ty Cổ Phần Xây Dựng  | Xây Giá Trị - D�
 
             <!-- Nút Báo Giá Dự Án -->
             <div class="flex items-center gap-4">
-                <a href="/bao-gia" class="hidden sm:inline-flex bg-red-600 hover:bg-[#264ABC] text-white px-5 py-3 text-base font-bold uppercase tracking-wider items-center gap-2 transition shadow-md">
+                <a href="/bao-gia" class="hidden sm:inline-flex bg-red-600 hover:bg-[#264ABC] text-white px-2 py-3 text-base font-bold uppercase tracking-wider items-center gap-2 transition shadow-md">
                     Báo Giá
                 </a>
                 <button class="lg:hidden text-[#214080] text-2xl bg-transparent border-none cursor-pointer" id="mobileToggleBtn" aria-label="Toggle Menu">☰</button>
@@ -316,11 +316,13 @@ const { title = "VIKI - Công Ty Cổ Phần Xây Dựng  | Xây Giá Trị - D�
     <button 
         id="backToTopBtn" 
         aria-label="Quay lại đầu trang"
-        class="fixed bottom-6 right-6 z-[1999] bg-[#FAF9F9] hover:bg-[#ED2424] text-white w-12 h-12 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 opacity-0 invisible translate-y-4 hover:scale-110 border-2 border-white/20 cursor-pointer group"
+        class="fixed bottom-6 right-6 z-[1999] bg-white/80 backdrop-blur-sm hover:bg-[#ED2424] text-white w-12 h-12 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 opacity-0 invisible translate-y-4 hover:scale-110 border-2 border-[#214080] cursor-pointer group"
     >
-        <svg class="w-5 h-5 transition-transform duration-300 group-hover:-translate-y-1 text-[#214080]" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"></path>
-        </svg>
+        <img 
+            src="/icons/icons8-up-arrow-48.png" 
+            alt="Up Arrow" 
+            class="w-5 h-5 object-contain [filter:brightness(0)_saturate(100%)_invert(21%)_sepia(47%)_saturate(2541%)_hue-rotate(203deg)_brightness(94%)_contrast(98%)] transition-all duration-300 group-hover:-translate-y-1 group-hover:brightness-0 group-hover:invert-100" 
+        />
     </button>
 
     <!-- GENERAL MODAL CONTAINER -->
