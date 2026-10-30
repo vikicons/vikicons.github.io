@@ -2,7 +2,7 @@ name: Auto Update News from Baoxaydung RSS
 
 on:
   schedule:
-    - cron: "0 23 * * *" # Chạy tự động lúc 23:00 UTC mỗi ngày (tương đương 06:00 sáng giờ Việt Nam)
+    - cron: "0 22,10 * * *" # Chạy tự động lúc 23:00 UTC mỗi ngày (tương đương 06:00 sáng giờ Việt Nam)
   workflow_dispatch: # Cho phép bấm chạy thủ công kiểm tra bất cứ lúc nào trong tab Actions của GitHub
 
 jobs:
