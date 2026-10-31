@@ -2,10 +2,11 @@ name: Deploy Astro to GitHub Pages
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
   # Cho phép chạy workflow thủ công từ tab Actions trên GitHub
   workflow_dispatch:
+  workflow_call:
 
 # Đặt quyền cho GITHUB_TOKEN để có thể deploy lên GitHub Pages
 permissions:

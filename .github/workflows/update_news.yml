@@ -2,12 +2,21 @@ name: Auto Update News from Baoxaydung RSS
 
 on:
   schedule:
-    - cron: "0 22,10 * * *" # Chạy tự động lúc 23:00 UTC mỗi ngày (tương đương 06:00 sáng giờ Việt Nam)
-  workflow_dispatch: # Cho phép bấm chạy thủ công kiểm tra bất cứ lúc nào trong tab Actions của GitHub
+    - cron: "0 22,10 * * *" # 22:00 và 10:00 UTC = 05:00 và 17:00 giờ Việt Nam
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-news
+  cancel-in-progress: false
 
 jobs:
   update-news:
     runs-on: ubuntu-latest
+    outputs:
+      changed: ${{ steps.commit.outputs.changed }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -17,16 +26,36 @@ jobs:
         with:
           python-version: "3.10"
 
-      - name: Install dependencies (feedparser, beautifulsoup4)
+      - name: Install dependencies
         run: pip install feedparser beautifulsoup4
 
-      - name: Run Python script to fetch RSS and update JSON
+      - name: Update home page news (5 bản tin trang chủ)
         run: python scripts/update_news.py
 
-      - name: Commit and push updated JSON back to repository
+      - name: Update all news (trang Tin tức và các mục con)
+        run: python scripts/update_all_news.py
+
+      - name: Commit and push updated JSON
+        id: commit
         run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add src/data/latest_news.json
-          git commit -m "chore: auto-update latest news json from rss [skip ci]" || echo "No changes to commit"
-          git push
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          git add src/data/latest_news.json src/data/all_news.json
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "Không có thay đổi, bỏ qua deploy."
+          else
+            git commit -m "chore: auto-update news json from rss"
+            git pull --rebase
+            git push
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+  deploy:
+    needs: update-news
+    if: needs.update-news.outputs.changed == 'true'
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    uses: ./.github/workflows/deploy.yml
