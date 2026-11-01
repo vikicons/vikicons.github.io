@@ -43,12 +43,12 @@ The News section is updated automatically from the Construction RSS feeds of [ba
 
 Run all commands from the project root.
 
-| Command           | Action                                   |
-| :---------------- | :--------------------------------------- |
-| `npm install`     | Install dependencies                     |
-| `npm run dev`     | Start the dev server at `localhost:4321` |
-| `npm run build`   | Build the production site to `./dist/`   |
-| `npm run preview` | Preview the production build locally     |
+| Command           | Action                                       |
+| :---------------- | :------------------------------------------- |
+| `npm install`     | Install dependencies                         |
+| `npm run dev`     | Start the dev server at `localhost:4321`     |
+| `npm run build`   | Build the production site to `./dist/`       |
+| `npm run preview` | Preview the production build locally         |
 
 ## Automatic News Updates
 
@@ -64,14 +64,14 @@ The site is static, so news data is baked into the HTML at build time. The workf
 
 Articles in `all_news.json` use these category codes. The News page filters tabs by them, so keep the codes in sync with `src/pages/news.astro`.
 
-| Code                    | RSS source                 |
-| :---------------------- | :------------------------- |
-| `executive-direction`   | `chi-dao-dieu-hanh.rss`    |
-| `architecture-planning` | `quy-hoach-kien-truc.rss`  |
-| `building-materials`    | `vat-lieu-xay-dung.rss`    |
-| `quality-inspection`    | `giam-dinh-chat-luong.rss` |
-| `urban-management`      | `quan-ly-do-thi.rss`       |
-| `construction-news`     | `xay-dung.rss` (general)   |
+| Code                    | RSS source               |
+| :---------------------- | :----------------------- |
+| `executive-direction`   | `chi-dao-dieu-hanh.rss`  |
+| `architecture-planning` | `quy-hoach-kien-truc.rss`|
+| `building-materials`    | `vat-lieu-xay-dung.rss`  |
+| `quality-inspection`    | `giam-dinh-chat-luong.rss`|
+| `urban-management`      | `quan-ly-do-thi.rss`     |
+| `construction-news`     | `xay-dung.rss` (general) |
 
 Sub-category feeds are read before the general feed, so an article that appears in several feeds keeps its most specific category.
 
@@ -94,3 +94,15 @@ python scripts/update_all_news.py
 - **News not updating:** open the latest run of "Auto Update News from Baoxaydung RSS" in the Actions tab and check each step. The `Update all news` log prints how many articles each feed returned.
 - **Push rejected locally** (`fetch first`): the bot has pushed new JSON. Run `git pull --rebase origin main`, then push again.
 - **Empty news after deploy:** confirm `src/data/*.json` on `main` contains articles. `deploy.yml` checks out `main` so it builds with the latest data.
+
+## License
+
+Copyright (c) 2026 VIKI Construction Corporation. All rights reserved.
+
+The source code, design, text, logos, images and other materials of this website are proprietary. They may not be copied, modified, distributed or used without prior written permission from the copyright holder. See the [LICENSE](./LICENSE) file for details.
+
+### Third-party content
+
+The News section shows article titles, thumbnails, dates and links collected from the public RSS feeds of [baoxaydung.vn](https://baoxaydung.vn). That content belongs to its original publisher and is not covered by this license. Each item links back to the original article, and the full text is never copied to this site. Do not reuse the news content beyond what the publisher allows.
+
+Open-source dependencies (Astro and others listed in `package.json`) remain under their own licenses.
