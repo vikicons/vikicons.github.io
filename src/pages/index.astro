@@ -2,6 +2,8 @@
 import Layout from '../layouts/layout.astro';
 // Import trực tiếp tệp JSON chứa danh sách bài viết được cập nhật tự động từ RSS
 import rawNewsData from '../data/latest_news.json';
+import rawGasData from '../data/gas_prices.json';
+const gasPrices = Array.isArray(rawGasData) ? rawGasData : [];
 
 // Kiểm tra nếu file JSON rỗng hoặc không phải mảng thì dùng mảng rỗng phòng lỗi
 const newsData = Array.isArray(rawNewsData) ? rawNewsData : [];
@@ -194,7 +196,7 @@ const mobileNewsList = newsData.slice(0, 3);
                     
                     <!-- Dòng 1: Thành lập -->
                     <div class="py-5 border-t border-b border-white/15 flex items-center justify-between gap-4">
-                        <span class="text-white text-base md:text-[16px] font-semibold leading-tight">Thành lập<br><span class="text-slate-200 text-base md:text-[16px] font-normal">(từ 2020)</span></span>
+                        <span class="text-white text-base md:text-[16px] font-semibold leading-tight">Thành lập<br><span class="text-slate-200 text-base md:text-[16px] font-normal">(từ 01/06/2020)</span></span>
                         <div class="flex items-baseline text-red-600">
                             <span class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight" id="counter-years">6</span>
                             <span class="text-2xl sm:text-3xl font-extrabold ml-2">năm</span>
@@ -271,7 +273,7 @@ const mobileNewsList = newsData.slice(0, 3);
                     <div class="relative z-10 flex flex-col justify-end h-full wwd-card-content-box">
                         <div class="flex items-center justify-between gap-3 cursor-pointer wwd-mobile-toggle">
                             <h3 class="text-xl font-bold text-white uppercase tracking-wide leading-snug m-0 pr-2">
-                                Xây dựng Dân dụng
+                                Thi công xây dựng Dân dụng
                             </h3>
                             <span class="text-white text-sm font-semibold flex items-center gap-1.5 lg:hidden wwd-toggle-text whitespace-nowrap shrink-0">
                                 Xem thêm <span class="w-6 h-6 flex items-center justify-center bg-white/20 rounded text-base font-bold transition-transform duration-300">+</span>
@@ -296,7 +298,7 @@ const mobileNewsList = newsData.slice(0, 3);
                     <div class="relative z-10 flex flex-col justify-end h-full wwd-card-content-box">
                         <div class="flex items-center justify-between gap-3 cursor-pointer wwd-mobile-toggle">
                             <h3 class="text-xl font-bold text-white uppercase tracking-wide leading-snug m-0 pr-2">
-                                Mảng Công nghiệp
+                                Thi công xây dựng Công nghiệp
                             </h3>
                             <span class="text-white text-sm font-semibold flex items-center gap-1.5 lg:hidden wwd-toggle-text whitespace-nowrap shrink-0">
                                 Xem thêm <span class="w-6 h-6 flex items-center justify-center bg-white/20 rounded text-base font-bold transition-transform duration-300">+</span>
@@ -321,7 +323,7 @@ const mobileNewsList = newsData.slice(0, 3);
                     <div class="relative z-10 flex flex-col justify-end h-full wwd-card-content-box">
                         <div class="flex items-center justify-between gap-3 cursor-pointer wwd-mobile-toggle">
                             <h3 class="text-xl font-bold text-white uppercase tracking-wide leading-snug m-0 pr-2">
-                                Mảng Chăn nuôi
+                                Thi công xây dựng trang trại
                             </h3>
                             <span class="text-white text-sm font-semibold flex items-center gap-1.5 lg:hidden wwd-toggle-text whitespace-nowrap shrink-0">
                                 Xem thêm <span class="w-6 h-6 flex items-center justify-center bg-white/20 rounded text-base font-bold transition-transform duration-300">+</span>
@@ -891,6 +893,133 @@ const mobileNewsList = newsData.slice(0, 3);
                     </div>
 
                 </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION: THÔNG TIN THỊ TRƯỜNG (2 CỘT: VẬT LIỆU XÂY DỰNG & GIÁ XĂNG DẦU) -->
+    <section class="py-12 bg-white border-t border-gray-100">
+        <div class="container mx-auto px-4 max-w-7xl">
+            
+            <!-- SECTION TITLE -->
+            <div class="flex items-center gap-3 mb-8">
+                <img src="/icon-hamburger-blue.png" alt="Icon" class="w-8 h-8 object-contain">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#16315E] uppercase tracking-tight m-0">
+                    THÔNG TIN GIÁ CẢ VẬT LIỆU & NHIÊN LIỆU
+                </h2>
+            </div>
+
+            <!-- BỐ CỤC 2 CỘT -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                
+                <!-- CỘT BÊN TRÁI (CHIẾM 7 PHẦN): BẢNG GIÁ VẬT LIỆU XÂY DỰNG -->
+                <div class="lg:col-span-7 bg-[#FAF9F9] border border-[#E6EAF2] rounded-xl p-6 flex flex-col justify-between shadow-sm">
+                    <div>
+                        <div class="flex flex-wrap items-center justify-between gap-2 mb-4 pb-3 border-b border-gray-200">
+                            <h3 class="font-bold text-sm text-[#16315E] uppercase flex items-center gap-2">
+                                <span class="w-2.5 h-2.5 rounded-full bg-[#ED2424]"></span>
+                                Giá Vật Liệu Xây Dựng Cốt Lõi
+                            </h3>
+                            <span class="text-[11px] text-[#5A6E85] bg-white px-2.5 py-1 rounded border border-gray-200">Cập nhật: Mới nhất</span>
+                        </div>
+
+                        <!-- Bảng tóm tắt vật liệu nhẹ nhàng -->
+                        <div class="overflow-x-auto mb-4">
+                            <table class="w-full text-left border-collapse text-xs sm:text-sm">
+                                <thead>
+                                    <tr class="text-[#5A6E85] uppercase font-bold text-[10px] border-b border-gray-200">
+                                        <th class="py-2.5 px-3">Vật liệu</th>
+                                        <th class="py-2.5 px-3">Đơn vị</th>
+                                        <th class="py-2.5 px-3 text-right">Giá tham khảo (VNĐ)</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-200">
+                                    <tr class="hover:bg-white transition">
+                                        <td class="py-3 px-3 font-semibold text-[#16315E]">Thép cuộn phi 6 - 8</td>
+                                        <td class="py-3 px-3 text-[#5A6E85]">Kg</td>
+                                        <td class="py-3 px-3 text-right font-bold text-[#ED2424]">17.500 - 18.200</td>
+                                    </tr>
+                                    <tr class="hover:bg-white transition">
+                                        <td class="py-3 px-3 font-semibold text-[#16315E]">Xi măng PCB40</td>
+                                        <td class="py-3 px-3 text-[#5A6E85]">Bao (50kg)</td>
+                                        <td class="py-3 px-3 text-right font-bold text-[#ED2424]">85.000 - 92.000</td>
+                                    </tr>
+                                    <tr class="hover:bg-white transition">
+                                        <td class="py-3 px-3 font-semibold text-[#16315E]">Cát xây tô (Cát sạch)</td>
+                                        <td class="py-3 px-3 text-[#5A6E85]">m3</td>
+                                        <td class="py-3 px-3 text-right font-bold text-[#ED2424]">350.000 - 380.000</td>
+                                    </tr>
+                                    <tr class="hover:bg-white transition">
+                                        <td class="py-3 px-3 font-semibold text-[#16315E]">Gạch ống tuynel 2 lỗ</td>
+                                        <td class="py-3 px-3 text-[#5A6E85]">Viên</td>
+                                        <td class="py-3 px-3 text-right font-bold text-[#ED2424]">1.250 - 1.400</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Nút xem thêm dẫn sang trang nguồn chính chủ -->
+                    <div class="pt-2 border-t border-gray-200 flex items-center justify-between">
+                        <span class="text-[11px] text-gray-400 italic">Dữ liệu tổng hợp từ các tỉnh thành.</span>
+                        <a href="https://vatlieuxaydung.org.vn/cong-bo-gia-vlxd-cac-tinh-thanh-219" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-4 py-2 bg-[#214080] hover:bg-[#16315E] text-white text-xs font-bold uppercase rounded-lg transition shadow-sm">
+                            <span>Xem giá đầy đủ các tỉnh</span>
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- CỘT BÊN PHẢI (CHIẾM 5 PHẦN): BẢNG GIÁ XĂNG DẦU ĐỘNG TỪ PVOIL -->
+                <div class="lg:col-span-5 bg-[#FAF9F9] border border-[#E6EAF2] rounded-xl p-6 flex flex-col justify-between shadow-sm">
+                    <div>
+                        <div class="flex flex-wrap items-center justify-between gap-2 mb-4 pb-3 border-b border-gray-200">
+                            <h3 class="font-bold text-sm text-[#16315E] uppercase flex items-center gap-2">
+                                <span class="w-2.5 h-2.5 rounded-full bg-[#214080]"></span>
+                                Giá Xăng Dầu Thị Trường
+                            </h3>
+                            <span class="text-[11px] text-[#5A6E85] bg-white px-2.5 py-1 rounded border border-gray-200">Nguồn: PVOil</span>
+                        </div>
+
+                        <!-- Bảng hiển thị giá xăng dầu động từ JSON -->
+                        <div class="overflow-x-auto mb-4">
+                            <table class="w-full text-left border-collapse text-xs sm:text-sm">
+                                <thead>
+                                    <tr class="text-[#5A6E85] uppercase font-bold text-[10px] border-b border-gray-200">
+                                        <th class="py-2.5 px-3">Mặt hàng</th>
+                                        <th class="py-2.5 px-3 text-right">Giá điều chỉnh (VNĐ/lít)</th>
+                                        <th class="py-2.5 px-3 text-right">Chênh lệch</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-200">
+                                    {gasPrices.map((item) => {
+                                        const changeVal = parseFloat(item.change) || 0;
+                                        const isDecrease = changeVal < 0;
+                                        return (
+                                            <tr class="hover:bg-white transition">
+                                                <td class="py-3 px-3 font-semibold text-[#16315E]">{item.product}</td>
+                                                <td class="py-3 px-3 text-right font-bold text-[#214080]">{item.price}</td>
+                                                <td class={`py-3 px-3 text-right font-semibold text-xs ${isDecrease ? 'text-emerald-600' : 'text-rose-600'}`}>
+                                                    {isDecrease ? `▼ ${item.change}` : `▲ +${item.change}`}
+                                                </td>
+                                            </tr>
+                                        );
+                                    })}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Nút xem chi tiết nguồn PVOil chính chủ -->
+                    <div class="pt-2 border-t border-gray-200 flex items-center justify-between">
+                        <span class="text-[11px] text-gray-400 italic">Theo kỳ điều hành mới nhất.</span>
+                        <a href="https://www.pvoil.com.vn/tin-gia-xang-dau" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-4 py-2 bg-white hover:bg-gray-100 text-[#214080] border border-[#214080] text-xs font-bold uppercase rounded-lg transition shadow-xs">
+                            <span>Chi tiết PVOil</span>
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        </a>
+                    </div>
+                </div>
+
             </div>
 
         </div>

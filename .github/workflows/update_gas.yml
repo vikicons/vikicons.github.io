@@ -1,0 +1,58 @@
+name: Auto Update Gas Prices from PVOil
+
+on:
+  schedule:
+    - cron: "0 22 * * *" # Chạy định kỳ hàng ngày lúc 22:00 UTC (05:00 sáng giờ VN)
+  workflow_dispatch: # Cho phép bấm chạy thủ công từ tab Actions trên GitHub
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-gas
+  cancel-in-progress: false
+
+jobs:
+  update-gas:
+    runs-on: ubuntu-latest
+    outputs:
+      changed: ${{ steps.commit.outputs.changed }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4
+
+      - name: Run Python script to update gas prices
+        run: python scripts/update_gas_prices.py
+
+      - name: Commit and push updated gas JSON
+        id: commit
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          git add src/data/gas_prices.json
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "Không có thay đổi giá xăng, bỏ qua deploy."
+          else
+            git commit -m "chore: auto-update gas prices json from pvoil"
+            git pull --rebase
+            git push
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+  deploy:
+    needs: update-gas
+    if: needs.update-gas.outputs.changed == 'true'
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    uses: ./.github/workflows/deploy.yml
