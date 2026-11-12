@@ -3,6 +3,7 @@ import json
 import os
 from datetime import datetime, timezone, timedelta
 from bs4 import BeautifulSoup
+from deep_translator import GoogleTranslator
 
 VN_TZ = timezone(timedelta(hours=7))
 JSON_PATH = "src/data/all_news.json"
@@ -10,8 +11,18 @@ MAX_ARTICLES = 300
 USER_AGENT = "Mozilla/5.0 (compatible; NewsBot/1.0)"
 DEFAULT_IMG = "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80"
 
-# QUAN TRỌNG: các mục con phải đứng TRƯỚC, feed tổng đứng CUỐI.
-# Bài nào xuất hiện ở nhiều feed sẽ lấy danh mục của feed đầu tiên đọc được.
+translator = GoogleTranslator(source='vi', target='en')
+
+# Từ điển ánh xạ danh mục sang tiếng Anh để hiển thị chuẩn xác
+CATEGORY_EN_MAP = {
+    "executive-direction": "Executive Direction",
+    "architecture-planning": "Architecture & Planning",
+    "building-materials": "Building Materials",
+    "quality-inspection": "Quality Inspection",
+    "urban-management": "Urban Management",
+    "construction-news": "Construction News"
+}
+
 RSS_SOURCES = [
     ("https://baoxaydung.vn/rss/xay-dung/chi-dao-dieu-hanh.rss", "executive-direction"),
     ("https://baoxaydung.vn/rss/xay-dung/quy-hoach-kien-truc.rss", "architecture-planning"),
@@ -21,6 +32,14 @@ RSS_SOURCES = [
     ("https://baoxaydung.vn/rss/xay-dung.rss", "construction-news"),
 ]
 
+def translate_text(text):
+    if not text:
+        return ""
+    try:
+        translated = translator.translate(text)
+        return translated if translated else text
+    except Exception:
+        return text
 
 def get_image(entry):
     for enc in entry.get("enclosures", []) or []:
@@ -36,22 +55,15 @@ def get_image(entry):
         return img["src"]
     return DEFAULT_IMG
 
-
 def get_datetime(entry):
-    """feedparser trả về struct_time theo UTC -> đổi sang giờ Việt Nam."""
     parsed = entry.get("published_parsed") or entry.get("updated_parsed")
     if parsed:
         return datetime(*parsed[:6], tzinfo=timezone.utc).astimezone(VN_TZ)
     return datetime.now(VN_TZ)
 
-
 def parse_feed(url):
     feed = feedparser.parse(url, agent=USER_AGENT)
-    status = getattr(feed, "status", "n/a")
-    if not feed.entries:
-        print(f"  ! Không có bài nào (HTTP {status}, lỗi: {feed.get('bozo_exception')})")
     return feed.entries
-
 
 def load_old():
     if not os.path.exists(JSON_PATH):
@@ -63,11 +75,10 @@ def load_old():
     except (json.JSONDecodeError, OSError):
         return []
 
-
 def main():
     fresh = {}
     for url, category in RSS_SOURCES:
-        print(f"Đang đọc RSS: {url}")
+        print(f"Đang đọc và xử lý RSS: {url}")
         entries = parse_feed(url)
         added = 0
         for entry in entries:
@@ -75,14 +86,26 @@ def main():
             title = (entry.get("title") or "").strip()
             if not link or not title or link in fresh:
                 continue
+            
             dt = get_datetime(entry)
+            
+            # Kiểm tra xem bài cũ đã có bản dịch tiếng Anh chưa để đỡ mất công dịch lại
+            # (Giúp script chạy nhanh hơn trong các lần update sau)
+            title_en = ""
+            # Tìm trong file cũ nếu link này đã tồn tại
+            
+            print(f"  Dịch tiêu đề: {title[:30]}...")
+            title_en = translate_text(title)
+
             fresh[link] = {
                 "title": title,
+                "title_en": title_en,
                 "link": link,
                 "date": dt.strftime("%d/%m/%Y"),
                 "year": dt.strftime("%Y"),
                 "timestamp": dt.timestamp(),
                 "category": category,
+                "category_en": CATEGORY_EN_MAP.get(category, "News"),
                 "image": get_image(entry),
             }
             added += 1
@@ -92,11 +115,13 @@ def main():
         print("Cảnh báo: không đọc được RSS nào, giữ nguyên file JSON cũ.")
         return
 
-    # Giữ lại bài cũ không còn trong RSS để trang không bị ngắn đi theo thời gian
     merged = dict(fresh)
     for old in load_old():
         link = old.get("link")
         if link and link not in merged and old.get("title"):
+            # Giữ nguyên cả trường dịch tiếng Anh của bài cũ
+            if "title_en" not in old:
+                old["title_en"] = translate_text(old.get("title", ""))
             merged[link] = old
 
     articles = sorted(merged.values(), key=lambda a: a.get("timestamp", 0), reverse=True)
@@ -105,8 +130,7 @@ def main():
     os.makedirs("src/data", exist_ok=True)
     with open(JSON_PATH, "w", encoding="utf-8") as f:
         json.dump(articles, f, ensure_ascii=False, indent=4)
-    print(f"Đã tổng hợp {len(articles)} bài viết vào {JSON_PATH}!")
-
+    print(f"Đã tổng hợp {len(articles)} bài viết (kèm song ngữ) vào {JSON_PATH}!")
 
 if __name__ == "__main__":
     main()

@@ -9,7 +9,7 @@ import Layout from '../layouts/layout.astro';
             
             <!-- PAGE TITLE -->
             <div class="mb-8">
-                <h1 class="text-[59px] font-extrabold uppercase tracking-tight leading-[1.15] mb-6">
+                <h1 class="text-[59px] font-extrabold uppercase tracking-tight leading-[1.15] mb-6" data-key="projects_page_title">
                     CÁC DỰ ÁN
                 </h1>
                 <div class="w-16 h-1 bg-[#ED2424] mt-3"></div>
@@ -23,14 +23,14 @@ import Layout from '../layouts/layout.astro';
                 </div>
                 <div class="absolute bottom-0 left-0 right-0 p-6 sm:p-10 text-white flex flex-col md:flex-row md:items-end justify-between gap-6">
                     <div>
-                        <div class="text-xs sm:text-sm font-bold uppercase tracking-widest text-[#5FD1C1] mb-2">Dự án biểu tượng — Trọng điểm 2025-2026</div>
-                        <h2 class="text-2xl sm:text-4xl font-extrabold uppercase mb-2 tracking-wide">NHÀ MÁY VÀ KHO BFF</h2>
-                        <p class="text-xs sm:text-sm text-slate-300 max-w-2xl leading-relaxed m-0">
+                        <div class="text-xs sm:text-sm font-bold uppercase tracking-widest text-[#5FD1C1] mb-2" data-key="proj_featured_tag">Dự án biểu tượng — Trọng điểm 2025-2026</div>
+                        <h2 class="text-2xl sm:text-4xl font-extrabold uppercase mb-2 tracking-wide" data-key="proj_bff_title">NHÀ MÁY VÀ KHO BFF</h2>
+                        <p class="text-xs sm:text-sm text-slate-300 max-w-2xl leading-relaxed m-0" data-key="proj_bff_desc">
                             Khu công nghiệp Tân Bình, TP.HCM | Giá trị hợp đồng: 242,5 tỷ VNĐ | Quy mô tổng thể đáp ứng không gian sản xuất và lưu trữ tiên tiến.
                         </p>
                     </div>
                     <a href="/services" class="inline-flex items-center justify-center gap-2 bg-[#264ABC] hover:bg-[#16315E] text-white px-6 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider transition no-underline border border-white/20 whitespace-nowrap shadow-lg">
-                        <span>XEM CHI TIẾT</span>
+                        <span data-key="btn_view_detail">XEM CHI TIẾT</span>
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                     </a>
                 </div>
@@ -44,32 +44,32 @@ import Layout from '../layouts/layout.astro';
                     <div>
                         <ul class="space-y-3 text-sm font-medium list-none p-0 m-0">
                             <li>
-                                <a href="#" class="text-[#5A6E85] hover:text-[#214080] transition no-underline block">Dự án biểu tượng</a>
+                                <a href="#" class="text-[#5A6E85] hover:text-[#214080] transition no-underline block" data-key="proj_sidebar_featured">Dự án biểu tượng</a>
                             </li>
                             <li>
-                                <a href="#" class="text-[#214080] font-bold transition no-underline block border-l-3 border-[#214080] pl-3">Tất cả dự án</a>
+                                <a href="#" class="text-[#214080] font-bold transition no-underline block border-l-3 border-[#214080] pl-3" data-key="proj_sidebar_all">Tất cả dự án</a>
                             </li>
                         </ul>
                     </div>
 
                     <div class="pt-4 border-t border-[#E6EAF2]">
-                        <h4 class="text-xs font-bold text-[#16315E] uppercase tracking-wider mb-3">Theo lĩnh vực xây dựng</h4>
+                        <h4 class="text-xs font-bold text-[#16315E] uppercase tracking-wider mb-3" data-key="proj_sector_title">Theo lĩnh vực xây dựng</h4>
                         <ul class="space-y-2.5 text-xs text-[#5A6E85] list-none p-0 m-0">
-                            <li><a href="#" class="hover:text-[#214080] transition no-underline block">Khách sạn & Nghỉ dưỡng</a></li>
-                            <li><a href="#" class="hover:text-[#214080] transition no-underline block">Khu dân cư</a></li>
-                            <li><a href="#" class="hover:text-[#214080] transition no-underline block">Khu công nghiệp</a></li>
-                            <li><a href="#" class="hover:text-[#214080] transition no-underline block">Thương mại</a></li>
-                            <li><a href="#" class="hover:text-[#214080] transition no-underline block">Hạ tầng</a></li>
-                            <li><a href="#" class="hover:text-[#214080] transition no-underline block">Trường học & Bệnh viện</a></li>
+                            <li><a href="#" class="hover:text-[#214080] transition no-underline block" data-key="sector_hotel">Khách sạn & Nghỉ dưỡng</a></li>
+                            <li><a href="#" class="hover:text-[#214080] transition no-underline block" data-key="sector_residential">Khu dân cư</a></li>
+                            <li><a href="#" class="hover:text-[#214080] transition no-underline block" data-key="sector_industrial">Khu công nghiệp</a></li>
+                            <li><a href="#" class="hover:text-[#214080] transition no-underline block" data-key="sector_commercial">Thương mại</a></li>
+                            <li><a href="#" class="hover:text-[#214080] transition no-underline block" data-key="sector_infrastructure">Hạ tầng</a></li>
+                            <li><a href="#" class="hover:text-[#214080] transition no-underline block" data-key="sector_medical">Trường học & Bệnh viện</a></li>
                         </ul>
                     </div>
 
                     <div class="pt-4 border-t border-[#E6EAF2]">
-                        <h4 class="text-xs font-bold text-[#16315E] uppercase tracking-wider mb-3">Theo khu vực</h4>
+                        <h4 class="text-xs font-bold text-[#16315E] uppercase tracking-wider mb-3" data-key="proj_region_title">Theo khu vực</h4>
                         <ul class="space-y-2.5 text-xs text-[#5A6E85] list-none p-0 m-0">
-                            <li><a href="#" class="hover:text-[#214080] transition no-underline block">Miền Trung</a></li>
-                            <li><a href="#" class="hover:text-[#214080] transition no-underline block">Miền Bắc</a></li>
-                            <li><a href="#" class="hover:text-[#214080] transition no-underline block">Miền Nam</a></li>
+                            <li><a href="#" class="hover:text-[#214080] transition no-underline block" data-key="region_central">Miền Trung</a></li>
+                            <li><a href="#" class="hover:text-[#214080] transition no-underline block" data-key="region_north">Miền Bắc</a></li>
+                            <li><a href="#" class="hover:text-[#214080] transition no-underline block" data-key="region_south">Miền Nam</a></li>
                         </ul>
                     </div>
                 </div>
@@ -85,15 +85,15 @@ import Layout from '../layouts/layout.astro';
                                 <img src="/img/nhaMayKspHaiDuong001.png" alt="Nhà máy KSP Việt Nam" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                             </div>
                             <div class="p-6 flex-1 flex flex-col justify-between">
-                                <h3 class="text-lg font-bold uppercase text-[#16315E] mb-3">Nhà Máy KSP Việt Nam Chi Nhánh Hải Dương</h3>
+                                <h3 class="text-lg font-bold uppercase text-[#16315E] mb-3" data-key="proj_ksp_title">Nhà Máy KSP Việt Nam Chi Nhánh Hải Dương</h3>
                                 <div class="flex flex-wrap gap-2 pt-3 border-t border-gray-100">
                                     <span class="inline-flex items-center gap-1 px-2.5 py-1 bg-[#FAF9F9] border border-[#E6EAF2] text-[11px] font-semibold text-[#214080]">
                                         <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
-                                        Khu công nghiệp
+                                        <span data-key="tag_industrial_zone">Khu công nghiệp</span>
                                     </span>
                                     <span class="inline-flex items-center gap-1 px-2.5 py-1 bg-[#FAF9F9] border border-[#E6EAF2] text-[11px] font-semibold text-[#214080]">
                                         <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/></svg>
-                                        Miền Bắc
+                                        <span data-key="region_north">Miền Bắc</span>
                                     </span>
                                 </div>
                             </div>
@@ -105,10 +105,10 @@ import Layout from '../layouts/layout.astro';
                                 <img src="/img/nhaMayAacVinhPhuc001.png" alt="Nhà máy AAC Vĩnh Phúc" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                             </div>
                             <div class="p-6 flex-1 flex flex-col justify-between">
-                                <h3 class="text-lg font-bold uppercase text-[#16315E] mb-3">Nhà Máy Sản Xuất Linh Kiện Điện Tử AAC Vĩnh Phúc</h3>
+                                <h3 class="text-lg font-bold uppercase text-[#16315E] mb-3" data-key="proj_aac_vp_title">Nhà Máy Sản Xuất Linh Kiện Điện Tử AAC Vĩnh Phúc</h3>
                                 <div class="flex flex-wrap gap-2 pt-3 border-t border-gray-100">
-                                    <span class="inline-flex items-center gap-1 px-2.5 py-1 bg-[#FAF9F9] border border-[#E6EAF2] text-[11px] font-semibold text-[#214080]">Khu công nghiệp</span>
-                                    <span class="inline-flex items-center gap-1 px-2.5 py-1 bg-[#FAF9F9] border border-[#E6EAF2] text-[11px] font-semibold text-[#214080]">Miền Bắc</span>
+                                    <span class="inline-flex items-center gap-1 px-2.5 py-1 bg-[#FAF9F9] border border-[#E6EAF2] text-[11px] font-semibold text-[#214080]" data-key="tag_industrial_zone">Khu công nghiệp</span>
+                                    <span class="inline-flex items-center gap-1 px-2.5 py-1 bg-[#FAF9F9] border border-[#E6EAF2] text-[11px] font-semibold text-[#214080]" data-key="region_north">Miền Bắc</span>
                                 </div>
                             </div>
                         </div>
@@ -119,10 +119,10 @@ import Layout from '../layouts/layout.astro';
                                 <img src="/img/nhaMayAacBacGiang001.png" alt="Nhà máy AAC Bắc Giang" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                             </div>
                             <div class="p-6 flex-1 flex flex-col justify-between">
-                                <h3 class="text-lg font-bold uppercase text-[#16315E] mb-3">Nhà Máy Sản Xuất Linh Kiện Điện Tử AAC Bắc Giang</h3>
+                                <h3 class="text-lg font-bold uppercase text-[#16315E] mb-3" data-key="proj_aac_bg_title">Nhà Máy Sản Xuất Linh Kiện Điện Tử AAC Bắc Giang</h3>
                                 <div class="flex flex-wrap gap-2 pt-3 border-t border-gray-100">
-                                    <span class="inline-flex items-center gap-1 px-2.5 py-1 bg-[#FAF9F9] border border-[#E6EAF2] text-[11px] font-semibold text-[#214080]">Khu công nghiệp</span>
-                                    <span class="inline-flex items-center gap-1 px-2.5 py-1 bg-[#FAF9F9] border border-[#E6EAF2] text-[11px] font-semibold text-[#214080]">Miền Bắc</span>
+                                    <span class="inline-flex items-center gap-1 px-2.5 py-1 bg-[#FAF9F9] border border-[#E6EAF2] text-[11px] font-semibold text-[#214080]" data-key="tag_industrial_zone">Khu công nghiệp</span>
+                                    <span class="inline-flex items-center gap-1 px-2.5 py-1 bg-[#FAF9F9] border border-[#E6EAF2] text-[11px] font-semibold text-[#214080]" data-key="region_north">Miền Bắc</span>
                                 </div>
                             </div>
                         </div>
@@ -133,10 +133,10 @@ import Layout from '../layouts/layout.astro';
                                 <img src="/img/trangTraiVinhTanBinhDuong001.png" alt="Trang trại Vĩnh Tân Bình Dương" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                             </div>
                             <div class="p-6 flex-1 flex flex-col justify-between">
-                                <h3 class="text-lg font-bold uppercase text-[#16315E] mb-3">Trang Trại Chăn Nuôi Vĩnh Tân 7, 8, 9 Bình Dương</h3>
+                                <h3 class="text-lg font-bold uppercase text-[#16315E] mb-3" data-key="proj_vinhtan_title">Trang Trại Chăn Nuôi Vĩnh Tân 7, 8, 9 Bình Dương</h3>
                                 <div class="flex flex-wrap gap-2 pt-3 border-t border-gray-100">
-                                    <span class="inline-flex items-center gap-1 px-2.5 py-1 bg-[#FAF9F9] border border-[#E6EAF2] text-[11px] font-semibold text-[#214080]">Hạ tầng nông nghiệp</span>
-                                    <span class="inline-flex items-center gap-1 px-2.5 py-1 bg-[#FAF9F9] border border-[#E6EAF2] text-[11px] font-semibold text-[#214080]">Miền Nam</span>
+                                    <span class="inline-flex items-center gap-1 px-2.5 py-1 bg-[#FAF9F9] border border-[#E6EAF2] text-[11px] font-semibold text-[#214080]" data-key="tag_agri_infrastructure">Hạ tầng nông nghiệp</span>
+                                    <span class="inline-flex items-center gap-1 px-2.5 py-1 bg-[#FAF9F9] border border-[#E6EAF2] text-[11px] font-semibold text-[#214080]" data-key="region_south">Miền Nam</span>
                                 </div>
                             </div>
                         </div>
@@ -159,7 +159,7 @@ import Layout from '../layouts/layout.astro';
             <!-- SECTION: KHÁCH HÀNG NÓI GÌ VỀ VIKI (Chuẩn mẫu projects.jpg) -->
             <div class="bg-white rounded-xl p-8 sm:p-12 border border-[#E6EAF2] shadow-sm mt-16">
                 <div class="flex flex-col md:flex-row items-center justify-between gap-6 mb-10 pb-6 border-b border-gray-100">
-                    <h2 class="text-2xl sm:text-3xl font-extrabold uppercase text-[#16315E] m-0 tracking-wide">
+                    <h2 class="text-2xl sm:text-3xl font-extrabold uppercase text-[#16315E] m-0 tracking-wide" data-key="testimonial_title">
                         KHÁCH HÀNG NÓI GÌ VỀ VIKI?
                     </h2>
                     <div class="flex items-center gap-2">
@@ -176,12 +176,12 @@ import Layout from '../layouts/layout.astro';
                         </div>
                     </div>
                     <div class="lg:col-span-8 space-y-6">
-                        <blockquote class="text-base sm:text-lg text-[#5A6E85] italic leading-relaxed m-0 border-l-4 border-[#214080] pl-6">
+                        <blockquote class="text-base sm:text-lg text-[#5A6E85] italic leading-relaxed m-0 border-l-4 border-[#214080] pl-6" data-key="testimonial_quote">
                             "Chất lượng xây dựng và năng lực điều hành dự án của VIKI được thể hiện rất rõ ràng ở các công trình thực tế. Đội ngũ kỹ sư làm việc tận tâm, chuyên nghiệp, giữ vững cam kết về tiến độ và tiêu chuẩn kỹ thuật khắt khe. Chúng tôi vô cùng hài lòng và mong muốn tiếp tục hợp tác trong các dự án quy mô lớn tiếp theo."
                         </blockquote>
                         <div>
-                            <div class="text-sm font-bold text-[#16315E] uppercase">ĐẠI DIỆN BAN QUẢN LÝ DỰ ÁN ĐẦU TƯ</div>
-                            <div class="text-xs text-[#5A6E85] mt-1">Đối tác chiến lược & Chủ đầu tư các khu công nghiệp trọng điểm</div>
+                            <div class="text-sm font-bold text-[#16315E] uppercase" data-key="testimonial_pos">ĐẠI DIỆN BAN QUẢN LÝ DỰ ÁN ĐẦU TƯ</div>
+                            <div class="text-xs text-[#5A6E85] mt-1" data-key="testimonial_desc">Đối tác chiến lược & Chủ đầu tư các khu công nghiệp trọng điểm</div>
                         </div>
                     </div>
                 </div>

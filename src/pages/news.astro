@@ -41,15 +41,14 @@ const featuredNews = allNews[0] || {
 // Các bài viết tiếp theo đưa vào lưới tin tức
 const gridNews = allNews.slice(1);
 ---
-
-<Layout title="Tin Tức | VIKI Construction Corporation">
+<Layout title="Tin Tức | VIKI Construction Corporation" data-key="news_title">
 
     <div class="bg-[#FAF9F9] min-h-screen py-12">
         <div class="container mx-auto px-4 max-w-7xl">
 
             <!-- PAGE TITLE -->
             <div class="mb-8">
-                <h1 class="text-[40px] sm:text-[59px] font-extrabold uppercase tracking-tight leading-[1.15] mb-6 text-[#16315E]">
+                <h1 class="text-[40px] sm:text-[59px] font-extrabold uppercase tracking-tight leading-[1.15] mb-6 text-[#16315E]" data-key="news_title">
                     TIN TỨC
                 </h1>
                 <div class="w-16 h-1 bg-[#ED2424] mt-3"></div>
@@ -75,20 +74,20 @@ const gridNews = allNews.slice(1);
             <!-- FILTER NAVIGATION BAR -->
             <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-10 pb-4 border-b border-gray-200 text-xs sm:text-sm">
                 <div class="flex flex-wrap items-center gap-2 sm:gap-6 font-semibold uppercase text-[#5A6E85]" id="category-filters">
-                    <button class="cat-btn text-[#214080] font-bold border-b-2 border-[#214080] pb-1 bg-transparent cursor-pointer transition" data-category="all">Tất cả tin tức</button>
-                    <button class="cat-btn border-b-2 border-transparent pb-1 hover:text-[#214080] transition bg-transparent cursor-pointer" data-category="executive-direction">Chỉ đạo điều hành</button>
-                    <button class="cat-btn border-b-2 border-transparent pb-1 hover:text-[#214080] transition bg-transparent cursor-pointer" data-category="architecture-planning">Quy hoạch kiến trúc</button>
-                    <button class="cat-btn border-b-2 border-transparent pb-1 hover:text-[#214080] transition bg-transparent cursor-pointer" data-category="building-materials">Vật liệu xây dựng</button>
-                    <button class="cat-btn border-b-2 border-transparent pb-1 hover:text-[#214080] transition bg-transparent cursor-pointer" data-category="quality-inspection">Giám định chất lượng</button>
-                    <button class="cat-btn border-b-2 border-transparent pb-1 hover:text-[#214080] transition bg-transparent cursor-pointer" data-category="urban-management">Quản lý đô thị</button>
+                    <button class="cat-btn text-[#214080] font-bold border-b-2 border-[#214080] pb-1 bg-transparent cursor-pointer transition" data-category="all" data-key="cat_all">Tất cả tin tức</button>
+                    <button class="cat-btn border-b-2 border-transparent pb-1 hover:text-[#214080] transition bg-transparent cursor-pointer" data-category="executive-direction" data-key="cat_executive_direction">Chỉ đạo điều hành</button>
+                    <button class="cat-btn border-b-2 border-transparent pb-1 hover:text-[#214080] transition bg-transparent cursor-pointer" data-category="architecture-planning" data-key="cat_architecture_planning">Quy hoạch kiến trúc</button>
+                    <button class="cat-btn border-b-2 border-transparent pb-1 hover:text-[#214080] transition bg-transparent cursor-pointer" data-category="building-materials" data-key="cat_building_materials">Vật liệu xây dựng</button>
+                    <button class="cat-btn border-b-2 border-transparent pb-1 hover:text-[#214080] transition bg-transparent cursor-pointer" data-category="quality-inspection" data-key="cat_quality_inspection">Giám định chất lượng</button>
+                    <button class="cat-btn border-b-2 border-transparent pb-1 hover:text-[#214080] transition bg-transparent cursor-pointer" data-category="urban-management" data-key="cat_urban_management">Quản lý đô thị</button>
                 </div>
 
                 <!-- Bộ lọc Sắp xếp -->
                 <div class="flex items-center gap-2 text-xs font-bold text-[#16315E]">
-                    <span>SẮP XẾP:</span>
+                    <span data-key="sort_label">SẮP XẾP:</span>
                     <select id="sort-order" class="bg-white border border-gray-300 rounded px-3 py-1.5 text-xs outline-none cursor-pointer">
-                        <option value="newest">Mới nhất trước</option>
-                        <option value="oldest">Cũ nhất trước</option>
+                        <option value="newest" data-key="sort_newest">Mới nhất trước</option>
+                        <option value="oldest" data-key="sort_oldest">Cũ nhất trước</option>
                     </select>
                 </div>
             </div>
@@ -120,8 +119,8 @@ const gridNews = allNews.slice(1);
 
             <!-- EMPTY STATE: nằm NGOÀI lưới, chỉ ẩn/hiện, không xóa nội dung lưới -->
             <div id="empty-state" class="hidden py-16 text-center text-gray-500 bg-white rounded-xl border border-[#E6EAF2] mb-12">
-                <p class="text-base font-semibold">Hiện tại danh mục này chưa có bản tin nào.</p>
-                <p class="text-xs mt-1 text-gray-400">Vui lòng chọn mục "Tất cả tin tức" hoặc quay lại sau.</p>
+                <p class="text-base font-semibold" data-key="news_empty_title">Hiện tại danh mục này chưa có bản tin nào.</p>
+                <p class="text-xs mt-1 text-gray-400" data-key="news_empty_desc">Vui lòng chọn mục "Tất cả tin tức" hoặc quay lại sau.</p>
             </div>
 
             <!-- PAGINATION CONTAINER -->

@@ -2,7 +2,7 @@
 import Layout from '../layouts/layout.astro';
 ---
 
-<Layout title="Về Chúng Tôi | VIKI Construction Corporation">
+<Layout title="Về Chúng Tôi | VIKI Construction Corporation"> 
 
     <!-- HERO BANNER -->
     <section class="bg-[#16315E] text-white pt-12 pb-16 relative overflow-hidden border-b-4 border-[#FFC709] w-full max-w-full">
@@ -13,12 +13,12 @@ import Layout from '../layouts/layout.astro';
                 
                 <!-- Phần tiêu đề và mô tả bên trái -->
                 <div class="max-w-4xl w-full">
-                    <div class="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-[#5FD1C1] mb-3">BUILDING FUTURES</div>
+                    <div class="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-[#5FD1C1] mb-3" data-key="about_hero_tag">BUILDING FUTURES</div>
                     <h1 class="text-3xl sm:text-5xl lg:text-[59px] font-extrabold uppercase tracking-tight leading-[1.15] mb-6 break-words">
-                        <span class="block mb-2">Chúng tôi là VIKI</span>
-                        <span class="text-[#38B6FF] block">Xây Giá Trị – Dựng Niềm Tin</span>
+                        <span class="block mb-2" data-key="about_hero_t1">Chúng tôi là VIKI</span>
+                        <span class="text-[#38B6FF] block" data-key="about_hero_t2">Xây Giá Trị – Dựng Niềm Tin</span>
                     </h1>
-                    <p class="text-base sm:text-lg text-slate-200 leading-relaxed font-light text-justify max-w-3xl">
+                    <p class="text-base sm:text-lg text-slate-200 leading-relaxed font-light text-justify max-w-3xl" data-key="about_hero_desc">
                         Công ty Cổ phần Xây dựng VIKI chính thức thành lập vào ngày 01 tháng 6 năm 2020. Dù ra đời trong bối cảnh thị trường nhiều thách thức, VIKI đã chọn con đường phát triển lấy uy tín và chất lượng làm nền tảng hàng đầu, không ngừng vươn mình trở thành đối tác tin cậy của các tập đoàn đa quốc gia.
                     </p>
                 </div>
@@ -35,12 +35,12 @@ import Layout from '../layouts/layout.astro';
             <!-- Section Header -->
             <div class="flex items-center gap-3 mb-12 pb-4 border-b-2 border-[#16315E]">
                 <img src="/icon-hamburger-blue.png" alt="Icon" class="w-8 h-8 object-contain">
-                <h2 class="text-xl sm:text-3xl md:text-4xl font-extrabold text-[#16315E] m-0 uppercase tracking-wide break-words">
+                <h2 class="text-xl sm:text-3xl md:text-4xl font-extrabold text-[#16315E] m-0 uppercase tracking-wide break-words" data-key="org_chart_title">
                     SƠ ĐỒ NHÂN SỰ &amp; TỔ CHỨC
                 </h2>
             </div>
 
-            <p class="text-sm sm:text-base text-[#5A6E85] max-w-3xl mb-12 leading-relaxed">
+            <p class="text-sm sm:text-base text-[#5A6E85] max-w-3xl mb-12 leading-relaxed" data-key="org_chart_desc">
                 Cơ cấu tổ chức của VIKI được xây dựng theo mô hình quản trị doanh nghiệp hiện đại, tinh gọn và chuyên môn hóa cao, đảm bảo sự phối hợp nhịp nhàng giữa các khối văn phòng và ban quản lý dự án công trường.
             </p>
 
@@ -55,7 +55,7 @@ import Layout from '../layouts/layout.astro';
                                 <img src="/img/anhSoDoNhanSu001.webp" alt="Hội đồng cổ đông" class="w-full h-full object-cover" onerror="this.src='/img/anhErrorSoDoNhanSuHDCD.webp'">
                             </div>
                             <div class="bg-[#214080] text-white h-16 px-2 flex flex-col justify-center">
-                                <div class="text-sm font-extrabold uppercase mt-1">HỘI ĐỒNG CỔ ĐÔNG</div>
+                                <div class="text-sm font-extrabold uppercase mt-1" data-key="org_hdcd">HỘI ĐỒNG CỔ ĐÔNG</div>
                             </div>
                         </div>
                     </div>
@@ -74,8 +74,8 @@ import Layout from '../layouts/layout.astro';
                                 <img src="/img/anhSoDoNhanSu002.webp" alt="Chủ tịch HĐQT Lê Mạnh Toàn" class="w-full h-full object-cover" onerror="this.src='/img/anhErrorSoDoNhanSuMen.webp'">
                             </div>
                             <div class="bg-[#214080] text-white h-16 px-2 flex flex-col justify-center">
-                                <div class="text-xs font-bold uppercase tracking-wider">CHỦ TỊCH HỘI ĐỒNG QUẢN TRỊ</div>
-                                <div class="text-sm font-extrabold uppercase mt-1">Ông LÊ MẠNH TOÀN</div>
+                                <div class="text-xs font-bold uppercase tracking-wider" data-key="org_chairman">CHỦ TỊCH HỘI ĐỒNG QUẢN TRỊ</div>
+                                <div class="text-sm font-extrabold uppercase mt-1" data-key="org_chairman_name">Ông LÊ MẠNH TOÀN</div>
                             </div>
                         </div>
                     </div>
@@ -94,8 +94,8 @@ import Layout from '../layouts/layout.astro';
                                 <img src="/img/anhSoDoNhanSu003.webp" alt="Giám đốc Trần Văn Quân" class="w-full h-full object-cover" onerror="this.src='/img/anhErrorSoDoNhanSuMen.webp'">
                             </div>
                             <div class="bg-[#214080] text-white h-16 px-2 flex flex-col justify-center">
-                                <div class="text-xs font-bold uppercase tracking-wider">GIÁM ĐỐC</div>
-                                <div class="text-sm font-extrabold uppercase mt-1">Ông TRẦN VĂN QUÂN</div>
+                                <div class="text-xs font-bold uppercase tracking-wider" data-key="org_director">GIÁM ĐỐC</div>
+                                <div class="text-sm font-extrabold uppercase mt-1" data-key="org_director_name">Ông TRẦN VĂN QUÂN</div>
                             </div>
                         </div>
 
@@ -122,7 +122,7 @@ import Layout from '../layouts/layout.astro';
                                 <img src="/img/anhSoDoNhanSu004.webp" alt="Các ban điều hành dự án" class="w-full h-full object-cover" onerror="this.src='/img/anhErrorSoDoNhanSuMen.webp'">
                             </div>
                             <div class="bg-[#214080] text-white h-28 px-2 flex flex-col justify-center shrink-0">
-                                <div class="text-xs font-bold uppercase tracking-normal whitespace-nowrap leading-snug">CÁC BAN ĐIỀU HÀNH DỰ ÁN</div>
+                                <div class="text-xs font-bold uppercase tracking-normal whitespace-nowrap leading-snug" data-key="org_d1">CÁC BAN ĐIỀU HÀNH DỰ ÁN</div>
                             </div>
                         </div>
 
@@ -132,8 +132,8 @@ import Layout from '../layouts/layout.astro';
                                 <img src="/img/anhSoDoNhanSu005.webp" alt="Phòng Quản lý Dự án" class="w-full h-full object-cover" onerror="this.src='/img/anhErrorSoDoNhanSuMen.webp'">
                             </div>
                             <div class="bg-[#214080] text-white h-28 px-2 flex flex-col justify-center shrink-0">
-                                <div class="text-xs font-bold uppercase tracking-normal whitespace-nowrap leading-snug">PHÒNG QUẢN LÝ DỰ ÁN</div>
-                                <div class="text-xs font-extrabold uppercase mt-1">ÔNG NGUYỄN HUY TIỆP</div>
+                                <div class="text-xs font-bold uppercase tracking-normal whitespace-nowrap leading-snug" data-key="org_d2">PHÒNG QUẢN LÝ DỰ ÁN</div>
+                                <div class="text-xs font-extrabold uppercase mt-1" data-key="org_d2_head">ÔNG NGUYỄN HUY TIỆP</div>
                             </div>
                         </div>
 
@@ -143,8 +143,8 @@ import Layout from '../layouts/layout.astro';
                                 <img src="/img/anhSoDoNhanSu006.webp" alt="Phòng Tổ chức - Hành chính" class="w-full h-full object-cover" onerror="this.src='/img/anhErrorSoDoNhanSuWomen.webp'">
                             </div>
                             <div class="bg-[#214080] text-white h-28 px-2 flex flex-col justify-center shrink-0">
-                                <div class="text-xs font-bold uppercase tracking-normal whitespace-nowrap leading-snug">PHÒNG TỔ CHỨC - HÀNH CHÍNH</div>
-                                <div class="text-xs font-extrabold uppercase mt-1">BÀ TRẦN THỊ SUM</div>
+                                <div class="text-xs font-bold uppercase tracking-normal whitespace-nowrap leading-snug" data-key="org_d3">PHÒNG TỔ CHỨC - HÀNH CHÍNH</div>
+                                <div class="text-xs font-extrabold uppercase mt-1" data-key="org_d3_head">BÀ TRẦN THỊ SUM</div>
                             </div>
                         </div>
 
@@ -154,8 +154,8 @@ import Layout from '../layouts/layout.astro';
                                 <img src="/img/anhSoDoNhanSu007.webp" alt="Phòng Tài chính - Kế toán" class="w-full h-full object-cover" onerror="this.src='/img/anhErrorSoDoNhanSuWomen.webp'">
                             </div>
                             <div class="bg-[#214080] text-white h-28 px-2 flex flex-col justify-center shrink-0">
-                                <div class="text-xs font-bold uppercase tracking-normal whitespace-nowrap leading-snug">PHÒNG TÀI CHÍNH - KẾ TOÁN</div>
-                                <div class="text-xs font-extrabold uppercase mt-1">BÀ TRẦN THANH HƯƠNG</div>
+                                <div class="text-xs font-bold uppercase tracking-normal whitespace-nowrap leading-snug" data-key="org_d4">PHÒNG TÀI CHÍNH - KẾ TOÁN</div>
+                                <div class="text-xs font-extrabold uppercase mt-1" data-key="org_d4_head">BÀ TRẦN THANH HƯƠNG</div>
                             </div>
                         </div>
 
@@ -165,8 +165,8 @@ import Layout from '../layouts/layout.astro';
                                 <img src="/img/anhSoDoNhanSu008.webp" alt="Phòng Vật tư - Thiết bị" class="w-full h-full object-cover" onerror="this.src='/img/anhErrorSoDoNhanSuWomen.webp'">
                             </div>
                             <div class="bg-[#214080] text-white h-28 px-2 flex flex-col justify-center shrink-0">
-                                <div class="text-xs font-bold uppercase tracking-normal whitespace-nowrap leading-snug">PHÒNG VẬT TƯ - THIẾT BỊ</div>
-                                <div class="text-xs font-extrabold uppercase mt-1">BÀ NGUYỄN THỊ CẨM TÚ</div>
+                                <div class="text-xs font-bold uppercase tracking-normal whitespace-nowrap leading-snug" data-key="org_d5">PHÒNG VẬT TƯ - THIẾT BỊ</div>
+                                <div class="text-xs font-extrabold uppercase mt-1" data-key="org_d5_head">BÀ NGUYỄN THỊ CẨM TÚ</div>
                             </div>
                         </div>
 
@@ -174,8 +174,7 @@ import Layout from '../layouts/layout.astro';
 
                 </div>
             </div>
-
-
+            
             <!-- ================= KHU VỰC HIỂN THỊ TRÊN MOBILE & TẤT CẢ CÁC DÒNG IPAD (Dưới 1280px) ================= -->
             <div class="block xl:hidden flex flex-col items-center w-full max-w-full overflow-hidden">
                 
@@ -185,8 +184,8 @@ import Layout from '../layouts/layout.astro';
                         <img src="/img/anhSoDoNhanSu001.webp" alt="Hội đồng cổ đông" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=400&q=80'">
                     </div>
                     <div class="bg-[#214080] text-white py-3 px-2">
-                        <div class="text-[10px] font-bold uppercase tracking-wider">CƠ QUAN QUYẾT ĐỊNH CAO NHẤT</div>
-                        <div class="text-xs font-extrabold uppercase mt-1">HỘI ĐỒNG CỔ ĐÔNG</div>
+                        <div class="text-[10px] font-bold uppercase tracking-wider" data-key="org_hdcd_sub">CƠ QUAN QUYẾT ĐỊNH CAO NHẤT</div>
+                        <div class="text-xs font-extrabold uppercase mt-1" data-key="org_hdcd">HỘI ĐỒNG CỔ ĐÔNG</div>
                     </div>
                 </div>
 
@@ -203,8 +202,8 @@ import Layout from '../layouts/layout.astro';
                         <img src="/img/anhSoDoNhanSu002.webp" alt="Chủ tịch HĐQT Lê Mạnh Toàn" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80'">
                     </div>
                     <div class="bg-[#214080] text-white py-3 px-2">
-                        <div class="text-[10px] font-bold uppercase tracking-wider">CHỦ TỊCH HỘI ĐỒNG QUẢN TRỊ</div>
-                        <div class="text-xs font-extrabold uppercase mt-1">LÊ MẠNH TOÀN</div>
+                        <div class="text-[10px] font-bold uppercase tracking-wider" data-key="org_chairman">CHỦ TỊCH HỘI ĐỒNG QUẢN TRỊ</div>
+                        <div class="text-xs font-extrabold uppercase mt-1" data-key="org_chairman_name">LÊ MẠNH TOÀN</div>
                     </div>
                 </div>
 
@@ -221,8 +220,8 @@ import Layout from '../layouts/layout.astro';
                         <img src="/img/anhSoDoNhanSu003.webp" alt="Giám đốc Trần Văn Quân" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&q=80'">
                     </div>
                     <div class="bg-[#214080] text-white py-3 px-2">
-                        <div class="text-[10px] font-bold uppercase tracking-wider">GIÁM ĐỐC</div>
-                        <div class="text-xs font-extrabold uppercase mt-1">TRẦN VĂN QUÂN</div>
+                        <div class="text-[10px] font-bold uppercase tracking-wider" data-key="org_director">GIÁM ĐỐC</div>
+                        <div class="text-xs font-extrabold uppercase mt-1" data-key="org_director_name">TRẦN VĂN QUÂN</div>
                     </div>
                 </div>
 
@@ -234,7 +233,7 @@ import Layout from '../layouts/layout.astro';
                 </div>
 
                 <!-- Tiêu đề phân khu khối phòng ban -->
-                <div class="text-center text-xs font-bold text-[#214080] uppercase tracking-wider bg-slate-100 py-2.5 rounded-lg border border-gray-300 w-full max-w-[253px] shadow-sm relative z-20">
+                <div class="text-center text-xs font-bold text-[#214080] uppercase tracking-wider bg-slate-100 py-2.5 rounded-lg border border-gray-300 w-full max-w-[253px] shadow-sm relative z-20" data-key="org_dept_title">
                     ▼ CÁC BAN ĐIỀU HÀNH &amp; PHÒNG BAN ▼
                 </div>
 
@@ -250,8 +249,8 @@ import Layout from '../layouts/layout.astro';
                                 <img src="/img/anhSoDoNhanSu004.webp" alt="Các ban điều hành dự án" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=300&q=80'">
                             </div>
                             <div class="bg-[#214080] text-white py-3 px-2 h-20 flex flex-col justify-center">
-                                <div class="text-[11px] font-bold uppercase tracking-wider">CÁC BAN ĐIỀU HÀNH DỰ ÁN</div>
-                                <div class="text-xs font-extrabold uppercase mt-1">BAN QUẢN LÝ CÔNG TRÌNH</div>
+                                <div class="text-[11px] font-bold uppercase tracking-wider" data-key="org_d1">CÁC BAN ĐIỀU HÀNH DỰ ÁN</div>
+                                <div class="text-xs font-extrabold uppercase mt-1" data-key="org_d1_sub">BAN QUẢN LÝ CÔNG TRÌNH</div>
                             </div>
                         </div>
 
@@ -261,8 +260,8 @@ import Layout from '../layouts/layout.astro';
                                 <img src="/img/anhSoDoNhanSu005.webp" alt="Phòng Quản lý Dự án" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=300&q=80'">
                             </div>
                             <div class="bg-[#214080] text-white py-3 px-2 h-20 flex flex-col justify-center">
-                                <div class="text-[11px] font-bold uppercase tracking-wider">PHÒNG QUẢN LÝ DỰ ÁN</div>
-                                <div class="text-xs font-extrabold uppercase mt-1">NGUYỄN HUY TIỆP</div>
+                                <div class="text-[11px] font-bold uppercase tracking-wider" data-key="org_d2">PHÒNG QUẢN LÝ DỰ ÁN</div>
+                                <div class="text-xs font-extrabold uppercase mt-1" data-key="org_d2_head">NGUYỄN HUY TIỆP</div>
                             </div>
                         </div>
 
@@ -272,8 +271,8 @@ import Layout from '../layouts/layout.astro';
                                 <img src="/img/anhSoDoNhanSu006.webp" alt="Phòng Tổ chức - Hành chính" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=300&q=80'">
                             </div>
                             <div class="bg-[#214080] text-white py-3 px-2 h-20 flex flex-col justify-center">
-                                <div class="text-[11px] font-bold uppercase tracking-wider">PHÒNG TỔ CHỨC - HÀNH CHÍNH</div>
-                                <div class="text-xs font-extrabold uppercase mt-1">TRẦN THỊ SUM</div>
+                                <div class="text-[11px] font-bold uppercase tracking-wider" data-key="org_d3">PHÒNG TỔ CHỨC - HÀNH CHÍNH</div>
+                                <div class="text-xs font-extrabold uppercase mt-1" data-key="org_d3_head">TRẦN THỊ SUM</div>
                             </div>
                         </div>
 
@@ -283,8 +282,8 @@ import Layout from '../layouts/layout.astro';
                                 <img src="/img/anhSoDoNhanSu007.webp" alt="Phòng Tài chính - Kế toán" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80'">
                             </div>
                             <div class="bg-[#214080] text-white py-3 px-2 h-20 flex flex-col justify-center">
-                                <div class="text-[11px] font-bold uppercase tracking-wider">PHÒNG TÀI CHÍNH - KẾ TOÁN</div>
-                                <div class="text-xs font-extrabold uppercase mt-1">TRẦN THANH HƯƠNG</div>
+                                <div class="text-[11px] font-bold uppercase tracking-wider" data-key="org_d4">PHÒNG TÀI CHÍNH - KẾ TOÁN</div>
+                                <div class="text-xs font-extrabold uppercase mt-1" data-key="org_d4_head">TRẦN THANH HƯƠNG</div>
                             </div>
                         </div>
 
@@ -294,8 +293,8 @@ import Layout from '../layouts/layout.astro';
                                 <img src="/img/anhSoDoNhanSu008.webp" alt="Phòng Vật tư - Thiết bị" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=300&q=80'">
                             </div>
                             <div class="bg-[#214080] text-white py-3 px-2 h-20 flex flex-col justify-center">
-                                <div class="text-[11px] font-bold uppercase tracking-wider">PHÒNG VẬT TƯ - THIẾT BỊ</div>
-                                <div class="text-xs font-extrabold uppercase mt-1">NGUYỄN THỊ CẨM TÚ</div>
+                                <div class="text-[11px] font-bold uppercase tracking-wider" data-key="org_d5">PHÒNG VẬT TƯ - THIẾT BỊ</div>
+                                <div class="text-xs font-extrabold uppercase mt-1" data-key="org_d5_head">NGUYỄN THỊ CẨM TÚ</div>
                             </div>
                         </div>
 
@@ -320,13 +319,13 @@ import Layout from '../layouts/layout.astro';
         </div>
     </section>
 
-    <!-- SECTION 1: GIÁ TRỊ CỐT LÕI (CORE VALUES) -->
+    <!-- SECTION: GIÁ TRỊ CỐT LÕI (CORE VALUES) -->
     <section class="py-20 bg-white border-b border-[#E6EAF2] w-full max-w-full overflow-hidden" id="core-values">
         <div class="container mx-auto px-4 w-full max-w-full">
             
             <div class="flex items-center gap-3 mb-12 pb-4 border-b-2 border-[#16315E]">
                 <img src="/icon-hamburger-blue.png" alt="Icon" class="w-8 h-8 object-contain">
-                <h2 class="text-xl sm:text-3xl md:text-4xl font-extrabold text-[#16315E] m-0 uppercase tracking-wide break-words">
+                <h2 class="text-xl sm:text-3xl md:text-4xl font-extrabold text-[#16315E] m-0 uppercase tracking-wide break-words" data-key="cv_title">
                     GIÁ TRỊ CỐT LÕI
                 </h2>
             </div>
@@ -335,24 +334,24 @@ import Layout from '../layouts/layout.astro';
                 
                 <div class="p-8 bg-[#FAF9F9] border-t-4 border-[#214080] shadow-sm hover:shadow-md transition">
                     <div class="text-4xl mb-4 font-black text-[#214080]">01</div>
-                    <h3 class="text-xl font-bold uppercase text-[#16315E] mb-3">REPUTATION — UY TÍN</h3>
-                    <p class="text-sm text-[#5A6E85] leading-relaxed text-justify m-0">
+                    <h3 class="text-xl font-bold uppercase text-[#16315E] mb-3" data-key="cv1_title">REPUTATION — UY TÍN</h3>
+                    <p class="text-sm text-[#5A6E85] leading-relaxed text-justify m-0" data-key="cv1_desc">
                         Uy tín là nền tảng sống còn cho sự phát triển của VIKI. Chúng tôi giữ vững mọi cam kết về chất lượng, tiến độ và độ an toàn trên từng công trình đối với khách hàng và đối tác.
                     </p>
                 </div>
 
                 <div class="p-8 bg-[#FAF9F9] border-t-4 border-[#38B6FF] shadow-sm hover:shadow-md transition">
                     <div class="text-4xl mb-4 font-black text-[#38B6FF]">02</div>
-                    <h3 class="text-xl font-bold uppercase text-[#16315E] mb-3">QUALITY — CHẤT LƯỢNG</h3>
-                    <p class="text-sm text-[#5A6E85] leading-relaxed text-justify m-0">
+                    <h3 class="text-xl font-bold uppercase text-[#16315E] mb-3" data-key="cv2_title">QUALITY — CHẤT LƯỢNG</h3>
+                    <p class="text-sm text-[#5A6E85] leading-relaxed text-justify m-0" data-key="cv2_desc">
                         Chất lượng là lợi thế cạnh tranh cốt lõi. Áp dụng nghiêm ngặt các tiêu chuẩn kỹ thuật hiện đại, quy trình thi công chuẩn xác để mang lại sản phẩm đạt độ bền vững tối ưu.
                     </p>
                 </div>
 
                 <div class="p-8 bg-[#FAF9F9] border-t-4 border-[#ED2424] shadow-sm hover:shadow-md transition">
                     <div class="text-4xl mb-4 font-black text-[#ED2424]">03</div>
-                    <h3 class="text-xl font-bold uppercase text-[#16315E] mb-3">YOUTHFULNESS — SỨC TRẺ</h3>
-                    <p class="text-sm text-[#5A6E85] leading-relaxed text-justify m-0">
+                    <h3 class="text-xl font-bold uppercase text-[#16315E] mb-3" data-key="cv3_title">YOUTHFULNESS — SỨC TRẺ</h3>
+                    <p class="text-sm text-[#5A6E85] leading-relaxed text-justify m-0" data-key="cv3_desc">
                         Nhiệt huyết, dám nghĩ, dám làm. Đội ngũ nhân sự trẻ trung, sáng tạo và chủ động là tài sản vô giá, là nhân tố quyết định mang lại những đột phá thành công cho doanh nghiệp.
                     </p>
                 </div>
@@ -370,56 +369,56 @@ import Layout from '../layouts/layout.astro';
                 
                 <div class="lg:col-span-5 bg-[#16315E] text-white p-8 sm:p-10 flex flex-col justify-between shadow-xl relative overflow-hidden">
                     <div>
-                        <div class="text-xs font-bold text-[#5FD1C1] uppercase tracking-widest mb-2">ĐỊNH HƯỚNG TƯƠNG LAI</div>
-                        <h2 class="text-2xl sm:text-3xl font-extrabold uppercase tracking-wide mb-6">TẦM NHÌN STRATEGIC</h2>
+                        <div class="text-xs font-bold text-[#5FD1C1] uppercase tracking-widest mb-2" data-key="vm_tag">ĐỊNH HƯỚNG TƯƠNG LAI</div>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold uppercase tracking-wide mb-6" data-key="vm_v_title">TẦM NHÌN STRATEGIC</h2>
                         
                         <div class="space-y-6">
                             <div class="flex items-start gap-4 pb-4 border-b border-white/15">
                                 <span class="text-3xl font-black text-[#38B6FF]">2030</span>
-                                <p class="text-sm text-slate-200 leading-relaxed m-0">
-                                    Trở thành doanh nghiệp trong <strong class="text-white">TOP 100</strong> doanh nghiệp xây dựng có quy mô và phát triển nhất tại Việt Nam.
+                                <p class="text-sm text-slate-200 leading-relaxed m-0" data-key="vm_2030_desc">
+                                    Trở thành doanh nghiệp trong TOP 100 doanh nghiệp xây dựng có quy mô và phát triển nhất tại Việt Nam.
                                 </p>
                             </div>
 
                             <div class="flex items-start gap-4">
                                 <span class="text-3xl font-black text-[#5FD1C1]">2040</span>
-                                <p class="text-sm text-slate-200 leading-relaxed m-0">
-                                    Vươn mình vào <strong class="text-white">TOP 50</strong> doanh nghiệp xây dựng hàng đầu Việt Nam và phát triển thành tập đoàn đa ngành nghề vững mạnh.
+                                <p class="text-sm text-slate-200 leading-relaxed m-0" data-key="vm_2040_desc">
+                                    Vươn mình vào TOP 50 doanh nghiệp xây dựng hàng đầu Việt Nam và phát triển thành tập đoàn đa ngành nghề vững mạnh.
                                 </p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="mt-8 pt-6 border-t border-white/10 text-xs text-slate-300 italic">
+                    <div class="mt-8 pt-6 border-t border-white/10 text-xs text-slate-300 italic" data-key="vm_v_quote">
                         "Khẳng định thương hiệu trên thị trường xây dựng Việt Nam và vươn tầm quốc tế."
                     </div>
                 </div>
 
                 <div class="lg:col-span-7 bg-white p-8 sm:p-10 border border-[#E6EAF2] shadow-sm flex flex-col justify-between">
                     <div>
-                        <div class="text-xs font-bold text-[#264ABC] uppercase tracking-widest mb-2">TRÁCH NHIỆM & CAM KẾT</div>
-                        <h2 class="text-2xl sm:text-3xl font-extrabold uppercase text-[#16315E] tracking-wide mb-6">SỨ MỆNH VIKI</h2>
+                        <div class="text-xs font-bold text-[#264ABC] uppercase tracking-widest mb-2" data-key="vm_m_tag">TRÁCH NHIỆM & CAM KẾT</div>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold uppercase text-[#16315E] tracking-wide mb-6" data-key="vm_m_title">SỨ MỆNH VIKI</h2>
 
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                             
                             <div class="p-4 bg-[#FAF9F9] border-l-3 border-[#214080]">
-                                <h4 class="font-bold text-[#16315E] uppercase text-sm mb-1">Đối với Khách hàng</h4>
-                                <p class="text-xs text-[#5A6E85] leading-relaxed m-0">Tôn trọng và cam kết mang đến cho khách hàng những dự án thi công tối ưu nhất về chất lượng và chi phí.</p>
+                                <h4 class="font-bold text-[#16315E] uppercase text-sm mb-1" data-key="vm_c_title">Đối với Khách hàng</h4>
+                                <p class="text-xs text-[#5A6E85] leading-relaxed m-0" data-key="vm_c_desc">Tôn trọng và cam kết mang đến cho khách hàng những dự án thi công tối ưu nhất về chất lượng và chi phí.</p>
                             </div>
 
                             <div class="p-4 bg-[#FAF9F9] border-l-3 border-[#38B6FF]">
-                                <h4 class="font-bold text-[#16315E] uppercase text-sm mb-1">Đối với Đối tác</h4>
-                                <p class="text-xs text-[#5A6E85] leading-relaxed m-0">Xây dựng mối quan hệ tin cậy, uy tín, minh bạch và hợp tác cùng phát triển bền vững lâu dài.</p>
+                                <h4 class="font-bold text-[#16315E] uppercase text-sm mb-1" data-key="vm_p_title">Đối với Đối tác</h4>
+                                <p class="text-xs text-[#5A6E85] leading-relaxed m-0" data-key="vm_p_desc">Xây dựng mối quan hệ tin cậy, uy tín, minh bạch và hợp tác cùng phát triển bền vững lâu dài.</p>
                             </div>
 
                             <div class="p-4 bg-[#FAF9F9] border-l-3 border-[#ED2424]">
-                                <h4 class="font-bold text-[#16315E] uppercase text-sm mb-1">Đối với Nhân viên</h4>
-                                <p class="text-xs text-[#5A6E85] leading-relaxed m-0">Tạo môi trường làm việc thân thiện, chuyên nghiệp, tự giác để mỗi cá nhân phát huy tối đa năng lực.</p>
+                                <h4 class="font-bold text-[#16315E] uppercase text-sm mb-1" data-key="vm_e_title">Đối với Nhân viên</h4>
+                                <p class="text-xs text-[#5A6E85] leading-relaxed m-0" data-key="vm_e_desc">Tạo môi trường làm việc thân thiện, chuyên nghiệp, tự giác để mỗi cá nhân phát huy tối đa năng lực.</p>
                             </div>
 
                             <div class="p-4 bg-[#FAF9F9] border-l-3 border-[#40C08D]">
-                                <h4 class="font-bold text-[#16315E] uppercase text-sm mb-1">Đối với Xã hội</h4>
-                                <p class="text-xs text-[#5A6E85] leading-relaxed m-0">Gắn liền lợi ích doanh nghiệp với lợi ích cộng đồng, tích cực thực hiện các hoạt động đóng góp cho xã hội.</p>
+                                <h4 class="font-bold text-[#16315E] uppercase text-sm mb-1" data-key="vm_s_title">Đối với Xã hội</h4>
+                                <p class="text-xs text-[#5A6E85] leading-relaxed m-0" data-key="vm_s_desc">Gắn liền lợi ích doanh nghiệp với lợi ích cộng đồng, tích cực thực hiện các hoạt động đóng góp cho xã hội.</p>
                             </div>
 
                         </div>
@@ -437,7 +436,7 @@ import Layout from '../layouts/layout.astro';
             
             <div class="flex items-center gap-3 mb-12 pb-4 border-b-2 border-[#16315E]">
                 <img src="/icon-hamburger-blue.png" alt="Icon" class="w-8 h-8 object-contain">
-                <h2 class="text-xl sm:text-3xl md:text-4xl font-extrabold text-[#16315E] m-0 uppercase tracking-wide break-words">
+                <h2 class="text-xl sm:text-3xl md:text-4xl font-extrabold text-[#16315E] m-0 uppercase tracking-wide break-words" data-key="lead_title">
                     THÔNG ĐIỆP TỪ BAN LÃNH ĐẠO
                 </h2>
             </div>
@@ -448,23 +447,23 @@ import Layout from '../layouts/layout.astro';
                     <div class="relative rounded-xl overflow-hidden shadow-2xl border-4 border-[#F4F6FA] w-full">
                         <img src="/img/anhSoDoNhanSu001.webp" alt="Ban Lãnh Đạo VIKI" class="w-full h-[420px] object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-[#16315E]/90 via-transparent to-transparent flex flex-col justify-end p-6 text-white">
-                            <h3 class="text-xl font-bold uppercase m-0">BAN LÃNH ĐẠO VIKI</h3>
-                            <p class="text-xs text-[#5FD1C1] font-medium m-0">Công Ty Cổ Phần Xây Dựng VIKI</p>
+                            <h3 class="text-xl font-bold uppercase m-0" data-key="lead_subtitle">BAN LÃNH ĐẠO VIKI</h3>
+                            <p class="text-xs text-[#5FD1C1] font-medium m-0" data-key="lead_company">Công Ty Cổ Phần Xây Dựng VIKI</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="lg:col-span-7 space-y-4 text-[#5A6E85] text-sm sm:text-base leading-relaxed text-justify w-full">
-                    <p class="italic text-[#16315E] font-semibold text-lg border-l-4 border-[#264ABC] pl-4 py-1">
+                    <p class="italic text-[#16315E] font-semibold text-lg border-l-4 border-[#264ABC] pl-4 py-1" data-key="lead_quote">
                         "Trong thời gian tới, Việt Nam tiếp tục hội nhập mạnh mẽ với thế giới, mang đến vô vàn cơ hội lẫn thách thức phía trước..."
                     </p>
-                    <p>
+                    <p data-key="lead_p1">
                         Công ty Cổ phần Xây dựng VIKI hoạt động chính trong lĩnh vực xây dựng dân dụng & công nghiệp, thiết kế các công trình công nghiệp và lập dự án đầu tư. Chúng tôi không ngừng lắng nghe, nghiêm túc phấn đấu nâng cao chất lượng phục vụ và cải tiến quy trình quản lý vì sự hài lòng của khách hàng.
                     </p>
-                    <p>
+                    <p data-key="lead_p2">
                         Tuy là doanh nghiệp trẻ, VIKI đang từng bước khẳng định vị thế nhờ nền tảng phát triển bền vững và tuân thủ tuyệt đối các chuẩn mực kinh doanh. Đội ngũ cán bộ nhân viên luôn tu dưỡng và ý thức rõ sứ mệnh phục vụ cộng đồng. Phương châm <strong class="text-[#16315E]">"Uy tín – Chất lượng – Sức trẻ"</strong> luôn là kim chỉ nam cho mọi hoạt động thi công thực tế.
                     </p>
-                    <p class="font-medium text-[#16315E] pt-2">
+                    <p class="font-medium text-[#16315E] pt-2" data-key="lead_p3">
                         Chúng tôi hy vọng sẽ tiếp tục nhận được sự tin tưởng và đồng hành của Quý đối tác, Khách hàng trên con đường mang tên Thành Công.
                     </p>
                 </div>
@@ -480,7 +479,7 @@ import Layout from '../layouts/layout.astro';
             
             <div class="flex items-center gap-3 mb-12 pb-4 border-b-2 border-[#16315E]">
                 <img src="/icon-hamburger-blue.png" alt="Icon" class="w-8 h-8 object-contain">
-                <h2 class="text-xl sm:text-3xl md:text-4xl font-extrabold text-[#16315E] m-0 uppercase tracking-wide break-words">
+                <h2 class="text-xl sm:text-3xl md:text-4xl font-extrabold text-[#16315E] m-0 uppercase tracking-wide break-words" data-key="ms_title">
                     HÀNH TRÌNH PHÁT TRIỂN
                 </h2>
             </div>
@@ -488,25 +487,25 @@ import Layout from '../layouts/layout.astro';
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
                 
                 <div class="bg-white p-8 border border-[#E6EAF2] shadow-sm relative">
-                    <div class="text-xs font-bold text-[#264ABC] uppercase tracking-widest mb-1">01/06/2020</div>
-                    <h3 class="text-2xl font-extrabold text-[#16315E] mb-3">CỘT MỐC RA ĐỜI</h3>
-                    <p class="text-sm text-[#5A6E85] leading-relaxed text-justify m-0">
+                    <div class="text-xs font-bold text-[#264ABC] uppercase tracking-widest mb-1" data-key="ms1_date">01/06/2020</div>
+                    <h3 class="text-2xl font-extrabold text-[#16315E] mb-3" data-key="ms1_title">CỘT MỐC RA ĐỜI</h3>
+                    <p class="text-sm text-[#5A6E85] leading-relaxed text-justify m-0" data-key="ms1_desc">
                         VIKI Construction được thành lập trong hoàn cảnh nền kinh tế đối mặt với nhiều biến động. Với sứ mệnh biến thách thức thành cơ hội, công ty ra đời nhằm cống hiến sức trẻ cho sự phát triển đất nước.
                     </p>
                 </div>
 
                 <div class="bg-white p-8 border border-[#E6EAF2] shadow-sm relative">
-                    <div class="text-xs font-bold text-[#264ABC] uppercase tracking-widest mb-1">2021 — 2024</div>
-                    <h3 class="text-2xl font-extrabold text-[#16315E] mb-3">TẠO DỰNG NIỀM TIN</h3>
-                    <p class="text-sm text-[#5A6E85] leading-relaxed text-justify m-0">
+                    <div class="text-xs font-bold text-[#264ABC] uppercase tracking-widest mb-1" data-key="ms2_date">2021 — 2024</div>
+                    <h3 class="text-2xl font-extrabold text-[#16315E] mb-3" data-key="ms2_title">TẠO DỰNG NIỀM TIN</h3>
+                    <p class="text-sm text-[#5A6E85] leading-relaxed text-justify m-0" data-key="ms2_desc">
                         Thi công hoàn thành hàng loạt dự án quy mô lớn cho các tập đoàn toàn cầu như KSP Hải Dương, AAC Vĩnh Phúc, AAC Bắc Giang, Trang trại Vĩnh Tân Bình Dương và CP Bình Định.
                     </p>
                 </div>
 
                 <div class="bg-white p-8 border border-[#E6EAF2] shadow-sm relative">
-                    <div class="text-xs font-bold text-[#264ABC] uppercase tracking-widest mb-1">2025 — 2026+</div>
-                    <h3 class="text-2xl font-extrabold text-[#16315E] mb-3">BỨC PHÁ VƯƠN XA</h3>
-                    <p class="text-sm text-[#5A6E85] leading-relaxed text-justify m-0">
+                    <div class="text-xs font-bold text-[#264ABC] uppercase tracking-widest mb-1" data-key="ms3_date">2025 — 2026+</div>
+                    <h3 class="text-2xl font-extrabold text-[#16315E] mb-3" data-key="ms3_title">BỨC PHÁ VƯƠN XA</h3>
+                    <p class="text-sm text-[#5A6E85] leading-relaxed text-justify m-0" data-key="ms3_desc">
                         Trúng thầu thi công siêu dự án Nhà máy & Kho BFF (242,5 tỷ VNĐ) và các gói thầu công nghiệp công nghệ cao, hiện thực hóa mục tiêu tiến vào TOP 100 doanh nghiệp xây dựng Việt Nam.
                     </p>
                 </div>
@@ -522,7 +521,7 @@ import Layout from '../layouts/layout.astro';
             
             <div class="flex items-center gap-3 mb-12 pb-4 border-b-2 border-[#16315E]">
                 <img src="/icon-hamburger-blue.png" alt="Icon" class="w-8 h-8 object-contain">
-                <h2 class="text-xl sm:text-3xl md:text-4xl font-extrabold text-[#16315E] m-0 uppercase tracking-wide break-words">
+                <h2 class="text-xl sm:text-3xl md:text-4xl font-extrabold text-[#16315E] m-0 uppercase tracking-wide break-words" data-key="team_cap_title">
                     ĐỘI NGŨ VIKI & NĂNG LỰC CON NGƯỜI
                 </h2>
             </div>
@@ -531,24 +530,24 @@ import Layout from '../layouts/layout.astro';
                 
                 <div class="bg-white p-8 border border-[#E6EAF2] shadow-sm">
                     <div class="w-12 h-12 bg-[#16315E] text-white flex items-center justify-center font-bold text-xl mb-4">1</div>
-                    <h3 class="text-xl font-bold text-[#16315E] uppercase mb-2">Kinh Nghiệm Quản Lý</h3>
-                    <p class="text-sm text-[#5A6E85] leading-relaxed text-justify m-0">
+                    <h3 class="text-xl font-bold text-[#16315E] uppercase mb-2" data-key="team_cap1_title">Kinh Nghiệm Quản Lý</h3>
+                    <p class="text-sm text-[#5A6E85] leading-relaxed text-justify m-0" data-key="team_cap1_desc">
                         Đội ngũ quản lý giàu kinh nghiệm chuyên môn trong công tác vận hành và thi công. Các cá nhân đã trải qua hàng loạt công trình lớn nhỏ đa dạng quy mô.
                     </p>
                 </div>
 
                 <div class="bg-white p-8 border border-[#E6EAF2] shadow-sm">
                     <div class="w-12 h-12 bg-[#264ABC] text-white flex items-center justify-center font-bold text-xl mb-4">2</div>
-                    <h3 class="text-xl font-bold text-[#16315E] uppercase mb-2">Chất Lượng Đào Tạo</h3>
-                    <p class="text-sm text-[#5A6E85] leading-relaxed text-justify m-0">
+                    <h3 class="text-xl font-bold text-[#16315E] uppercase mb-2" data-key="team_cap2_title">Chất Lượng Đào Tạo</h3>
+                    <p class="text-sm text-[#5A6E85] leading-relaxed text-justify m-0" data-key="team_cap2_desc">
                         Nguồn nhân lực trẻ được đào tạo bài bản từ lý thuyết đến thực hành công trường. Mỗi thành viên luôn nâng cao tay nghề để tích cực đóng góp cho doanh nghiệp.
                     </p>
                 </div>
 
                 <div class="bg-white p-8 border border-[#E6EAF2] shadow-sm">
                     <div class="w-12 h-12 bg-[#38B6FF] text-white flex items-center justify-center font-bold text-xl mb-4">3</div>
-                    <h3 class="text-xl font-bold text-[#16315E] uppercase mb-2">Trình Độ Chuyên Môn</h3>
-                    <p class="text-sm text-[#5A6E85] leading-relaxed text-justify m-0">
+                    <h3 class="text-xl font-bold text-[#16315E] uppercase mb-2" data-key="team_cap3_title">Trình Độ Chuyên Môn</h3>
+                    <p class="text-sm text-[#5A6E85] leading-relaxed text-justify m-0" data-key="team_cap3_desc">
                         VIKI sở hữu đội ngũ đông đảo kiến trúc sư, kỹ sư được biên chế chính thức, làm việc thường trực tại văn phòng và trực tiếp chỉ đạo tại các công trình.
                     </p>
                 </div>

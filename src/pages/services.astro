@@ -11,14 +11,14 @@ import Layout from '../layouts/layout.astro';
             
             <!-- Hero Main Headline -->
             <div class="max-w-4xl w-full">
-                <div class="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-[#5FD1C1] mb-3">VIKI BUSINESS SECTORS</div>
+                <div class="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-[#5FD1C1] mb-3" data-key="services_hero_tag">VIKI BUSINESS SECTORS</div>
                 
                 <h1 class="text-2xl sm:text-4xl lg:text-[59px] font-extrabold uppercase tracking-tight leading-[1.15] mb-6 break-words">
-                    <span class="block mb-2">LĨNH VỰC HOẠT ĐỘNG</span>
-                    <span class="text-[#38B6FF] block">Chuyên Nghiệp & Bền Vững</span>
+                    <span class="block mb-2" data-key="services_hero_title1">LĨNH VỰC HOẠT ĐỘNG</span>
+                    <span class="text-[#38B6FF] block" data-key="services_hero_title2">Chuyên Nghiệp & Bền Vững</span>
                 </h1>
                 
-                <p class="text-sm sm:text-base lg:text-lg text-slate-200 leading-relaxed font-light text-justify max-w-3xl">
+                <p class="text-sm sm:text-base lg:text-lg text-slate-200 leading-relaxed font-light text-justify max-w-3xl" data-key="services_hero_desc">
                     Công ty Cổ phần Xây dựng VIKI cung cấp các giải pháp toàn diện trong lĩnh vực xây dựng dân dụng, công nghiệp, tư vấn thiết kế và phát triển trang trại chăn nuôi công nghệ cao.
                 </p>
             </div>
@@ -34,20 +34,20 @@ import Layout from '../layouts/layout.astro';
         <div class="container mx-auto px-4">
             <div class="flex items-center gap-3 mb-12 pb-4 border-b-2 border-[#16315E]">
                 <img src="/icon-hamburger-blue.png" alt="Icon" class="w-8 h-8 object-contain">
-                <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#16315E] m-0 uppercase tracking-wide">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#16315E] m-0 uppercase tracking-wide" data-key="sec1_title">
                     CHÚNG TÔI LÀM GÌ &amp; THI CÔNG
                 </h2>
             </div> 
 
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
                 <div class="lg:col-span-7 space-y-4 text-[#5A6E85] text-sm sm:text-base leading-relaxed text-justify">
-                    <p class="text-lg font-semibold text-[#16315E] border-l-4 border-[#ED2424] pl-4 py-1">
+                    <p class="text-lg font-semibold text-[#16315E] border-l-4 border-[#ED2424] pl-4 py-1" data-key="sec1_quote">
                         Khởi nguồn cho những hành trình mới với chất lượng thi công đạt chuẩn quốc tế.
                     </p>
-                    <p>
+                    <p data-key="sec1_p1">
                         VIKI hoạt động mạnh mẽ trong các lĩnh vực trọng điểm bao gồm xây dựng nhà xưởng công nghiệp quy mô lớn, hạ tầng khu chế xuất, các công trình dân dụng kỹ thuật cao và hệ thống trang trại chăn nuôi khép kín tiêu chuẩn hiện đại.
                     </p>
-                    <p>
+                    <p data-key="sec1_p2">
                         Với đội ngũ kỹ sư giàu kinh nghiệm và hệ thống máy móc thiết bị đồng bộ, chúng tôi cam kết mang lại sự tối ưu tuyệt đối về tiến độ, chất lượng và chi phí cho mọi chủ đầu tư trong và ngoài nước.
                     </p>
                 </div>
@@ -55,8 +55,8 @@ import Layout from '../layouts/layout.astro';
                     <div class="relative rounded-xl overflow-hidden shadow-xl border-4 border-[#F4F6FA]">
                         <img src="/img/doiNguVikiHome001.webp" alt="Đội ngũ kỹ sư VIKI" class="w-full h-[320px] object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-[#16315E]/80 via-transparent to-transparent flex flex-col justify-end p-6 text-white">
-                            <h3 class="text-lg font-bold uppercase m-0">NĂNG LỰC THỰC THI THỰC TẾ</h3>
-                            <p class="text-xs text-[#5FD1C1] m-0">Đội ngũ kỹ sư trực tiếp khảo sát và thi công công trình</p>
+                            <h3 class="text-lg font-bold uppercase m-0" data-key="sec1_card_title">NĂNG LỰC THỰC THI THỰC TẾ</h3>
+                            <p class="text-xs text-[#5FD1C1] m-0" data-key="sec1_card_desc">Đội ngũ kỹ sư trực tiếp khảo sát và thi công công trình</p>
                         </div>
                     </div>
                 </div>
@@ -70,7 +70,7 @@ import Layout from '../layouts/layout.astro';
         <div class="container mx-auto px-4">
             <div class="flex items-center gap-3 mb-12 pb-4 border-b-2 border-[#16315E]">
                 <img src="/icon-hamburger-blue.png" alt="Icon" class="w-8 h-8 object-contain">
-                <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#16315E] m-0 uppercase tracking-wide">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#16315E] m-0 uppercase tracking-wide" data-key="sec2_title">
                     NGÀNH NGHỀ KINH DOANH &amp; LĨNH VỰC HOẠT ĐỘNG
                 </h2>
             </div> 
@@ -84,9 +84,9 @@ import Layout from '../layouts/layout.astro';
                     </div>
                     <div class="p-6 flex-1 flex flex-col justify-between">
                         <div>
-                            <div class="text-xs font-bold text-[#ED2424] uppercase mb-1">MẢNG CÔNG NGHIỆP</div>
-                            <h3 class="text-xl font-bold uppercase text-[#16315E] mb-3">Xây Dựng Dân Dụng & Công Nghiệp</h3>
-                            <p class="text-sm text-[#5A6E85] leading-relaxed text-justify mb-4">
+                            <div class="text-xs font-bold text-[#ED2424] uppercase mb-1" data-key="ind_tag">MẢNG CÔNG NGHIỆP</div>
+                            <h3 class="text-xl font-bold uppercase text-[#16315E] mb-3" data-key="ind_name">Xây Dựng Dân Dụng & Công Nghiệp</h3>
+                            <p class="text-sm text-[#5A6E85] leading-relaxed text-justify mb-4" data-key="ind_desc">
                                 Chuyên thiết kế và thi công nhà xưởng, kho bãi, nhà máy sản xuất công nghệ cao, tòa nhà văn phòng và các công trình hạ tầng kỹ thuật đạt tiêu chuẩn quốc tế.
                             </p>
                         </div>
@@ -104,9 +104,9 @@ import Layout from '../layouts/layout.astro';
                     </div>
                     <div class="p-6 flex-1 flex flex-col justify-between">
                         <div>
-                            <div class="text-xs font-bold text-[#38B6FF] uppercase mb-1">TƯ VẤN & THIẾT KẾ</div>
-                            <h3 class="text-xl font-bold uppercase text-[#16315E] mb-3">Tư Vấn Thiết Kế Xây Dựng</h3>
-                            <p class="text-sm text-[#5A6E85] leading-relaxed text-justify mb-4">
+                            <div class="text-xs font-bold text-[#38B6FF] uppercase mb-1" data-key="design_tag">TƯ VẤN & THIẾT KẾ</div>
+                            <h3 class="text-xl font-bold uppercase text-[#16315E] mb-3" data-key="design_name">Tư Vấn Thiết Kế Xây Dựng</h3>
+                            <p class="text-sm text-[#5A6E85] leading-relaxed text-justify mb-4" data-key="design_desc">
                                 Cung cấp giải pháp tư vấn lập dự án đầu tư, thiết kế kiến trúc, kết cấu và hệ thống cơ điện (MEP) tối ưu hóa chi phí và công năng vận hành cho doanh nghiệp.
                             </p>
                         </div>
@@ -124,9 +124,9 @@ import Layout from '../layouts/layout.astro';
                     </div>
                     <div class="p-6 flex-1 flex flex-col justify-between">
                         <div>
-                            <div class="text-xs font-bold text-[#40C08D] uppercase mb-1">MẢNG CHĂN NUÔI</div>
-                            <h3 class="text-xl font-bold uppercase text-[#16315E] mb-3">Trang Trại Chăn Nuôi VIKI</h3>
-                            <p class="text-sm text-[#5A6E85] leading-relaxed text-justify mb-4">
+                            <div class="text-xs font-bold text-[#40C08D] uppercase mb-1" data-key="farm_tag">MẢNG CHĂN NUÔI</div>
+                            <h3 class="text-xl font-bold uppercase text-[#16315E] mb-3" data-key="farm_name">Trang Trại Chăn Nuôi VIKI</h3>
+                            <p class="text-sm text-[#5A6E85] leading-relaxed text-justify mb-4" data-key="farm_desc">
                                 Đầu tư và thi công các dự án trang trại chăn nuôi quy mô lớn, góp phần thúc đẩy tiến trình công nghiệp hóa trong nông nghiệp và phát triển kinh tế địa phương.
                             </p>
                         </div>
@@ -147,7 +147,7 @@ import Layout from '../layouts/layout.astro';
         <div class="container mx-auto px-4">
             <div class="flex items-center gap-3 mb-12 pb-4 border-b-2 border-[#16315E]">
                 <img src="/icon-hamburger-blue.png" alt="Icon" class="w-8 h-8 object-contain">
-                <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#16315E] m-0 uppercase tracking-wide">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#16315E] m-0 uppercase tracking-wide" data-key="sec3_title">
                     ĐỊNH HƯỚNG PHÁT TRIỂN DỊCH VỤ
                 </h2>
             </div> 
@@ -156,32 +156,32 @@ import Layout from '../layouts/layout.astro';
                 
                 <div class="p-6 bg-[#FAF9F9] border-t-4 border-[#214080] shadow-sm">
                     <div class="text-3xl font-black text-[#214080] mb-3">1</div>
-                    <h3 class="text-lg font-bold uppercase text-[#16315E] mb-2">GIẢI PHÁP TOÀN DIỆN</h3>
-                    <p class="text-xs text-[#5A6E85] leading-relaxed text-justify m-0">
+                    <h3 class="text-lg font-bold uppercase text-[#16315E] mb-2" data-key="dir_1_title">GIẢI PHÁP TOÀN DIỆN</h3>
+                    <p class="text-xs text-[#5A6E85] leading-relaxed text-justify m-0" data-key="dir_1_desc">
                         Cung cấp dịch vụ trọn gói từ khâu lập dự án, xin phép, thiết kế đến thi công hoàn thiện bàn giao đưa vào sử dụng.
                     </p>
                 </div>
 
                 <div class="p-6 bg-[#FAF9F9] border-t-4 border-[#264ABC] shadow-sm">
                     <div class="text-3xl font-black text-[#264ABC] mb-3">2</div>
-                    <h3 class="text-lg font-bold uppercase text-[#16315E] mb-2">ĐA DẠNG HỆ SINH THÁI</h3>
-                    <p class="text-xs text-[#5A6E85] leading-relaxed text-justify m-0">
+                    <h3 class="text-lg font-bold uppercase text-[#16315E] mb-2" data-key="dir_2_title">ĐA DẠNG HỆ SINH THÁI</h3>
+                    <p class="text-xs text-[#5A6E85] leading-relaxed text-justify m-0" data-key="dir_2_desc">
                         Mở rộng danh mục dịch vụ phục vụ đa ngành từ nhà xưởng công nghiệp nhẹ đến các tổ hợp kho vận và trang trại lớn.
                     </p>
                 </div>
 
                 <div class="p-6 bg-[#FAF9F9] border-t-4 border-[#38B6FF] shadow-sm">
                     <div class="text-3xl font-black text-[#38B6FF] mb-3">3</div>
-                    <h3 class="text-lg font-bold uppercase text-[#16315E] mb-2">ĐỀ CAO SỰ HÀI LÒNG</h3>
-                    <p class="text-xs text-[#5A6E85] leading-relaxed text-justify m-0">
+                    <h3 class="text-lg font-bold uppercase text-[#16315E] mb-2" data-key="dir_3_title">ĐỀ CAO SỰ HÀI LÒNG</h3>
+                    <p class="text-xs text-[#5A6E85] leading-relaxed text-justify m-0" data-key="dir_3_desc">
                         Lấy sự hài lòng và tín nhiệm của khách hàng làm thước đo cao nhất cho mọi thành công của tập thể VIKI.
                     </p>
                 </div>
 
                 <div class="p-6 bg-[#FAF9F9] border-t-4 border-[#ED2424] shadow-sm">
                     <div class="text-3xl font-black text-[#ED2424] mb-3">4</div>
-                    <h3 class="text-lg font-bold uppercase text-[#16315E] mb-2">GIÁ TRỊ GIA TĂNG</h3>
-                    <p class="text-xs text-[#5A6E85] leading-relaxed text-justify m-0">
+                    <h3 class="text-lg font-bold uppercase text-[#16315E] mb-2" data-key="dir_4_title">GIÁ TRỊ GIA TĂNG</h3>
+                    <p class="text-xs text-[#5A6E85] leading-relaxed text-justify m-0" data-key="dir_4_desc">
                         Không ngừng gia tăng các giá trị về mỹ thuật, độ bền và tính kinh tế vượt trội cho từng công trình dự án.
                     </p>
                 </div>
@@ -196,12 +196,12 @@ import Layout from '../layouts/layout.astro';
         <div class="container mx-auto px-4">
             <div class="flex items-center gap-3 mb-12 pb-4 border-b-2 border-[#FAF9F9]">
                 <img src="/icon-hamburger-blue.png" alt="Icon" class="w-8 h-8 object-contain">
-                <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#FAF9F9] m-0 uppercase tracking-wide">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#FAF9F9] m-0 uppercase tracking-wide" data-key="sec4_title">
                     AN TOÀN &amp; CHẤT LƯỢNG
                 </h2>
             </div> 
 
-            <p class="text-slate-200 text-sm sm:text-base max-w-3xl mb-12 leading-relaxed text-justify">
+            <p class="text-slate-200 text-sm sm:text-base max-w-3xl mb-12 leading-relaxed text-justify" data-key="sec4_desc">
                 Tại VIKI, an toàn và chất lượng là hai yếu tố hàng đầu không thể thỏa hiệp. Chúng tôi áp dụng nghiêm ngặt các quy trình kiểm định an toàn lao động và tiêu chuẩn kỹ thuật xây dựng tiên tiến nhất vào từng hạng mục thi công thực tế.
             </p>
 
@@ -231,12 +231,12 @@ import Layout from '../layouts/layout.astro';
         <div class="container mx-auto px-4">
             <div class="flex items-center gap-3 mb-12 pb-4 border-b-2 border-[#16315E]">
                 <img src="/icon-hamburger-blue.png" alt="Icon" class="w-8 h-8 object-contain">
-                <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#16315E] m-0 uppercase tracking-wide">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#16315E] m-0 uppercase tracking-wide" data-key="sec5_title">
                     THIẾT BỊ THI CÔNG
                 </h2>
             </div>
 
-            <p class="text-[#5A6E85] text-sm sm:text-base max-w-3xl mb-12 leading-relaxed text-justify">
+            <p class="text-[#5A6E85] text-sm sm:text-base max-w-3xl mb-12 leading-relaxed text-justify" data-key="sec5_desc">
                 Với hệ thống thiết bị thi công hiện đại, đồng bộ và luôn được bảo dưỡng định kỳ, VIKI tự chủ hoàn toàn tiến độ triển khai các dự án quy mô lớn trên toàn quốc.
             </p>
 
@@ -247,8 +247,8 @@ import Layout from '../layouts/layout.astro';
                         <img src="/img/thietBiThiCong001.png" alt="Cẩu tháp thi công" class="w-full h-full object-cover hover:scale-105 transition duration-300">
                     </div>
                     <div class="p-6">
-                        <h3 class="text-lg font-bold uppercase text-[#16315E] mb-2">Hệ Thống Cẩu Tháp</h3>
-                        <p class="text-xs text-[#5A6E85] leading-relaxed m-0">
+                        <h3 class="text-lg font-bold uppercase text-[#16315E] mb-2" data-key="eq_1_title">Hệ Thống Cẩu Tháp</h3>
+                        <p class="text-xs text-[#5A6E85] leading-relaxed m-0" data-key="eq_1_desc">
                             Trang bị các dòng cẩu tháp công suất lớn đáp ứng hoạt động nâng hạ vật liệu xây dựng ở độ cao phức tạp.
                         </p>
                     </div>
@@ -259,8 +259,8 @@ import Layout from '../layouts/layout.astro';
                         <img src="/img/thietBiThiCong002.png" alt="Cẩu tháp Poma MR 438" class="w-full h-full object-cover hover:scale-105 transition duration-300">
                     </div>
                     <div class="p-6">
-                        <h3 class="text-lg font-bold uppercase text-[#16315E] mb-2">Cẩu Tháp Poma MR 438 (24T)</h3>
-                        <p class="text-xs text-[#5A6E85] leading-relaxed m-0">
+                        <h3 class="text-lg font-bold uppercase text-[#16315E] mb-2" data-key="eq_2_title">Cẩu Tháp Poma MR 438 (24T)</h3>
+                        <p class="text-xs text-[#5A6E85] leading-relaxed m-0" data-key="eq_2_desc">
                             Thiết bị chuyên dụng tải trọng cao, vận hành ổn định trong các điều kiện thi công công nghiệp nặng.
                         </p>
                     </div>
@@ -271,8 +271,8 @@ import Layout from '../layouts/layout.astro';
                         <img src="/img/thietBiThiCong003.png" alt="Vận thăng HOIST" class="w-full h-full object-cover hover:scale-105 transition duration-300">
                     </div>
                     <div class="p-6">
-                        <h3 class="text-lg font-bold uppercase text-[#16315E] mb-2">Vận Thăng (HOIST)</h3>
-                        <p class="text-xs text-[#5A6E85] leading-relaxed m-0">
+                        <h3 class="text-lg font-bold uppercase text-[#16315E] mb-2" data-key="eq_3_title">Vận Thăng (HOIST)</h3>
+                        <p class="text-xs text-[#5A6E85] leading-relaxed m-0" data-key="eq_3_desc">
                             Hệ thống vận thăng chở vật tư và nhân sự an toàn, linh hoạt trên các tầng cao của công trình.
                         </p>
                     </div>

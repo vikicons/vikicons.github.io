@@ -47,9 +47,9 @@ const { title = "VIKI - Công Ty Cổ Phần Xây Dựng  | Xây Giá Trị - D�
                     <button id="langDropdownBtn" class="flex items-center justify-between gap-3 bg-transparent border border-white/30 text-white px-3 py-1.5 text-xs font-semibold cursor-pointer hover:border-[#5FD1C1] transition w-36">
                         <span class="flex items-center gap-2">
                         <span class="shrink-0 inline-flex items-center">
-                            <img src="/icons/icons8-language-94.png" alt="Email Icon" class="w-4 h-4 object-contain">
+                            <img src="/icons/icons8-language-94.png" alt="Lang Icon" class="w-4 h-4 object-contain">
                         </span>
-                            <span id="currentLangText" class="font-bold">Tiếng Việt</span>
+                            <span id="currentLangText" class="font-bold" data-key="current_lang">Tiếng Việt</span>
                         </span>
                         <span>▼</span>
                     </button>
@@ -59,7 +59,7 @@ const { title = "VIKI - Công Ty Cổ Phần Xây Dựng  | Xây Giá Trị - D�
                             🇻🇳 Tiếng Việt
                         </button>
                         <button class="w-full text-left px-3 py-2 text-xs text-slate-300 font-normal hover:bg-white/10 transition lang-option cursor-pointer border-none bg-transparent" data-lang="en">
-                            en English
+                            🇬🇧 English
                         </button>
                     </div>
                 </div>
@@ -69,6 +69,7 @@ const { title = "VIKI - Công Ty Cổ Phần Xây Dựng  | Xây Giá Trị - D�
                         type="text" 
                         id="globalSearchInput" 
                         placeholder="Tìm kiếm..." 
+                        data-key="search_placeholder"
                         class="bg-transparent border border-white/30 text-white placeholder-slate-400 text-xs px-3 py-1.5 pr-8 outline-none focus:border-[#5FD1C1] w-48 transition"
                     />
                     <span class="absolute right-2 text-slate-400 text-xs">🔍</span>
@@ -89,7 +90,7 @@ const { title = "VIKI - Công Ty Cổ Phần Xây Dựng  | Xây Giá Trị - D�
             <!-- Desktop Navigation -->
             <nav class="hidden lg:flex items-center gap-6 list-none m-0 p-0 h-full">
                 
-                <!-- 1. Trang chủ (Đổi thành Icon Home) -->
+                <!-- 1. Trang chủ -->
                 <div class="relative h-full flex items-center">
                     <a href="/" data-path="/" class="nav-item bg-white text-[#214080] font-bold text-base py-2 px-3 transition flex items-center justify-center h-full group" title="Trang chủ">
                         <img src="/icons/icons8-home-50.png" alt="Home Icon" class="w-5 h-5 object-contain [filter:brightness(0)_saturate(100%)_invert(21%)_sepia(47%)_saturate(2541%)_hue-rotate(203deg)_brightness(94%)_contrast(98%)] transition-transform duration-300 group-hover:scale-110" />
@@ -98,49 +99,49 @@ const { title = "VIKI - Công Ty Cổ Phần Xây Dựng  | Xây Giá Trị - D�
 
                 <!-- 2. Về VIKI -->
                 <div class="relative group h-full flex items-center">
-                    <a href="/about" data-path="/about" class="nav-item flex items-center gap-1.5 text-[#214080] font-bold text-base uppercase tracking-wide transition h-full">
-                        Về Viki
+                    <a href="/about" data-path="/about" data-key="nav_about" class="nav-item flex items-center gap-1.5 text-[#214080] font-bold text-base uppercase tracking-wide transition h-full no-underline">
+                        Về chúng tôi
                     </a>
                 </div>
 
                 <!-- 3. Lĩnh vực hoạt động -->
                 <div class="relative group h-full flex items-center">
-                    <a href="/services" data-path="/services" class="nav-item flex items-center gap-1.5 text-[#214080] font-bold text-base uppercase tracking-wide transition h-full">
+                    <a href="/services" data-path="/services" data-key="nav_services" class="nav-item flex items-center gap-1.5 text-[#214080] font-bold text-base uppercase tracking-wide transition h-full no-underline">
                         Lĩnh vực hoạt động
                     </a>
                 </div>
 
                 <!-- 4. Dự án -->
                 <div class="relative group h-full flex items-center">
-                    <a href="/projects" data-path="/projects" class="nav-item flex items-center gap-1.5 text-[#214080] font-bold text-base uppercase tracking-wide transition h-full">
+                    <a href="/projects" data-path="/projects" data-key="nav_projects" class="nav-item flex items-center gap-1.5 text-[#214080] font-bold text-base uppercase tracking-wide transition h-full no-underline">
                         Dự án
                     </a>
                 </div>
 
                 <!-- 5. Năng lực -->
                 <div class="relative group h-full flex items-center">
-                    <a href="/capabilities" data-path="/capabilities" class="nav-item flex items-center gap-1.5 text-[#214080] font-bold text-base uppercase tracking-wide transition h-full">
+                    <a href="/capabilities" data-path="/capabilities" data-key="nav_capabilities" class="nav-item flex items-center gap-1.5 text-[#214080] font-bold text-base uppercase tracking-wide transition h-full no-underline">
                         Năng lực
                     </a>
                 </div>
 
                 <!-- 6. Tin tức -->
                 <div class="relative h-full flex items-center">
-                    <a href="/news" data-path="/news" class="nav-item text-[#214080] font-bold text-base py-2 uppercase tracking-wide transition flex items-center h-full">
+                    <a href="/news" data-path="/news" data-key="nav_news" class="nav-item text-[#214080] font-bold text-base py-2 uppercase tracking-wide transition flex items-center h-full no-underline">
                         Tin tức
                     </a>
                 </div>
 
-                <!-- 6. Tin tức -->
+                <!-- 7. Tuyển dụng -->
                 <div class="relative h-full flex items-center">
-                    <a href="/careers-vn" data-path="/careers-vn" class="nav-item text-[#214080] font-bold text-base py-2 uppercase tracking-wide transition flex items-center h-full">
+                    <a href="/careers-vn" data-path="/careers-vn" data-key="nav_careers" class="nav-item text-[#214080] font-bold text-base py-2 uppercase tracking-wide transition flex items-center h-full no-underline">
                         Tuyển dụng
                     </a>
                 </div>
 
-                <!-- 7. Liên hệ -->
+                <!-- 8. Liên hệ -->
                 <div class="relative h-full flex items-center">
-                    <a href="/contact" data-path="/contact" class="nav-item text-[#214080] font-bold text-base py-2 uppercase tracking-wide transition flex items-center h-full">
+                    <a href="/contact" data-path="/contact" data-key="nav_contact" class="nav-item text-[#214080] font-bold text-base py-2 uppercase tracking-wide transition flex items-center h-full no-underline">
                         Liên hệ
                     </a>
                 </div>
@@ -148,7 +149,7 @@ const { title = "VIKI - Công Ty Cổ Phần Xây Dựng  | Xây Giá Trị - D�
 
             <!-- Nút Báo Giá Dự Án -->
             <div class="flex items-center gap-4">
-                <a href="/bao-gia" class="hidden sm:inline-flex bg-red-600 hover:bg-[#264ABC] text-white px-2 py-3 text-base font-bold uppercase tracking-wider items-center gap-2 transition shadow-md">
+                <a href="/bao-gia" data-key="nav_quote_btn" class="hidden sm:inline-flex bg-red-600 hover:bg-[#264ABC] text-white px-4 py-3 text-base font-bold uppercase tracking-wider items-center gap-2 transition shadow-md no-underline">
                     Báo Giá
                 </a>
                 <button class="lg:hidden text-[#214080] text-2xl bg-transparent border-none cursor-pointer" id="mobileToggleBtn" aria-label="Toggle Menu">☰</button>
@@ -157,15 +158,15 @@ const { title = "VIKI - Công Ty Cổ Phần Xây Dựng  | Xây Giá Trị - D�
 
         <!-- Mobile Drawer Navigation -->
         <div id="mobileMenu" class="hidden lg:hidden absolute top-full left-0 right-0 bg-white border-b border-[#E6EAF2] p-6 shadow-xl flex-col gap-4 max-h-[80vh] overflow-y-auto z-[9999]">
-            <a href="/" class="block font-semibold py-2 text-base text-[#214080] uppercase border-b border-[#E6EAF2]">Trang chủ</a>
-            <a href="/about" class="block font-semibold py-2 text-base text-[#214080] uppercase border-b border-[#E6EAF2]">Về VIKI</a>
-            <a href="/services" class="block font-semibold py-2 text-base text-[#214080] uppercase border-b border-[#E6EAF2]">Lĩnh vực hoạt động</a>
-            <a href="/projects" class="block font-semibold py-2 text-base text-[#214080] uppercase border-b border-[#E6EAF2]">Dự án</a>
-            <a href="/capabilities" class="block font-semibold py-2 text-base text-[#214080] uppercase border-b border-[#E6EAF2]">Năng lực</a>
-            <a href="/news" class="block font-semibold py-2 text-base text-[#214080] uppercase border-b border-[#E6EAF2]">Tin tức</a>
-            <a href="/careers-vn" class="block font-semibold py-2 text-base text-[#214080] uppercase border-b border-[#E6EAF2]">Tuyển dụng</a>
-            <a href="/contact" class="block font-semibold py-2 text-base text-[#214080] uppercase border-b border-[#E6EAF2]">Liên hệ</a>
-            <a href="/bao-gia" class="block text-center bg-red-600 text-white py-3 font-bold uppercase text-base mt-2">Báo Giá Dự Án</a>
+            <a href="/" data-key="nav_home" class="block font-semibold py-2 text-base text-[#214080] uppercase border-b border-[#E6EAF2] no-underline">Trang chủ</a>
+            <a href="/about" data-key="nav_about" class="block font-semibold py-2 text-base text-[#214080] uppercase border-b border-[#E6EAF2] no-underline">Về chúng tôi</a>
+            <a href="/services" data-key="nav_services" class="block font-semibold py-2 text-base text-[#214080] uppercase border-b border-[#E6EAF2] no-underline">Lĩnh vực hoạt động</a>
+            <a href="/projects" data-key="nav_projects" class="block font-semibold py-2 text-base text-[#214080] uppercase border-b border-[#E6EAF2] no-underline">Dự án</a>
+            <a href="/capabilities" data-key="nav_capabilities" class="block font-semibold py-2 text-base text-[#214080] uppercase border-b border-[#E6EAF2] no-underline">Năng lực</a>
+            <a href="/news" data-key="nav_news" class="block font-semibold py-2 text-base text-[#214080] uppercase border-b border-[#E6EAF2] no-underline">Tin tức</a>
+            <a href="/careers-vn" data-key="nav_careers" class="block font-semibold py-2 text-base text-[#214080] uppercase border-b border-[#E6EAF2] no-underline">Tuyển dụng</a>
+            <a href="/contact" data-key="nav_contact" class="block font-semibold py-2 text-base text-[#214080] uppercase border-b border-[#E6EAF2] no-underline">Liên hệ</a>
+            <a href="/bao-gia" data-key="nav_quote" class="block text-center bg-red-600 text-white py-3 font-bold uppercase text-base mt-2 no-underline">Báo Giá</a>
         </div>
     </header>
 
@@ -179,18 +180,15 @@ const { title = "VIKI - Công Ty Cổ Phần Xây Dựng  | Xây Giá Trị - D�
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
                 
-                <!-- Cột 1: Thông tin pháp lý & Nhận diện (Brand & Legal) -->
+                <!-- Cột 1: Thông tin pháp lý & Nhận diện -->
                 <div>
-                    <!-- Badge kính mờ không viền rõ nét cho Logo VIKI -->
-                    <div class="mb-5 inline-block bg-white/[0.08] backdrop-blur-md  rounded-2xl shadow-xl">
+                    <div class="mb-5 inline-block bg-white/[0.08] backdrop-blur-md rounded-2xl shadow-xl">
                         <img src="/logoViki.webp" alt="VIKI Logo" class="h-25 w-auto object-contain">
                     </div>
 
                     <div class="text-sm text-[#FAF9F9]/70 space-y-2.5 leading-relaxed">
-                        <!-- Tên công ty chỉnh thành 16px (text-base) -->
-                        <p class="font-bold text-[#FAF9F9] uppercase text-base tracking-wider">CÔNG TY CỔ PHẦN XÂY DỰNG VIKI</p>
-                        <!-- Các chữ còn lại chỉnh thành 14px (text-sm) -->
-                        <p class="text-sm text-[#FAF9F9]/70">VIKI Construction Corporation</p>
+                        <p class="font-bold text-[#FAF9F9] uppercase text-base tracking-wider" data-key="footer_company_name">CÔNG TY CỔ PHẦN XÂY DỰNG VIKI</p>
+                        <p class="text-sm text-[#FAF9F9]/70" data-key="footer_company_sub">VIKI Construction Corporation</p>
                         
                         <!-- Địa chỉ liên kết tới Google Maps -->
                         <p class="flex items-start gap-2.5 pt-1 text-sm">
@@ -201,7 +199,8 @@ const { title = "VIKI - Công Ty Cổ Phần Xây Dựng  | Xây Giá Trị - D�
                                 <a href="https://maps.google.com/?q=54+Phan+Đăng+Lưu,+phường+Đức+Nhuận,+TP.HCM" 
                                 target="_blank" 
                                 rel="noopener noreferrer" 
-                                class="text-[#FAF9F9]/70 hover:text-[#ED2424] hover:underline transition-colors duration-200 no-underline">
+                                class="text-[#FAF9F9]/70 hover:text-[#ED2424] hover:underline transition-colors duration-200 no-underline"
+                                data-key="footer_address">
                                     Tầng 3 - Tòa Nhà Văn Oanh - Số 54 Phan Đăng Lưu, phường Đức Nhuận, TP.HCM
                                 </a>
                             </span>
@@ -213,8 +212,7 @@ const { title = "VIKI - Công Ty Cổ Phần Xây Dựng  | Xây Giá Trị - D�
                                 <img src="/icons/icons8-office-phone-94.png" alt="Phone Icon" class="w-4 h-4 object-contain">
                             </span>
                             <span>
-                                <a href="tel:0814667501" 
-                                class="text-[#FAF9F9]/70 hover:text-[#ED2424] hover:underline transition-colors duration-200 no-underline">
+                                <a href="tel:0814667501" class="text-[#FAF9F9]/70 hover:text-[#ED2424] hover:underline transition-colors duration-200 no-underline">
                                     0814667501
                                 </a>
                             </span>
@@ -239,10 +237,7 @@ const { title = "VIKI - Công Ty Cổ Phần Xây Dựng  | Xây Giá Trị - D�
                                 <img src="/icons/icons8-asia-94.png" alt="Website Icon" class="w-4 h-4 object-contain">
                             </span>
                             <span>
-                                <a href="https://vikicons.com/" 
-                                target="_blank" 
-                                rel="noopener noreferrer" 
-                                class="text-[#FAF9F9]/70 hover:text-[#ED2424] hover:underline transition-colors duration-200 no-underline">
+                                <a href="https://vikicons.com/" target="_blank" rel="noopener noreferrer" class="text-[#FAF9F9]/70 hover:text-[#ED2424] hover:underline transition-colors duration-200 no-underline">
                                     www.vikicons.com
                                 </a>
                             </span>
@@ -254,48 +249,48 @@ const { title = "VIKI - Công Ty Cổ Phần Xây Dựng  | Xây Giá Trị - D�
                                 <img src="/icons/icons8-company-94.png" alt="Tax Icon" class="w-4 h-4 object-contain">
                             </span>
                             <span>
-                                <span class="text-[#FAF9F9]/70">Mã số thuế: </span>
+                                <span class="text-[#FAF9F9]/70" data-key="footer_mst">Mã số thuế: </span>
                                 <span class="text-[#FAF9F9]/70 font-semibold">0316297300</span>
                             </span>
                         </p>
                     </div>
                 </div>
 
-                <!-- Cột 2: Lĩnh vực hoạt động (Business Sectors) -->
+                <!-- Cột 2: Lĩnh vực hoạt động -->
                 <div>
-                    <h4 class="text-[#FAF9F9] text-base font-bold uppercase tracking-wider mb-5 pb-2 border-b border-white/15">
+                    <h4 class="text-[#FAF9F9] text-base font-bold uppercase tracking-wider mb-5 pb-2 border-b border-white/15" data-key="footer_col2_title">
                         Lĩnh Vực Hoạt Động
                     </h4>
                     <ul class="list-none space-y-2.5 m-0 p-0 text-sm">
-                        <li><a href="/services#civil" class="text-[#FAF9F9]/70 hover:text-[#ED2424] hover:underline transition-colors duration-200 no-underline block">Xây dựng Dân dụng & Công nghiệp</a></li>
-                        <li><a href="/services#industrial" class="text-[#FAF9F9]/70 hover:text-[#ED2424] hover:underline transition-colors duration-200 no-underline block">Mảng Công nghiệp (Nhà máy, KCN, Kết cấu thép)</a></li>
-                        <li><a href="/services#farm" class="text-[#FAF9F9]/70 hover:text-[#ED2424] hover:underline transition-colors duration-200 no-underline block">Mảng Chăn nuôi (Hạ tầng trang trại công nghệ cao)</a></li>
-                        <li><a href="/services#design" class="text-[#FAF9F9]/70 hover:text-[#ED2424] hover:underline transition-colors duration-200 no-underline block">Tư vấn Thiết kế Xây dựng</a></li>
+                        <li><a href="/services#civil" class="text-[#FAF9F9]/70 hover:text-[#ED2424] hover:underline transition-colors duration-200 no-underline block" data-key="footer_s1">Xây dựng Dân dụng & Công nghiệp</a></li>
+                        <li><a href="/services#industrial" class="text-[#FAF9F9]/70 hover:text-[#ED2424] hover:underline transition-colors duration-200 no-underline block" data-key="footer_s2">Mảng Công nghiệp (Nhà máy, KCN, Kết cấu thép)</a></li>
+                        <li><a href="/services#farm" class="text-[#FAF9F9]/70 hover:text-[#ED2424] hover:underline transition-colors duration-200 no-underline block" data-key="footer_s3">Mảng Chăn nuôi (Hạ tầng trang trại công nghệ cao)</a></li>
+                        <li><a href="/services#design" class="text-[#FAF9F9]/70 hover:text-[#ED2424] hover:underline transition-colors duration-200 no-underline block" data-key="footer_s4">Tư vấn Thiết kế Xây dựng</a></li>
                     </ul>
                 </div>
 
-                <!-- Cột 3: Dự án tiêu biểu & Năng lực -->
+                <!-- Cột 3: Dự án & Năng lực -->
                 <div>
-                    <h4 class="text-[#FAF9F9] text-base font-bold uppercase tracking-wider mb-5 pb-2 border-b border-white/15">
+                    <h4 class="text-[#FAF9F9] text-base font-bold uppercase tracking-wider mb-5 pb-2 border-b border-white/15" data-key="footer_col3_title">
                         Dự Án & Năng Lực
                     </h4>
                     <ul class="list-none space-y-2.5 m-0 p-0 text-sm">
-                        <li><a href="/projects/ksp-hai-duong" class="text-[#FAF9F9]/70 hover:text-[#ED2424] hover:underline transition-colors duration-200 no-underline block">Dự án Nhà máy KSP Hải Dương</a></li>
-                        <li><a href="/projects/aac-factory" class="text-[#FAF9F9]/70 hover:text-[#ED2424] hover:underline transition-colors duration-200 no-underline block">Nhà máy linh kiện điện tử AAC (Vĩnh Phúc, Bắc Giang)</a></li>
-                        <li><a href="/projects/cp-binh-dinh" class="text-[#FAF9F9]/70 hover:text-[#ED2424] hover:underline transition-colors duration-200 no-underline block">Nhà máy Giết mổ CP Bình Định</a></li>
-                        <li><a href="/projects/bff-factory" class="text-[#FAF9F9]/70 hover:text-[#ED2424] hover:underline transition-colors duration-200 no-underline block">Nhà máy & Kho BFF (TP.HCM)</a></li>
+                        <li><a href="/projects/ksp-hai-duong" class="text-[#FAF9F9]/70 hover:text-[#ED2424] hover:underline transition-colors duration-200 no-underline block" data-key="footer_p1">Dự án Nhà máy KSP Hải Dương</a></li>
+                        <li><a href="/projects/aac-factory" class="text-[#FAF9F9]/70 hover:text-[#ED2424] hover:underline transition-colors duration-200 no-underline block" data-key="footer_p2">Nhà máy linh kiện điện tử AAC (Vĩnh Phúc, Bắc Giang)</a></li>
+                        <li><a href="/projects/cp-binh-dinh" class="text-[#FAF9F9]/70 hover:text-[#ED2424] hover:underline transition-colors duration-200 no-underline block" data-key="footer_p3">Nhà máy Giết mổ CP Bình Định</a></li>
+                        <li><a href="/projects/bff-factory" class="text-[#FAF9F9]/70 hover:text-[#ED2424] hover:underline transition-colors duration-200 no-underline block" data-key="footer_p4">Nhà máy & Kho BFF (TP.HCM)</a></li>
                     </ul>
                 </div>
 
                 <!-- Cột 4: Về VIKI & Phát triển bền vững -->
                 <div>
-                    <h4 class="text-[#FAF9F9] text-base font-bold uppercase tracking-wider mb-5 pb-2 border-b border-white/15">
+                    <h4 class="text-[#FAF9F9] text-base font-bold uppercase tracking-wider mb-5 pb-2 border-b border-white/15" data-key="footer_col4_title">
                         Về VIKI & Phát Triển
                     </h4>
                     <ul class="list-none space-y-2.5 m-0 p-0 text-sm">
-                        <li><a href="/about" class="text-[#FAF9F9]/70 hover:text-[#ED2424] hover:underline transition-colors duration-200 no-underline block">Về chúng tôi (Tầm nhìn 2030 - Top 100)</a></li>
-                        <li><a href="/about#core-values" class="text-[#FAF9F9]/70 hover:text-[#ED2424] hover:underline transition-colors duration-200 no-underline block">Giá trị cốt lõi (Uy tín - Chất lượng - Sức trẻ)</a></li>
-                        <li><a href="/careers-vn" class="text-[#FAF9F9]/70 hover:text-[#ED2424] hover:underline transition-colors duration-200 no-underline block">Tuyển dụng (Gia nhập VIKI)</a></li>
+                        <li><a href="/about" class="text-[#FAF9F9]/70 hover:text-[#ED2424] hover:underline transition-colors duration-200 no-underline block" data-key="footer_a1">Về chúng tôi (Tầm nhìn 2030 - Top 100)</a></li>
+                        <li><a href="/about#core-values" class="text-[#FAF9F9]/70 hover:text-[#ED2424] hover:underline transition-colors duration-200 no-underline block" data-key="footer_a2">Giá trị cốt lõi (Uy tín - Chất lượng - Sức trẻ)</a></li>
+                        <li><a href="/careers-vn" class="text-[#FAF9F9]/70 hover:text-[#ED2424] hover:underline transition-colors duration-200 no-underline block" data-key="footer_a3">Tuyển dụng (Gia nhập VIKI)</a></li>
                     </ul>
                 </div>
 
@@ -303,10 +298,10 @@ const { title = "VIKI - Công Ty Cổ Phần Xây Dựng  | Xây Giá Trị - D�
 
             <!-- Copyright & Bottom Bar -->
             <div class="pt-4 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center text-sm text-[#FAF9F9]/70 gap-4">
-                <div>© 2026 VIKI Construction Joint Stock Company. All rights reserved.</div>
+                <div data-key="footer_copyright">© 2026 VIKI Construction Joint Stock Company. All rights reserved.</div>
                 <div class="flex gap-6">
-                    <a href="/privacy" class="text-[#FAF9F9]/70 hover:text-[#ED2424] hover:underline transition-colors duration-200 no-underline">Điều khoản bảo mật</a>
-                    <a href="/terms" class="text-[#FAF9F9]/70 hover:text-[#ED2424] hover:underline transition-colors duration-200 no-underline">Chính sách chất lượng</a>
+                    <a href="/privacy" class="text-[#FAF9F9]/70 hover:text-[#ED2424] hover:underline transition-colors duration-200 no-underline" data-key="footer_privacy">Điều khoản bảo mật</a>
+                    <a href="/terms" class="text-[#FAF9F9]/70 hover:text-[#ED2424] hover:underline transition-colors duration-200 no-underline" data-key="footer_terms">Chính sách chất lượng</a>
                 </div>
             </div>
         </div>
@@ -332,17 +327,41 @@ const { title = "VIKI - Công Ty Cổ Phần Xây Dựng  | Xây Giá Trị - D�
             <div id="modalBody"></div>
         </div>
     </div>
+</body>
+</html>
 
-    <!-- GLOBAL SCRIPT -->
     <script>
-        // Hàm áp dụng ngôn ngữ toàn trang
-        function applyLanguage(lang) {
+        let translations = {};
+
+        // Hàm tải file từ điển JSON tương ứng (vi.json hoặc en.json)
+        async function loadDictionary(lang) {
+            try {
+                // Đường dẫn tới thư mục chứa file ngôn ngữ của bạn
+                const response = await fetch(`/src/data/lang/${lang}.json`);
+                if (response.ok) {
+                    translations = await response.json();
+                    applyLanguageToDOM(lang);
+                } else {
+                    // Fallback nếu chạy ở môi trường production build dùng đường dẫn tĩnh
+                    const resFallback = await fetch(`/${lang}.json`);
+                    if (resFallback.ok) {
+                        translations = await resFallback.json();
+                        applyLanguageToDOM(lang);
+                    }
+                }
+            } catch (error) {
+                console.error("Không thể tải file ngôn ngữ:", error);
+            }
+        }
+
+        // Hàm quét DOM và thay thế nội dung dựa trên data-key và từ điển JSON
+        function applyLanguageToDOM(lang) {
             const currentLangText = document.getElementById('currentLangText');
             if (currentLangText) {
-                currentLangText.innerText = lang === 'en' ? 'English' : 'Tiếng Việt';
+                currentLangText.innerText = translations['current_lang'] || (lang === 'en' ? 'English' : 'Tiếng Việt');
             }
 
-            // Cập nhật trạng thái active cho dropdown menu
+            // Cập nhật trạng thái active cho dropdown menu ngôn ngữ
             document.querySelectorAll('.lang-option').forEach(opt => {
                 const optEl = opt as HTMLElement;
                 const optLang = optEl.getAttribute('data-lang');
@@ -355,14 +374,14 @@ const { title = "VIKI - Công Ty Cổ Phần Xây Dựng  | Xây Giá Trị - D�
                 }
             });
 
-            // Thay thế text và placeholder dựa trên data attribute
-            document.querySelectorAll('[data-vi]').forEach(el => {
-                const text = el.getAttribute(`data-${lang}`);
-                if (text) {
+            // Thay thế nội dung tất cả các thẻ có thuộc tính data-key bằng dữ liệu trong tệp JSON
+            document.querySelectorAll('[data-key]').forEach(el => {
+                const key = el.getAttribute('data-key');
+                if (key && translations[key]) {
                     if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-                        (el as HTMLInputElement).placeholder = text;
+                        (el as HTMLInputElement).placeholder = translations[key];
                     } else {
-                        (el as HTMLElement).innerText = text;
+                        el.innerHTML = translations[key];
                     }
                 }
             });
@@ -371,10 +390,10 @@ const { title = "VIKI - Công Ty Cổ Phần Xây Dựng  | Xây Giá Trị - D�
         // 1. Khi trang vừa load xong, kiểm tra ngôn ngữ đã lưu trong localStorage
         document.addEventListener('DOMContentLoaded', () => {
             const savedLang = localStorage.getItem('viki_lang') || 'vi';
-            applyLanguage(savedLang);
+            loadDictionary(savedLang);
         });
 
-        // 2. Xử lý sự kiện click chọn ngôn ngữ
+        // 2. Xử lý sự kiện click mở/đóng dropdown chọn ngôn ngữ
         const langDropdownBtn = document.getElementById('langDropdownBtn');
         const langMenu = document.getElementById('langMenu');
 
@@ -387,16 +406,17 @@ const { title = "VIKI - Công Ty Cổ Phần Xây Dựng  | Xây Giá Trị - D�
             langMenu?.classList.add('hidden');
         });
 
+        // 3. Xử lý khi người dùng bấm chọn một ngôn ngữ cụ thể
         document.querySelectorAll('.lang-option').forEach(option => {
             option.addEventListener('click', (e) => {
                 const targetOpt = e.currentTarget as HTMLElement;
                 const selectedLang = targetOpt.getAttribute('data-lang') || 'vi';
                 
-                // Lưu vào localStorage để các trang khác cùng nhớ
+                // Lưu vào localStorage để các trang khác cùng ghi nhớ
                 localStorage.setItem('viki_lang', selectedLang);
                 
-                // Áp dụng ngôn ngữ
-                applyLanguage(selectedLang);
+                // Tải lại từ điển và áp dụng lên giao diện
+                loadDictionary(selectedLang);
                 langMenu?.classList.add('hidden');
             });
         });
@@ -423,12 +443,7 @@ const { title = "VIKI - Công Ty Cổ Phần Xây Dựng  | Xây Giá Trị - D�
             });
         });
 
-        // Newsletter & Global Search
-        document.getElementById('newsletterForm')?.addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Đăng ký nhận bản tin thành công!');
-        });
-
+        // Global Search
         const searchInput = document.getElementById('globalSearchInput') as HTMLInputElement;
         searchInput?.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') {
