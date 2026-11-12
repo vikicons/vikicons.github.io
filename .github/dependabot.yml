@@ -1,0 +1,13 @@
+version: 2
+updates:
+  # Cấu hình tự động cập nhật cho GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily" # Tần suất quét: "daily" (hàng ngày), "weekly" (hàng tuần), hoặc "monthly" (hàng tháng)
+
+  # (Tùy chọn) Cấu hình cập nhật cho npm packages nếu dự án dùng Node.js/Astro
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "daily"
