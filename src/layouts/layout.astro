@@ -1,9 +1,20 @@
 ---
 import '../styles/global.css';
+
+// Import trực tiếp từ điển JSON từ thư mục src/data/lang/ vào đây
+import viLang from '../data/lang/vi.json';
+import enLang from '../data/lang/en.json';
+
 interface Props {
     title?: string;
 }
 const { title = "VIKI - Công Ty Cổ Phần Xây Dựng  | Xây Giá Trị - Dựng Niềm Tin" } = Astro.props;
+
+// Gom chung vào một object từ điển trên server
+const translationsData = {
+    vi: viLang,
+    en: enLang
+};
 ---
  
 <!DOCTYPE html>
@@ -20,139 +31,114 @@ const { title = "VIKI - Công Ty Cổ Phần Xây Dựng  | Xây Giá Trị - D�
 <!-- ĐÃ FIX: Thêm min-h-screen flex flex-col để quản lý chiều cao toàn trang -->
 <body class="bg-white text-[#214080] antialiased overflow-x-hidden font-sans min-h-screen flex flex-col relative">
 
-    <!-- TOP UTILITY BAR -->
-    <div class="bg-[#214080] text-white text-[0.8125rem] py-2.5 border-b border-white/10 hidden md:block relative z-[100]">
-        <div class="container mx-auto px-4 flex justify-between items-center">
-            
-            <!-- BÊN TRÁI: Hotline & Email -->
-            <div class="flex items-center gap-6">
-                <a href="tel:0814667501" class="flex items-center gap-2 no-underline" title="Gọi ngay">
-                    <span class="shrink-0 inline-flex items-center">
-                        <img src="/icons/icons8-office-phone-94.png" alt="Phone Icon" class="w-4 h-4 object-contain">Hotline:
-                    </span>
-                    <span class="text-white hover:text-[#ED2424] transition-colors duration-200">0814667501</span>
-                </a>
-                <span class="text-white/20">|</span>
-                <a href="mailto:viki.construction.co@gmail.com" class="flex items-center gap-2 no-underline" title="Gửi email">
-                    <span class="shrink-0 inline-flex items-center">
-                        <img src="/icons/icons8-gmail-logo-94.png" alt="Email Icon" class="w-4 h-4 object-contain">Email:
-                    </span>
-                    <span class="text-white hover:text-[#ED2424] transition-colors duration-200">viki.construction.co@gmail.com</span>
-                </a>
-            </div>
-
-            <!-- BÊN PHẢI: Menu ngôn ngữ & Ô tìm kiếm -->
-            <div class="flex items-center gap-6">
-                <div class="relative">
-                    <button id="langDropdownBtn" class="flex items-center justify-between gap-3 bg-transparent border border-white/30 text-white px-3 py-1.5 text-xs font-semibold cursor-pointer hover:border-[#5FD1C1] transition w-36">
-                        <span class="flex items-center gap-2">
+    <!-- TOP UTILITY BAR & MOBILE HEADER CONTAINER -->
+    <header class="sticky top-0 z-[90] bg-white border-b border-[#E6EAF2]">
+        
+        <!-- THANH CÔNG CỤ TRÊN CÙNG: Dùng chung cho cả Mobile và Desktop -->
+        <div class="bg-[#214080] text-white text-[0.8125rem] py-2 border-b border-white/10 relative z-[100]">
+            <div class="container mx-auto px-2 flex justify-between items-center gap-2">
+                
+                <!-- BÊN TRÁI (Desktop thấy, mobile ẩn hoặc thu gọn nếu cần): Hotline & Email -->
+                <div class="hidden lg:flex items-center gap-4">
+                    <a href="tel:0814667501" class="flex items-center gap-1.5 no-underline" title="Gọi ngay">
                         <span class="shrink-0 inline-flex items-center">
-                            <img src="/icons/icons8-language-94.png" alt="Lang Icon" class="w-4 h-4 object-contain">
+                            <img src="/icons/icons8-office-phone-94.png" alt="Phone Icon" class="w-3.5 h-3.5 object-contain">
                         </span>
-                            <span id="currentLangText" class="font-bold" data-key="current_lang">Tiếng Việt</span>
+                        <span class="text-white hover:text-[#ED2424] transition-colors duration-200">0814667501</span>
+                    </a>
+                    <span class="text-white/20">|</span>
+                    <a href="mailto:viki.construction.co@gmail.com" class="flex items-center gap-1.5 no-underline" title="Gửi email">
+                        <span class="shrink-0 inline-flex items-center">
+                            <img src="/icons/icons8-gmail-logo-94.png" alt="Email Icon" class="w-3.5 h-3.5 object-contain">
                         </span>
-                        <span>▼</span>
-                    </button>
-                    
-                    <div id="langMenu" class="hidden absolute top-full left-0 mt-1 w-full bg-[#214080] border border-white/25 shadow-2xl z-[9999]">
-                        <button class="w-full text-left px-3 py-2 text-xs text-white font-bold hover:bg-white/10 transition lang-option cursor-pointer border-none bg-transparent" data-lang="vi">
-                            🇻🇳 Tiếng Việt
+                        <span class="text-white hover:text-[#ED2424] transition-colors duration-200">viki.construction.co@gmail.com</span>
+                    </a>
+                </div>
+
+                <!-- BÊN PHẢI (Cả Mobile và Desktop đều hiển thị chung 1 hàng): Menu ngôn ngữ & Ô tìm kiếm -->
+                <div class="flex items-center gap-2 sm:gap-4 ml-auto">
+                    <!-- Dropdown Ngôn ngữ -->
+                    <div class="relative">
+                        <button id="langDropdownBtn" class="flex items-center justify-between gap-2 bg-transparent border border-white/30 text-white px-2.5 py-1 text-xs font-semibold cursor-pointer hover:border-[#5FD1C1] transition w-28 sm:w-36">
+                            <span class="flex items-center gap-1.5 truncate">
+                                <span class="shrink-0 inline-flex items-center">
+                                    <img src="/icons/icons8-language-94.png" alt="Lang Icon" class="w-3.5 h-3.5 object-contain">
+                                </span>
+                                <span id="currentLangText" class="font-bold truncate" data-key="current_lang">Việt Nam</span>
+                            </span>
+                            <span>▼</span>
                         </button>
-                        <button class="w-full text-left px-3 py-2 text-xs text-slate-300 font-normal hover:bg-white/10 transition lang-option cursor-pointer border-none bg-transparent" data-lang="en">
-                            🇬🇧 English
-                        </button>
+                        
+                        <!-- Menu chọn ngôn ngữ với hiệu ứng hover mượt mà -->
+                        <div id="langMenu" class="hidden absolute top-full right-0 sm:left-0 mt-1 w-36 bg-[#214080] border border-white/25 shadow-2xl z-[9999]">
+                            <button class="w-full text-left px-3 py-2 text-xs text-white font-bold hover:bg-[#5FD1C1] hover:text-[#214080] transition lang-option cursor-pointer border-none bg-transparent" data-lang="vi">
+                                🇻🇳 Việt Nam
+                            </button>
+                            <button class="w-full text-left px-3 py-2 text-xs text-slate-300 font-normal hover:bg-[#5FD1C1] hover:text-[#214080] transition lang-option cursor-pointer border-none bg-transparent" data-lang="en">
+                                🇬🇧 English
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Ô tìm kiếm nhỏ gọn trên thanh top bar -->
+                    <div class="relative flex items-center">
+                        <input 
+                            type="text" 
+                            id="globalSearchInput" 
+                            placeholder="Tìm kiếm..." 
+                            data-key="search_placeholder"
+                            class="bg-transparent border border-white/30 text-white placeholder-slate-300 text-xs px-2.5 py-1 pr-7 outline-none focus:border-[#5FD1C1] w-28 sm:w-44 transition"
+                        />
+                        <span class="absolute right-2 text-slate-300 text-xs pointer-events-none">🔍</span>
                     </div>
                 </div>
 
-                <div class="relative flex items-center">
-                    <input 
-                        type="text" 
-                        id="globalSearchInput" 
-                        placeholder="Tìm kiếm..." 
-                        data-key="search_placeholder"
-                        class="bg-transparent border border-white/30 text-white placeholder-slate-400 text-xs px-3 py-1.5 pr-8 outline-none focus:border-[#5FD1C1] w-48 transition"
-                    />
-                    <span class="absolute right-2 text-slate-400 text-xs">🔍</span>
-                </div>
             </div>
-
         </div>
-    </div>
 
-    <!-- MAIN HEADER NAVIGATION -->
-    <header class="sticky top-0 z-[90] bg-white border-b border-[#E6EAF2]">
-        <div class="container mx-auto px-2 flex justify-between items-center h-20">
+        <!-- MAIN HEADER NAVIGATION (Logo & Menu chính) -->
+        <div class="container mx-auto px-2 flex justify-between items-center h-16 sm:h-20">
             <!-- Logo -->
             <a href="/" class="flex items-center gap-3 no-underline group">
-                <img src="/logoViki.webp" alt="VIKI Logo" class="h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-105" />
+                <img src="/logoViki.webp" alt="VIKI Logo" class="h-10 sm:h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-105" />
             </a>
 
             <!-- Desktop Navigation -->
             <nav class="hidden lg:flex items-center gap-6 list-none m-0 p-0 h-full">
-                
-                <!-- 1. Trang chủ -->
                 <div class="relative h-full flex items-center">
                     <a href="/" data-path="/" class="nav-item bg-white text-[#214080] font-bold text-base py-2 px-3 transition flex items-center justify-center h-full group" title="Trang chủ">
                         <img src="/icons/icons8-home-50.png" alt="Home Icon" class="w-5 h-5 object-contain [filter:brightness(0)_saturate(100%)_invert(21%)_sepia(47%)_saturate(2541%)_hue-rotate(203deg)_brightness(94%)_contrast(98%)] transition-transform duration-300 group-hover:scale-110" />
                     </a>
                 </div>
-
-                <!-- 2. Về VIKI -->
                 <div class="relative group h-full flex items-center">
-                    <a href="/about" data-path="/about" data-key="nav_about" class="nav-item flex items-center gap-1.5 text-[#214080] font-bold text-base uppercase tracking-wide transition h-full no-underline">
-                        Về chúng tôi
-                    </a>
+                    <a href="/about" data-path="/about" data-key="nav_about" class="nav-item flex items-center gap-1.5 text-[#214080] font-bold text-base uppercase tracking-wide transition h-full no-underline">Về chúng tôi</a>
                 </div>
-
-                <!-- 3. Lĩnh vực hoạt động -->
                 <div class="relative group h-full flex items-center">
-                    <a href="/services" data-path="/services" data-key="nav_services" class="nav-item flex items-center gap-1.5 text-[#214080] font-bold text-base uppercase tracking-wide transition h-full no-underline">
-                        Lĩnh vực hoạt động
-                    </a>
+                    <a href="/services" data-path="/services" data-key="nav_services" class="nav-item flex items-center gap-1.5 text-[#214080] font-bold text-base uppercase tracking-wide transition h-full no-underline">Lĩnh vực hoạt động</a>
                 </div>
-
-                <!-- 4. Dự án -->
                 <div class="relative group h-full flex items-center">
-                    <a href="/projects" data-path="/projects" data-key="nav_projects" class="nav-item flex items-center gap-1.5 text-[#214080] font-bold text-base uppercase tracking-wide transition h-full no-underline">
-                        Dự án
-                    </a>
+                    <a href="/projects" data-path="/projects" data-key="nav_projects" class="nav-item flex items-center gap-1.5 text-[#214080] font-bold text-base uppercase tracking-wide transition h-full no-underline">Dự án</a>
                 </div>
-
-                <!-- 5. Năng lực -->
                 <div class="relative group h-full flex items-center">
-                    <a href="/capabilities" data-path="/capabilities" data-key="nav_capabilities" class="nav-item flex items-center gap-1.5 text-[#214080] font-bold text-base uppercase tracking-wide transition h-full no-underline">
-                        Năng lực
-                    </a>
+                    <a href="/capabilities" data-path="/capabilities" data-key="nav_capabilities" class="nav-item flex items-center gap-1.5 text-[#214080] font-bold text-base uppercase tracking-wide transition h-full no-underline">Năng lực</a>
                 </div>
-
-                <!-- 6. Tin tức -->
                 <div class="relative h-full flex items-center">
-                    <a href="/news" data-path="/news" data-key="nav_news" class="nav-item text-[#214080] font-bold text-base py-2 uppercase tracking-wide transition flex items-center h-full no-underline">
-                        Tin tức
-                    </a>
+                    <a href="/news" data-path="/news" data-key="nav_news" class="nav-item text-[#214080] font-bold text-base py-2 uppercase tracking-wide transition flex items-center h-full no-underline">Tin tức</a>
                 </div>
-
-                <!-- 7. Tuyển dụng -->
                 <div class="relative h-full flex items-center">
-                    <a href="/careers-vn" data-path="/careers-vn" data-key="nav_careers" class="nav-item text-[#214080] font-bold text-base py-2 uppercase tracking-wide transition flex items-center h-full no-underline">
-                        Tuyển dụng
-                    </a>
+                    <a href="/careers-vn" data-path="/careers-vn" data-key="nav_careers" class="nav-item text-[#214080] font-bold text-base py-2 uppercase tracking-wide transition flex items-center h-full no-underline">Tuyển dụng</a>
                 </div>
-
-                <!-- 8. Liên hệ -->
                 <div class="relative h-full flex items-center">
-                    <a href="/contact" data-path="/contact" data-key="nav_contact" class="nav-item text-[#214080] font-bold text-base py-2 uppercase tracking-wide transition flex items-center h-full no-underline">
-                        Liên hệ
-                    </a>
+                    <a href="/contact" data-path="/contact" data-key="nav_contact" class="nav-item text-[#214080] font-bold text-base py-2 uppercase tracking-wide transition flex items-center h-full no-underline">Liên hệ</a>
                 </div>
             </nav>
 
-            <!-- Nút Báo Giá Dự Án -->
-            <div class="flex items-center gap-4">
-                <a href="/bao-gia" data-key="nav_quote_btn" class="hidden sm:inline-flex bg-red-600 hover:bg-[#264ABC] text-white px-4 py-3 text-base font-bold uppercase tracking-wider items-center gap-2 transition shadow-md no-underline">
+            <!-- Nút Báo Giá Dự Án & Nút Menu Hamburger Mobile -->
+            <div class="flex items-center gap-3">
+                <a href="/bao-gia" data-key="nav_quote_btn" class="hidden sm:inline-flex bg-red-600 hover:bg-[#264ABC] text-white px-4 py-2.5 text-sm sm:text-base font-bold uppercase tracking-wider items-center gap-2 transition shadow-md no-underline">
                     Báo Giá
                 </a>
-                <button class="lg:hidden text-[#214080] text-2xl bg-transparent border-none cursor-pointer" id="mobileToggleBtn" aria-label="Toggle Menu">☰</button>
+                <button class="lg:hidden text-[#214080] text-2xl bg-transparent border-none cursor-pointer p-1" id="mobileToggleBtn" aria-label="Toggle Menu">☰</button>
             </div>
         </div>
 
@@ -327,189 +313,172 @@ const { title = "VIKI - Công Ty Cổ Phần Xây Dựng  | Xây Giá Trị - D�
             <div id="modalBody"></div>
         </div>
     </div>
-</body>
-</html>
 
-    <script>
-        let translations = {};
+    <script define:vars={{ translationsData }}>
+    let translations = {};
 
-        // Hàm tải file từ điển JSON tương ứng (vi.json hoặc en.json)
-        async function loadDictionary(lang) {
-            try {
-                // Đường dẫn tới thư mục chứa file ngôn ngữ của bạn
-                const response = await fetch(`/src/data/lang/${lang}.json`);
-                if (response.ok) {
-                    translations = await response.json();
-                    applyLanguageToDOM(lang);
-                } else {
-                    // Fallback nếu chạy ở môi trường production build dùng đường dẫn tĩnh
-                    const resFallback = await fetch(`/${lang}.json`);
-                    if (resFallback.ok) {
-                        translations = await resFallback.json();
-                        applyLanguageToDOM(lang);
-                    }
-                }
-            } catch (error) {
-                console.error("Không thể tải file ngôn ngữ:", error);
-            }
+    // Hàm tải từ điển theo ngôn ngữ được chọn
+    function loadDictionary(lang) {
+        // Lấy trực tiếp từ object đã import sẵn từ server, không cần fetch rườm rà
+        translations = translationsData[lang] || translationsData['vi'];
+        applyLanguageToDOM(lang);
+    }
+
+    // Hàm quét DOM và thay thế nội dung dựa trên data-key và từ điển JSON
+    function applyLanguageToDOM(lang) {
+        const currentLangText = document.getElementById('currentLangText');
+        if (currentLangText) {
+            currentLangText.innerText = translations['current_lang'] || (lang === 'en' ? 'English' : 'Việt Nam');
         }
 
-        // Hàm quét DOM và thay thế nội dung dựa trên data-key và từ điển JSON
-        function applyLanguageToDOM(lang) {
-            const currentLangText = document.getElementById('currentLangText');
-            if (currentLangText) {
-                currentLangText.innerText = translations['current_lang'] || (lang === 'en' ? 'English' : 'Tiếng Việt');
+        // Cập nhật trạng thái active cho dropdown menu ngôn ngữ
+        document.querySelectorAll('.lang-option').forEach(opt => {
+            const optLang = opt.getAttribute('data-lang');
+            if (optLang === lang) {
+                opt.classList.remove('font-normal', 'text-slate-300');
+                opt.classList.add('font-bold', 'text-white');
+            } else {
+                opt.classList.remove('font-bold', 'text-white');
+                opt.classList.add('font-normal', 'text-slate-300');
             }
+        });
 
-            // Cập nhật trạng thái active cho dropdown menu ngôn ngữ
-            document.querySelectorAll('.lang-option').forEach(opt => {
-                const optEl = opt as HTMLElement;
-                const optLang = optEl.getAttribute('data-lang');
-                if (optLang === lang) {
-                    optEl.classList.remove('font-normal', 'text-slate-300');
-                    optEl.classList.add('font-bold', 'text-white');
+        // Thay thế nội dung tất cả các thẻ có thuộc tính data-key
+        document.querySelectorAll('[data-key]').forEach(el => {
+            const key = el.getAttribute('data-key');
+            if (key && translations[key]) {
+                if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                    el.placeholder = translations[key];
                 } else {
-                    optEl.classList.remove('font-bold', 'text-white');
-                    optEl.classList.add('font-normal', 'text-slate-300');
+                    el.innerHTML = translations[key];
                 }
-            });
-
-            // Thay thế nội dung tất cả các thẻ có thuộc tính data-key bằng dữ liệu trong tệp JSON
-            document.querySelectorAll('[data-key]').forEach(el => {
-                const key = el.getAttribute('data-key');
-                if (key && translations[key]) {
-                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-                        (el as HTMLInputElement).placeholder = translations[key];
-                    } else {
-                        el.innerHTML = translations[key];
-                    }
-                }
-            });
-        }
-
-        // 1. Khi trang vừa load xong, kiểm tra ngôn ngữ đã lưu trong localStorage
-        document.addEventListener('DOMContentLoaded', () => {
-            const savedLang = localStorage.getItem('viki_lang') || 'vi';
-            loadDictionary(savedLang);
+            }
         });
+    }
 
-        // 2. Xử lý sự kiện click mở/đóng dropdown chọn ngôn ngữ
-        const langDropdownBtn = document.getElementById('langDropdownBtn');
-        const langMenu = document.getElementById('langMenu');
+    // 1. Khi trang vừa load xong, kiểm tra ngôn ngữ đã lưu trong localStorage
+    document.addEventListener('DOMContentLoaded', () => {
+        const savedLang = localStorage.getItem('viki_lang') || 'vi';
+        loadDictionary(savedLang);
+    });
 
-        langDropdownBtn?.addEventListener('click', (e) => {
-            e.stopPropagation();
-            langMenu?.classList.toggle('hidden');
-        });
+    // 2. Xử lý sự kiện click mở/đóng dropdown chọn ngôn ngữ
+    const langDropdownBtn = document.getElementById('langDropdownBtn');
+    const langMenu = document.getElementById('langMenu');
 
-        window.addEventListener('click', () => {
+    langDropdownBtn?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        langMenu?.classList.toggle('hidden');
+    });
+
+    window.addEventListener('click', () => {
+        langMenu?.classList.add('hidden');
+    });
+
+    // 3. Xử lý khi người dùng bấm chọn một ngôn ngữ cụ thể
+    document.querySelectorAll('.lang-option').forEach(option => {
+        option.addEventListener('click', (e) => {
+            const targetOpt = e.currentTarget;
+            const selectedLang = targetOpt.getAttribute('data-lang') || 'vi';
+            
+            // Lưu vào localStorage để các trang khác cùng ghi nhớ
+            localStorage.setItem('viki_lang', selectedLang);
+            
+            // Áp dụng từ điển ngay lập tức lên giao diện
+            loadDictionary(selectedLang);
             langMenu?.classList.add('hidden');
         });
+    });
 
-        // 3. Xử lý khi người dùng bấm chọn một ngôn ngữ cụ thể
-        document.querySelectorAll('.lang-option').forEach(option => {
-            option.addEventListener('click', (e) => {
-                const targetOpt = e.currentTarget as HTMLElement;
-                const selectedLang = targetOpt.getAttribute('data-lang') || 'vi';
-                
-                // Lưu vào localStorage để các trang khác cùng ghi nhớ
-                localStorage.setItem('viki_lang', selectedLang);
-                
-                // Tải lại từ điển và áp dụng lên giao diện
-                loadDictionary(selectedLang);
-                langMenu?.classList.add('hidden');
-            });
-        });
-
-        // Mobile Menu Toggle
-        const mobileToggleBtn = document.getElementById('mobileToggleBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-        mobileToggleBtn?.addEventListener('click', () => {
-            if (mobileMenu) {
-                if (mobileMenu.classList.contains('hidden')) {
-                    mobileMenu.classList.remove('hidden');
-                    mobileMenu.classList.add('flex');
-                } else {
-                    mobileMenu.classList.remove('flex');
-                    mobileMenu.classList.add('hidden');
-                }
-            }
-        });
-
-        mobileMenu?.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
+    // Mobile Menu Toggle
+    const mobileToggleBtn = document.getElementById('mobileToggleBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileToggleBtn?.addEventListener('click', () => {
+        if (mobileMenu) {
+            if (mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.remove('hidden');
+                mobileMenu.classList.add('flex');
+            } else {
                 mobileMenu.classList.remove('flex');
                 mobileMenu.classList.add('hidden');
-            });
+            }
+        }
+    });
+
+    mobileMenu?.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.remove('flex');
+            mobileMenu.classList.add('hidden');
         });
+    });
 
-        // Global Search
-        const searchInput = document.getElementById('globalSearchInput') as HTMLInputElement;
-        searchInput?.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                const keyword = searchInput.value.trim().toLowerCase();
-                if (!keyword) return;
+    // Global Search
+    const searchInput = document.getElementById('globalSearchInput');
+    searchInput?.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            const keyword = searchInput.value.trim().toLowerCase();
+            if (!keyword) return;
 
-                const contentElements = document.querySelectorAll('h2, h3, p');
-                let foundElement: HTMLElement | null = null;
+            const contentElements = document.querySelectorAll('h2, h3, p');
+            let foundElement = null;
 
-                for (let el of contentElements) {
-                    if (el.textContent?.toLowerCase().includes(keyword)) {
-                        foundElement = el as HTMLElement;
-                        break;
-                    }
-                }
-
-                if (foundElement) {
-                    foundElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    foundElement.style.backgroundColor = '#5FD1C1';
-                    foundElement.style.color = '#214080';
-                    setTimeout(() => {
-                        foundElement.style.backgroundColor = '';
-                        foundElement.style.color = '';
-                    }, 2000);
-                } else {
-                    alert(`Không tìm thấy kết quả cho từ khóa: "${keyword}"`);
+            for (let el of contentElements) {
+                if (el.textContent?.toLowerCase().includes(keyword)) {
+                    foundElement = el;
+                    break;
                 }
             }
-        });
 
-        // Tự động gạch chân mục menu tương ứng với trang đang truy cập
-        document.addEventListener('DOMContentLoaded', () => {
-            const currentPath = window.location.pathname;
-            const navItems = document.querySelectorAll('.nav-item');
-            
-            navItems.forEach(item => {
-                const itemPath = item.getAttribute('data-path');
-                if (itemPath) {
-                    if (itemPath === '/' && currentPath === '/') {
-                        item.classList.add('active-menu');
-                    } else if (itemPath !== '/' && currentPath.startsWith(itemPath)) {
-                        item.classList.add('active-menu');
-                    }
-                }
-            });
-        });
-
-        // BACK TO TOP SCRIPT
-        const backToTopBtn = document.getElementById('backToTopBtn');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                backToTopBtn?.classList.remove('opacity-0', 'invisible', 'translate-y-4');
-                backToTopBtn?.classList.add('opacity-100', 'visible', 'translate-y-0');
+            if (foundElement) {
+                foundElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                foundElement.style.backgroundColor = '#5FD1C1';
+                foundElement.style.color = '#214080';
+                setTimeout(() => {
+                    foundElement.style.backgroundColor = '';
+                    foundElement.style.color = '';
+                }, 2000);
             } else {
-                backToTopBtn?.classList.add('opacity-0', 'invisible', 'translate-y-4');
-                backToTopBtn?.classList.remove('opacity-100', 'visible', 'translate-y-0');
+                alert(`Không tìm thấy kết quả cho từ khóa: "${keyword}"`);
+            }
+        }
+    });
+
+    // Tự động gạch chân mục menu tương ứng với trang đang truy cập
+    document.addEventListener('DOMContentLoaded', () => {
+        const currentPath = window.location.pathname;
+        const navItems = document.querySelectorAll('.nav-item');
+        
+        navItems.forEach(item => {
+            const itemPath = item.getAttribute('data-path');
+            if (itemPath) {
+                if (itemPath === '/' && currentPath === '/') {
+                    item.classList.add('active-menu');
+                } else if (itemPath !== '/' && currentPath.startsWith(itemPath)) {
+                    item.classList.add('active-menu');
+                }
             }
         });
+    });
 
-        backToTopBtn?.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
+    // BACK TO TOP SCRIPT
+    const backToTopBtn = document.getElementById('backToTopBtn');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            backToTopBtn?.classList.remove('opacity-0', 'invisible', 'translate-y-4');
+            backToTopBtn?.classList.add('opacity-100', 'visible', 'translate-y-0');
+        } else {
+            backToTopBtn?.classList.add('opacity-0', 'invisible', 'translate-y-4');
+            backToTopBtn?.classList.remove('opacity-100', 'visible', 'translate-y-0');
+        }
+    });
+
+    backToTopBtn?.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
         });
-    </script>
+    });
+</script>
 
 </body>
 </html>
