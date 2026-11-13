@@ -2,8 +2,8 @@ name: Auto Update Gas Prices from PVOil
 
 on:
   schedule:
-    - cron: "0 22 * * *" # Chạy định kỳ hàng ngày lúc 22:00 UTC (05:00 sáng giờ VN)
-  workflow_dispatch: # Cho phép bấm chạy thủ công từ tab Actions trên GitHub
+    - cron: "0 * * * *" # Chuẩn 5 phần tử: Chạy vào phút thứ 0 của mỗi giờ, hàng ngày
+  workflow_dispatch:
 
 permissions:
   contents: write

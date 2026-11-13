@@ -1,5 +1,6 @@
 import os
 import json
+from datetime import datetime
 import requests
 from bs4 import BeautifulSoup
 
@@ -19,8 +20,7 @@ try:
     # Tìm bảng (table) chứa dữ liệu giá xăng dầu trên trang PVOil
     table = soup.find('table')
     
-    gas_prices = []
-    effective_date = "Mới nhất"
+    gas_items = []
     
     if table:
         rows = table.find_all('tr')
@@ -32,20 +32,32 @@ try:
                 price = cols[2].text.strip()
                 change = cols[3].text.strip()
                 
-                gas_prices.append({
+                gas_items.append({
                     "stt": stt,
                     "product": product,
                     "price": price,
                     "change": change
                 })
 
-    # Nếu cào được dữ liệu, ghi vào file JSON
-    if gas_prices:
+    # Nếu cào được dữ liệu, đóng gói kèm thời gian cập nhật theo giờ Việt Nam (UTC+7)
+    if gas_items:
         os.makedirs("src/data", exist_ok=True)
         json_path = "src/data/gas_prices.json"
+        
+        # Lấy thời gian hiện tại chuẩn giờ VN
+        from datetime import timezone, timedelta
+        vn_time = datetime.now(timezone(timedelta(hours=7)))
+        formatted_time = vn_time.strftime("%d/%m/%Y lúc %H:%M:%S")
+
+        output_data = {
+            "last_updated": formatted_time,
+            "prices": gas_items
+        }
+
         with open(json_path, "w", encoding="utf-8") as f:
-            json.dump(gas_prices, f, ensure_ascii=False, indent=4)
-        print(f"Đã cập nhật thành công {len(gas_prices)} bản ghi giá xăng dầu vào {json_path}!")
+            json.dump(output_data, f, ensure_ascii=False, indent=4)
+            
+        print(f"Đã cập nhật thành công {len(gas_items)} bản ghi giá xăng dầu vào {json_path} lúc {formatted_time}!")
     else:
         print("Không tìm thấy dữ liệu bảng giá trong trang PVOil.")
 
