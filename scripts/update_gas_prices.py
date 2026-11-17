@@ -5,11 +5,9 @@ import cloudscraper
 from bs4 import BeautifulSoup
 
 url = "https://www.pvoil.com.vn/tin-gia-xang-dau"
-
-print(f"Đang khởi tạo bộ vượt rào Cloudflare để lấy dữ liệu từ: {url}")
+print(f"Đang kết nối tới: {url}")
 
 try:
-    # Tạo scraper giả lập trình duyệt Chrome thật trên Windows để vượt qua Cloudflare
     scraper = cloudscraper.create_scraper(
         browser={
             'browser': 'chrome',
@@ -18,24 +16,23 @@ try:
         }
     )
     
-    response = scraper.get(url, timeout=20)
+    response = scraper.get(url, timeout=25)
     response.raise_for_status()
     
     soup = BeautifulSoup(response.text, 'html.parser')
     
-    # Tìm bảng chứa dữ liệu giá xăng dầu
-    container = soup.find(class_='oilpricescontainer')
-    table = container.find('table') if container else soup.find('table')
-    
+    # Tìm bảng chứa dữ liệu giá xăng dầu trên trang PVOil
+    table = soup.find('table')
     gas_items = []
     
     if table:
         rows = table.find_all('tr')
-        print(f"Đã vượt rào thành công! Tìm thấy bảng dữ liệu với {len(rows)} dòng.")
+        print(f"Tìm thấy bảng dữ liệu với {len(rows)} hàng.")
         for row in rows:
             cols = row.find_all('td')
             if len(cols) >= 4:
                 stt = cols[0].text.strip()
+                # Kiểm tra nếu là dòng chứa số thứ tự sản phẩm (1, 2, 3, 4)
                 if stt.isdigit():
                     product = cols[1].text.strip()
                     price = cols[2].text.strip()
@@ -47,7 +44,7 @@ try:
                         "price": price,
                         "change": change
                     })
-                    print(f"Đã đọc: {product} - {price} (Chênh lệch: {change})")
+                    print(f"Đã cào thành công: {product} | Giá: {price} | Chênh lệch: {change}")
 
     if gas_items:
         os.makedirs("src/data", exist_ok=True)
@@ -64,9 +61,9 @@ try:
         with open(json_path, "w", encoding="utf-8") as f:
             json.dump(output_data, f, ensure_ascii=False, indent=4)
             
-        print(f"Đã cập nhật thành công {len(gas_items)} bản ghi vào {json_path} lúc {formatted_time}!")
+        print(f"Đã ghi dữ liệu mới vào {json_path} thành công lúc {formatted_time}!")
     else:
-        print("CẢNH BÁO: Đã vào được trang nhưng không tìm thấy dữ liệu bảng sản phẩm.")
+        print("CẢNH BÁO: Không tìm thấy dữ liệu dòng sản phẩm nào trong bảng.")
 
 except Exception as e:
-    print(f"Lỗi khi cào dữ liệu qua Cloudflare: {e}")
+    print(f"Lỗi khi cào dữ liệu: {e}")
