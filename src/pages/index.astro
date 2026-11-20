@@ -3,7 +3,10 @@ import Layout from '../layouts/layout.astro';
 // Import trực tiếp tệp JSON chứa danh sách bài viết được cập nhật tự động từ RSS
 import rawNewsData from '../data/latest_news.json';
 import rawGasData from '../data/gas_prices.json';
-const gasPrices = Array.isArray(rawGasData) ? rawGasData : [];
+// Trích xuất mảng giá từ trường 'prices', nếu file cũ ở dạng mảng thuần thì fallback về rawGasData
+const gasPrices = Array.isArray(rawGasData) 
+    ? rawGasData 
+    : (rawGasData.prices && Array.isArray(rawGasData.prices) ? rawGasData.prices : []);
 
 // Kiểm tra nếu file JSON rỗng hoặc không phải mảng thì dùng mảng rỗng phòng lỗi
 const newsData = Array.isArray(rawNewsData) ? rawNewsData : [];
@@ -59,7 +62,7 @@ const mobileNewsList = newsData.slice(0, 3);
 
             <!-- Slide 2 -->
             <div class="hero-slide absolute inset-0 opacity-0 pointer-events-none transition-opacity duration-700 flex items-center" id="slide-1">
-                <img src="/img/slide002.webp" alt="Dự án Hạ tầng" class="absolute inset-0 w-full h-full object-cover brightness-[0.5] contrast-110" loading="lazy">
+                <img src="/img/slide002.webp" alt="Dự án Hạ tầng" class="absolute inset-0 w-full h-full object-cover brightness-[0.5] contrast-110">
                 
                 <div class="container mx-auto px-4 sm:px-12 md:px-20 relative z-10 py-16 flex flex-col md:flex-row justify-between items-end h-full">
                     <div class="mb-10 md:mb-0">
@@ -89,7 +92,7 @@ const mobileNewsList = newsData.slice(0, 3);
 
             <!-- Slide 3 -->
             <div class="hero-slide absolute inset-0 opacity-0 pointer-events-none transition-opacity duration-700 flex items-center" id="slide-2">
-                <img src="/img/slide003.webp" alt="Cao ốc thương mại" class="absolute inset-0 w-full h-full object-cover brightness-[0.5] contrast-110" loading="lazy">
+                <img src="/img/slide003.webp" alt="Cao ốc thương mại" class="absolute inset-0 w-full h-full object-cover brightness-[0.5] contrast-110">
                 
                 <div class="container mx-auto px-4 sm:px-12 md:px-20 relative z-10 py-16 flex flex-col md:flex-row justify-between items-end h-full">
                     <div class="mb-10 md:mb-0">
@@ -977,7 +980,7 @@ const mobileNewsList = newsData.slice(0, 3);
                     </div>
                 </div>
 
-                <!-- CỘT BÊN PHẢI (CHIẾM 5 PHẦN): BẢNG GIÁ XĂNG DẦU ĐỘNG TỪ PVOIL -->
+                <!-- CỘT BÊN PHẢI: BẢNG GIÁ XĂNG DẦU CẬP NHẬT TỪ VNEXPRESS -->
                 <div class="lg:col-span-5 bg-[#FAF9F9] border border-[#E6EAF2] rounded-xl p-6 flex flex-col justify-between shadow-sm">
                     <div>
                         <div class="flex flex-wrap items-center justify-between gap-2 mb-4 pb-3 border-b border-gray-200">
@@ -985,7 +988,8 @@ const mobileNewsList = newsData.slice(0, 3);
                                 <span class="w-2.5 h-2.5 rounded-full bg-[#214080]"></span>
                                 <span data-key="mkt_gas_title">Giá Xăng Dầu Thị Trường</span>
                             </h3>
-                            <span class="text-[12px] text-[#5A6E85] bg-white px-2.5 py-1 rounded border border-gray-200" data-key="mkt_gas_sub">Nguồn: PVOil</span>
+                            <!-- Cập nhật nhãn nguồn thành VnExpress -->
+                            <span class="text-[12px] text-[#5A6E85] bg-white px-2.5 py-1 rounded border border-gray-200">Nguồn: VnExpress</span>
                         </div>
 
                         <!-- Bảng hiển thị giá xăng dầu động từ JSON -->
@@ -993,22 +997,22 @@ const mobileNewsList = newsData.slice(0, 3);
                             <table class="w-full text-left border-collapse text-xs sm:text-sm text-[18px]">
                                 <thead>
                                     <tr class="text-[#5A6E85] uppercase font-bold text-[16px] border-b border-gray-200">
-                                        <th class="py-2.5 px-3" data-key="mkt_gas_th_item">Mặt hàng</th>
-                                        <th class="py-2.5 px-3 text-right" data-key="mkt_gas_th_price">Giá (VNĐ/lít)</th>
-                                        <th class="py-2.5 px-3 text-right" data-key="mkt_gas_th_change">Chênh lệch</th>
+                                        <th class="py-2.5 px-3">Mặt hàng</th>
+                                        <th class="py-2.5 px-3 text-right">Giá (VNĐ/lít)</th>
+                                        <th class="py-2.5 px-3 text-right">Chênh lệch</th>
                                     </tr>
                                 </thead>
                                 <tbody class="divide-y divide-gray-200 text-[14px]">
                                     {gasPrices.map((item, index) => {
-                                        const changeVal = parseFloat(item.change) || 0;
-                                        const isDecrease = changeVal < 0;
-                                        const productKey = `gas_product_${index + 1}`;
+                                        const changeStr = item.change ? item.change.replace(/[^\d.-]/g, '') : '0';
+                                        const changeVal = parseFloat(changeStr) || 0;
+                                        const isDecrease = changeVal < 0 || (item.change && item.change.includes('-'));
                                         return (
                                             <tr class="hover:bg-white transition">
-                                                <td class="py-3 px-3 font-semibold text-[#16315E]" data-key={productKey}>{item.product}</td>
+                                                <td class="py-3 px-3 font-semibold text-[#16315E]">{item.product}</td>
                                                 <td class="py-3 px-3 text-right font-bold text-[#214080]">{item.price}</td>
                                                 <td class={`py-3 px-3 text-right font-semibold text-xs ${isDecrease ? 'text-emerald-600' : 'text-rose-600'}`}>
-                                                    {isDecrease ? `▼ ${item.change}` : `▲ +${item.change}`}
+                                                    {item.change}
                                                 </td>
                                             </tr>
                                         );
@@ -1018,11 +1022,11 @@ const mobileNewsList = newsData.slice(0, 3);
                         </div>
                     </div>
 
-                    <!-- Nút xem chi tiết nguồn PVOil chính chủ -->
+                    <!-- Nút xem chi tiết nguồn VnExpress chính chủ -->
                     <div class="pt-2 border-t border-gray-200 flex items-center justify-between">
-                        <span class="text-[12px] text-gray-400 italic" data-key="mkt_gas_note">Theo kỳ điều hành mới nhất.</span>
-                        <a href="https://www.pvoil.com.vn/tin-gia-xang-dau" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-4 py-2 bg-white hover:bg-gray-100 text-[#214080] border border-[#214080] text-[14px] font-bold uppercase rounded-lg transition shadow-xs">
-                            <span data-key="mkt_gas_btn">Chi tiết PVOil</span>
+                        <span class="text-[12px] text-gray-400 italic">Theo kỳ điều hành mới nhất.</span>
+                        <a href="https://vnexpress.net/chu-de/gia-xang-dau-3026" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-4 py-2 bg-white hover:bg-gray-100 text-[#214080] border border-[#214080] text-[14px] font-bold uppercase rounded-lg transition shadow-xs">
+                            <span>Chi tiết VnExpress</span>
                             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
                         </a>
                     </div>
