@@ -1,24 +1,62 @@
 ---
 import Layout from '../layouts/layout.astro';
+
+// ============================================================
+// DỮ LIỆU DỰ ÁN
+// Thêm dự án mới = thêm 1 object ở đây + thêm titleKey vào vi.json và en.json
+// ============================================================
+const projects = [
+    { id: 1,  titleKey: "proj_ksp_title",       title: "Nhà Máy KSP Việt Nam Chi Nhánh Hải Dương",                         category: "industrial", region: "north",   image: "/img/nhaMayKspHaiDuong001.png" },
+    { id: 2,  titleKey: "proj_aac_vp_title",    title: "Nhà Máy Sản Xuất Linh Kiện Điện Tử AAC Vĩnh Phúc",                 category: "industrial", region: "north",   image: "/img/nhaMayAacVinhPhuc001.png" },
+    { id: 3,  titleKey: "proj_cp_bd_title",     title: "Nhà Máy Giết Mổ CP Bình Định",                                     category: "industrial", region: "central", image: "/img/nhaMayBff001.png" },
+    { id: 4,  titleKey: "proj_aac_bg_title",    title: "Nhà Máy Sản Xuất Linh Kiện Điện Tử AAC Bắc Giang",                 category: "industrial", region: "north",   image: "/img/nhaMayAacBacGiang001.png" },
+    { id: 5,  titleKey: "proj_cp_bp_title",     title: "Toà Văn Phòng Nhà Máy CP Bình Phước",                              category: "industrial", region: "south",   image: "/img/trangTraiVinhTanBinhDuong001.png" },
+    { id: 6,  titleKey: "proj_chiatai_title",   title: "Nhà Máy Chia Tải Long An",                                         category: "industrial", region: "south",   image: "/img/nhaMayKspHaiDuong001.png" },
+    { id: 7,  titleKey: "proj_nhaxe_bt_title",  title: "Nhà Xe 5 Tầng Bến Tre",                                            category: "industrial", region: "south",   image: "/img/nhaMayAacVinhPhuc001.png" },
+    { id: 8,  titleKey: "proj_greenfeed_title", title: "Thi Công Xây Dựng Soft Stock Greenfeed Bình Định",                 category: "industrial", region: "central", image: "/img/nhaMayAacBacGiang001.png" },
+    { id: 9,  titleKey: "proj_aac_bg2_title",   title: "Nhà Máy Sản Xuất Linh Kiện Điện Tử AAC Bắc Giang (Giai đoạn II)",  category: "industrial", region: "north",   image: "/img/nhaMayKspHaiDuong001.png" },
+    { id: 10, titleKey: "proj_vinhtan_title",   title: "Trang Trại Chăn Nuôi Vĩnh Tân 7, 8, 9 Bình Dương",                 category: "livestock",  region: "south",   image: "/img/trangTraiVinhTanBinhDuong001.png" },
+    { id: 11, titleKey: "proj_hoaphat_title",   title: "Trang Trại Chăn Nuôi Hoà Phát Bình Phước",                         category: "livestock",  region: "south",   image: "/img/nhaMayAacVinhPhuc001.png" },
+    { id: 12, titleKey: "proj_viki_farm_title", title: "Trang Trại Chăn Nuôi VIKI Bình Phước",                             category: "livestock",  region: "south",   image: "/img/nhaMayAacBacGiang001.png" }
+];
+
+// Khoá i18n cho tag trên card
+const SECTOR_KEYS = { industrial: 'tag_industrial_zone', livestock: 'tag_livestock' };
+const REGION_KEYS = { north: 'region_north', central: 'region_central', south: 'region_south' };
+
+// ============================================================
+// NẠP TỪ ĐIỂN vi.json / en.json NGAY LÚC BUILD (chỉ lấy các key trang này cần)
+// Tự tìm file vi.json, en.json ở bất kỳ thư mục nào trong /src
+// ============================================================
+const dictFiles = import.meta.glob('/src/**/{vi,en}.json', { eager: true, import: 'default' });
+const neededKeys = new Set([
+    'projects_page_title',
+    ...projects.map(p => p.titleKey),
+    ...Object.values(SECTOR_KEYS),
+    ...Object.values(REGION_KEYS)
+]);
+const i18nDict = {};
+for (const [path, json] of Object.entries(dictFiles)) {
+    const code = path.split('/').pop().replace('.json', '');
+    i18nDict[code] = Object.fromEntries(Object.entries(json).filter(([k]) => neededKeys.has(k)));
+}
 ---
 
 <Layout title="Các Dự Án | VIKI Construction Corporation">
 
     <div class="bg-[#FAF9F9] min-h-screen py-12">
         <div class="container mx-auto px-4">
-            
+
             <!-- PAGE TITLE -->
             <div class="mb-8">
-                <h1 class="text-[59px] font-extrabold uppercase tracking-tight leading-[1.15] mb-6" data-key="projects_page_title">
-                    CÁC DỰ ÁN
-                </h1>
+                <h1 id="projects-page-title" class="text-[59px] font-extrabold uppercase tracking-tight leading-[1.15] mb-6" data-key="projects_page_title">CÁC DỰ ÁN</h1>
                 <div class="w-16 h-1 bg-[#ED2424] mt-3"></div>
             </div>
 
             <!-- FEATURED PROJECT BANNER (Dự án biểu tượng) -->
             <div class="relative rounded-xl overflow-hidden shadow-2xl mb-12 bg-[#16315E] group">
                 <div class="h-[380px] sm:h-[480px] w-full overflow-hidden relative">
-                    <img src="/img/nhaMayBff001.png" alt="Nhà máy và Kho BFF" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                    <img src="/img/nhaMayBff001.png" alt="Nhà máy và Kho BFF" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" onerror="this.onerror=null; this.src='/img/slide001.webp';">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
                 </div>
                 <div class="absolute bottom-0 left-0 right-0 p-6 sm:p-10 text-white flex flex-col md:flex-row md:items-end justify-between gap-6">
@@ -36,158 +74,538 @@ import Layout from '../layouts/layout.astro';
                 </div>
             </div>
 
-            <!-- MAIN CONTENT GRID (Sidebar Lọc + Lưới Dự Án) -->
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-16">
-                
-                <!-- CỘT TRÁI: SIDEBAR BỘ LỌC (Giống projects.jpg) -->
-                <div class="lg:col-span-3 bg-white p-6 rounded-xl border border-[#E6EAF2] shadow-sm space-y-6">
-                    <div>
-                        <ul class="space-y-3 text-sm font-medium list-none p-0 m-0">
-                            <li>
-                                <a href="#" class="text-[#5A6E85] hover:text-[#214080] transition no-underline block" data-key="proj_sidebar_featured">Dự án biểu tượng</a>
-                            </li>
-                            <li>
-                                <a href="#" class="text-[#214080] font-bold transition no-underline block border-l-3 border-[#214080] pl-3" data-key="proj_sidebar_all">Tất cả dự án</a>
-                            </li>
-                        </ul>
+            <!-- MAIN CONTENT WRAPPER -->
+            <div id="main-content-wrapper" class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16" style="overflow-anchor: none;">
+
+                <!-- CỘT TRÁI: SIDEBAR BỘ LỌC -->
+                <div class="lg:col-span-3">
+
+                    <!-- 1. GIAO DIỆN MOBILE, FOLDABLES & IPAD (Dưới màn hình lg: < 1024px) -->
+                    <div class="block lg:hidden bg-white p-3 sm:p-4 rounded-xl border border-[#E6EAF2] shadow-sm space-y-2">
+                        
+                        <!-- Tiêu đề Dự án biểu tượng (Không phải nút chọn trạng thái lọc) -->
+                        <div class="pb-2 border-b border-[#E6EAF2]">
+                            <div class="text-xs font-extrabold uppercase tracking-wider text-[#16315E]" data-key="proj_sidebar_featured">Featured Project</div>
+                        </div>
+
+                        <!-- Nhóm 1: Nút chọn trạng thái (Mặc định "All Projects" được chọn nền xanh chữ trắng) -->
+                        <div class="flex items-center gap-1.5 overflow-x-auto scrollbar-none pt-1">
+                            <button type="button" data-filter="all" class="filter-btn shrink-0 text-xs font-bold px-3 py-1.5 rounded-lg bg-[#214080] text-white transition shadow-sm border border-[#214080]" data-key="proj_sidebar_all">All Projects</button>
+                        </div>
+
+                        <!-- Nhóm 2: Lọc theo Lĩnh vực (By Sector) -->
+                        <div class="pt-1.5 border-t border-[#E6EAF2]">
+                            <div class="text-[11px] font-bold text-[#16315E] uppercase tracking-wider mb-1" data-key="proj_sector_title">By Sector</div>
+                            <div class="flex items-center gap-1.5 overflow-x-auto scrollbar-none">
+                                <button type="button" data-filter="industrial" class="filter-btn shrink-0 text-xs font-medium px-2.5 py-1 rounded-md bg-[#FAF9F9] border border-[#E6EAF2] text-[#5A6E85] hover:text-[#214080] transition" data-key="sector_industrial">Industrial Park</button>
+                                <button type="button" data-filter="livestock" class="filter-btn shrink-0 text-xs font-medium px-2.5 py-1 rounded-md bg-[#FAF9F9] border border-[#E6EAF2] text-[#5A6E85] hover:text-[#214080] transition" data-key="sector_livestock">Livestock Infrastructure</button>
+                            </div>
+                        </div>
+
+                        <!-- Nhóm 3: Lọc theo Khu vực (By Region) -->
+                        <div class="pt-1.5 border-t border-[#E6EAF2]">
+                            <div class="text-[11px] font-bold text-[#16315E] uppercase tracking-wider mb-1" data-key="proj_region_title">By Region</div>
+                            <div class="flex items-center gap-1.5 overflow-x-auto scrollbar-none">
+                                <button type="button" data-filter="north" class="filter-btn shrink-0 text-xs font-medium px-2.5 py-1 rounded-md bg-[#FAF9F9] border border-[#E6EAF2] text-[#5A6E85] hover:text-[#214080] transition" data-key="region_north">Northern Region</button>
+                                <button type="button" data-filter="central" class="filter-btn shrink-0 text-xs font-medium px-2.5 py-1 rounded-md bg-[#FAF9F9] border border-[#E6EAF2] text-[#5A6E85] hover:text-[#214080] transition" data-key="region_central">Central Region</button>
+                                <button type="button" data-filter="south" class="filter-btn shrink-0 text-xs font-medium px-2.5 py-1 rounded-md bg-[#FAF9F9] border border-[#E6EAF2] text-[#5A6E85] hover:text-[#214080] transition" data-key="region_south">Southern Region</button>
+                            </div>
+                        </div>
+
                     </div>
 
-                    <div class="pt-4 border-t border-[#E6EAF2]">
-                        <h4 class="text-xs font-bold text-[#16315E] uppercase tracking-wider mb-3" data-key="proj_sector_title">Theo lĩnh vực xây dựng</h4>
-                        <ul class="space-y-2.5 text-xs text-[#5A6E85] list-none p-0 m-0">
-                            <li><a href="#" class="hover:text-[#214080] transition no-underline block" data-key="sector_hotel">Khách sạn & Nghỉ dưỡng</a></li>
-                            <li><a href="#" class="hover:text-[#214080] transition no-underline block" data-key="sector_residential">Khu dân cư</a></li>
-                            <li><a href="#" class="hover:text-[#214080] transition no-underline block" data-key="sector_industrial">Khu công nghiệp</a></li>
-                            <li><a href="#" class="hover:text-[#214080] transition no-underline block" data-key="sector_commercial">Thương mại</a></li>
-                            <li><a href="#" class="hover:text-[#214080] transition no-underline block" data-key="sector_infrastructure">Hạ tầng</a></li>
-                            <li><a href="#" class="hover:text-[#214080] transition no-underline block" data-key="sector_medical">Trường học & Bệnh viện</a></li>
-                        </ul>
-                    </div>
+                    <!-- 2. GIAO DIỆN DESKTOP / LAPTOP (Từ màn hình lg: >= 1024px trở lên) -->
+                    <aside id="sticky-sidebar" class="hidden lg:block bg-white p-6 rounded-xl border border-[#E6EAF2] shadow-sm space-y-6" style="position: sticky; top: calc(var(--header-h, 96px) + 8px);">
+                        <div>
+                            <div class="text-sm font-extrabold uppercase tracking-wider text-[#16315E] mb-3" data-key="proj_sidebar_featured">Featured Project</div>
+                            
+                            <ul class="space-y-3 font-medium list-none p-0 m-0">
+                                <li>
+                                    <!-- Nút All Projects mặc định khi vào trang -->
+                                    <button type="button" data-filter="all" class="filter-btn text-[#214080] font-bold transition text-left w-full bg-transparent p-0 cursor-pointer border-0 border-l-[3px] border-solid border-[#214080] pl-3 text-sm" data-key="proj_sidebar_all">All Projects</button>
+                                </li>
+                            </ul>
+                        </div>
 
-                    <div class="pt-4 border-t border-[#E6EAF2]">
-                        <h4 class="text-xs font-bold text-[#16315E] uppercase tracking-wider mb-3" data-key="proj_region_title">Theo khu vực</h4>
-                        <ul class="space-y-2.5 text-xs text-[#5A6E85] list-none p-0 m-0">
-                            <li><a href="#" class="hover:text-[#214080] transition no-underline block" data-key="region_central">Miền Trung</a></li>
-                            <li><a href="#" class="hover:text-[#214080] transition no-underline block" data-key="region_north">Miền Bắc</a></li>
-                            <li><a href="#" class="hover:text-[#214080] transition no-underline block" data-key="region_south">Miền Nam</a></li>
-                        </ul>
-                    </div>
+                        <div class="pt-4 border-t border-[#E6EAF2]">
+                            <h4 class="text-sm font-bold text-[#16315E] uppercase tracking-wider mb-3" data-key="proj_sector_title">By Sector</h4>
+                            <ul class="space-y-2.5 text-sm text-[#5A6E85] list-none p-0 m-0">
+                                <li><button type="button" data-filter="industrial" class="filter-btn text-[#5A6E85] hover:text-[#214080] transition text-left w-full bg-transparent border-0 p-0 cursor-pointer text-sm" data-key="sector_industrial">Industrial Park</button></li>
+                                <li><button type="button" data-filter="livestock" class="filter-btn text-[#5A6E85] hover:text-[#214080] transition text-left w-full bg-transparent border-0 p-0 cursor-pointer text-sm" data-key="sector_livestock">Livestock Infrastructure</button></li>
+                            </ul>
+                        </div>
+
+                        <div class="pt-4 border-t border-[#E6EAF2]">
+                            <h4 class="text-sm font-bold text-[#16315E] uppercase tracking-wider mb-3" data-key="proj_region_title">By Region</h4>
+                            <ul class="space-y-2.5 text-sm text-[#5A6E85] list-none p-0 m-0">
+                                <li><button type="button" data-filter="north" class="filter-btn text-[#5A6E85] hover:text-[#214080] transition text-left w-full bg-transparent border-0 p-0 cursor-pointer text-sm" data-key="region_north">Northern Region</button></li>
+                                <li><button type="button" data-filter="central" class="filter-btn text-[#5A6E85] hover:text-[#214080] transition text-left w-full bg-transparent border-0 p-0 cursor-pointer text-sm" data-key="region_central">Central Region</button></li>
+                                <li><button type="button" data-filter="south" class="filter-btn text-[#5A6E85] hover:text-[#214080] transition text-left w-full bg-transparent border-0 p-0 cursor-pointer text-sm" data-key="region_south">Southern Region</button></li>
+                            </ul>
+                        </div>
+                    </aside>
+
                 </div>
 
-                <!-- CỘT PHẢI: LƯỚI DỰ ÁN (PROJECT CARDS) -->
-                <div class="lg:col-span-9 space-y-8">
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        
-                        <!-- Dự án 1 -->
-                        <div class="bg-white rounded-xl overflow-hidden border border-[#E6EAF2] shadow-sm hover:shadow-md transition flex flex-col group">
-                            <div class="h-60 overflow-hidden bg-slate-100 relative">
-                                <img src="/img/nhaMayKspHaiDuong001.png" alt="Nhà máy KSP Việt Nam" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                            </div>
-                            <div class="p-6 flex-1 flex flex-col justify-between">
-                                <h3 class="text-lg font-bold uppercase text-[#16315E] mb-3" data-key="proj_ksp_title">Nhà Máy KSP Việt Nam Chi Nhánh Hải Dương</h3>
-                                <div class="flex flex-wrap gap-2 pt-3 border-t border-gray-100">
-                                    <span class="inline-flex items-center gap-1 px-2.5 py-1 bg-[#FAF9F9] border border-[#E6EAF2] text-[11px] font-semibold text-[#214080]">
-                                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
-                                        <span data-key="tag_industrial_zone">Khu công nghiệp</span>
-                                    </span>
-                                    <span class="inline-flex items-center gap-1 px-2.5 py-1 bg-[#FAF9F9] border border-[#E6EAF2] text-[11px] font-semibold text-[#214080]">
-                                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/></svg>
-                                        <span data-key="region_north">Miền Bắc</span>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Dự án 2 -->
-                        <div class="bg-white rounded-xl overflow-hidden border border-[#E6EAF2] shadow-sm hover:shadow-md transition flex flex-col group">
-                            <div class="h-60 overflow-hidden bg-slate-100 relative">
-                                <img src="/img/nhaMayAacVinhPhuc001.png" alt="Nhà máy AAC Vĩnh Phúc" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                            </div>
-                            <div class="p-6 flex-1 flex flex-col justify-between">
-                                <h3 class="text-lg font-bold uppercase text-[#16315E] mb-3" data-key="proj_aac_vp_title">Nhà Máy Sản Xuất Linh Kiện Điện Tử AAC Vĩnh Phúc</h3>
-                                <div class="flex flex-wrap gap-2 pt-3 border-t border-gray-100">
-                                    <span class="inline-flex items-center gap-1 px-2.5 py-1 bg-[#FAF9F9] border border-[#E6EAF2] text-[11px] font-semibold text-[#214080]" data-key="tag_industrial_zone">Khu công nghiệp</span>
-                                    <span class="inline-flex items-center gap-1 px-2.5 py-1 bg-[#FAF9F9] border border-[#E6EAF2] text-[11px] font-semibold text-[#214080]" data-key="region_north">Miền Bắc</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Dự án 3 -->
-                        <div class="bg-white rounded-xl overflow-hidden border border-[#E6EAF2] shadow-sm hover:shadow-md transition flex flex-col group">
-                            <div class="h-60 overflow-hidden bg-slate-100 relative">
-                                <img src="/img/nhaMayAacBacGiang001.png" alt="Nhà máy AAC Bắc Giang" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                            </div>
-                            <div class="p-6 flex-1 flex flex-col justify-between">
-                                <h3 class="text-lg font-bold uppercase text-[#16315E] mb-3" data-key="proj_aac_bg_title">Nhà Máy Sản Xuất Linh Kiện Điện Tử AAC Bắc Giang</h3>
-                                <div class="flex flex-wrap gap-2 pt-3 border-t border-gray-100">
-                                    <span class="inline-flex items-center gap-1 px-2.5 py-1 bg-[#FAF9F9] border border-[#E6EAF2] text-[11px] font-semibold text-[#214080]" data-key="tag_industrial_zone">Khu công nghiệp</span>
-                                    <span class="inline-flex items-center gap-1 px-2.5 py-1 bg-[#FAF9F9] border border-[#E6EAF2] text-[11px] font-semibold text-[#214080]" data-key="region_north">Miền Bắc</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Dự án 4 -->
-                        <div class="bg-white rounded-xl overflow-hidden border border-[#E6EAF2] shadow-sm hover:shadow-md transition flex flex-col group">
-                            <div class="h-60 overflow-hidden bg-slate-100 relative">
-                                <img src="/img/trangTraiVinhTanBinhDuong001.png" alt="Trang trại Vĩnh Tân Bình Dương" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                            </div>
-                            <div class="p-6 flex-1 flex flex-col justify-between">
-                                <h3 class="text-lg font-bold uppercase text-[#16315E] mb-3" data-key="proj_vinhtan_title">Trang Trại Chăn Nuôi Vĩnh Tân 7, 8, 9 Bình Dương</h3>
-                                <div class="flex flex-wrap gap-2 pt-3 border-t border-gray-100">
-                                    <span class="inline-flex items-center gap-1 px-2.5 py-1 bg-[#FAF9F9] border border-[#E6EAF2] text-[11px] font-semibold text-[#214080]" data-key="tag_agri_infrastructure">Hạ tầng nông nghiệp</span>
-                                    <span class="inline-flex items-center gap-1 px-2.5 py-1 bg-[#FAF9F9] border border-[#E6EAF2] text-[11px] font-semibold text-[#214080]" data-key="region_south">Miền Nam</span>
-                                </div>
-                            </div>
-                        </div>
-
+                <!-- CỘT PHẢI: LƯỚI DỰ ÁN & PHÂN TRANG -->
+                <div id="right-content-column" class="lg:col-span-9 space-y-8">
+                    <div id="project-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- Các card dự án render bằng JS -->
                     </div>
 
-                    <!-- PAGINATION -->
-                    <div class="flex items-center justify-center gap-2 pt-8">
-                        <button class="w-10 h-10 flex items-center justify-center border border-gray-300 bg-white text-gray-500 hover:bg-gray-100 transition rounded">&larr;</button>
-                        <button class="w-10 h-10 flex items-center justify-center bg-[#214080] text-white font-bold rounded">1</button>
-                        <button class="w-10 h-10 flex items-center justify-center border border-gray-300 bg-white text-[#214080] hover:bg-gray-100 transition rounded font-semibold">2</button>
-                        <button class="w-10 h-10 flex items-center justify-center border border-gray-300 bg-white text-[#214080] hover:bg-gray-100 transition rounded font-semibold">3</button>
-                        <button class="w-10 h-10 flex items-center justify-center border border-gray-300 bg-white text-gray-500 hover:bg-gray-100 transition rounded">&rarr;</button>
+                    <div id="pagination-container" class="flex items-center justify-center gap-2 pt-4">
+                        <!-- Nút phân trang render bằng JS -->
                     </div>
-
                 </div>
 
             </div>
 
-            <!-- SECTION: KHÁCH HÀNG NÓI GÌ VỀ VIKI (Chuẩn mẫu projects.jpg) -->
-            <div class="bg-white rounded-xl p-8 sm:p-12 border border-[#E6EAF2] shadow-sm mt-16">
-                <div class="flex flex-col md:flex-row items-center justify-between gap-6 mb-10 pb-6 border-b border-gray-100">
+            <!-- SECTION: KHÁCH HÀNG NÓI GÌ VỀ VIKI -->
+            <div class="bg-white rounded-xl p-6 sm:p-10 border border-[#E6EAF2] shadow-sm mt-16">
+                <div class="flex flex-col md:flex-row items-center justify-between gap-6 mb-8 pb-0 border-b border-gray-100">
                     <h2 class="text-2xl sm:text-3xl font-extrabold uppercase text-[#16315E] m-0 tracking-wide" data-key="testimonial_title">
                         KHÁCH HÀNG NÓI GÌ VỀ VIKI?
                     </h2>
                     <div class="flex items-center gap-2">
-                        <button class="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center text-[#214080] hover:bg-[#214080] hover:text-white transition">&larr;</button>
-                        <button class="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center text-[#214080] hover:bg-[#214080] hover:text-white transition">&rarr;</button>
+                        <button type="button" id="testimonial-prev" aria-label="Previous testimonial" class="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center text-[#214080] hover:bg-[#214080] hover:text-white transition cursor-pointer">&larr;</button>
+                        <button type="button" id="testimonial-next" aria-label="Next testimonial" class="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center text-[#214080] hover:bg-[#214080] hover:text-white transition cursor-pointer">&rarr;</button>
                     </div>
                 </div>
 
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-                    <div class="lg:col-span-4">
-                        <div class="relative rounded-lg overflow-hidden shadow-md aspect-[4/5] bg-slate-200">
-                            <img src="/khachHang.png" alt="Đại diện khách hàng VIKI" class="w-full h-full object-cover">
-                            <div class="absolute bottom-3 left-3 w-6 h-6 border-l-2 border-b-2 border-[#5FD1C1]"></div>
+                <!-- KHUNG SLIDER (Ẩn phần tràn ngang để tạo hiệu ứng trượt phải -> trái) -->
+                <div id="testimonial-slider-wrapper" class="overflow-hidden relative my-10 sm:my-4">
+                    <div id="testimonial-track" class="flex transition-transform duration-700 ease-in-out">
+
+                        <!-- KHÁCH HÀNG 1 (Gốc) -->
+                        <div class="w-full shrink-0 px-2 sm:px-4">
+                            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
+                                <div class="lg:col-span-3 flex justify-center">
+                                    <div class="relative rounded-lg overflow-hidden shadow-md w-full max-w-[260px] aspect-square bg-slate-200">
+                                        <img src="/khachHang.png" alt="Đại diện Ban Quản lý Dự án Đầu tư" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='/img/slide001.webp';">
+                                        <div class="absolute bottom-2 left-2 w-5 h-5 border-l-2 border-b-2 border-[#5FD1C1]"></div>
+                                    </div>
+                                </div>
+                                <div class="lg:col-span-9 space-y-4">
+                                    <blockquote class="text-base text-[#5A6E85] italic text-justify leading-relaxed m-0 border-l-4 border-[#214080] pl-5 pr-5" data-key="testimonial_quote_1">
+                                        "Chất lượng xây dựng và năng lực điều hành dự án của VIKI được thể hiện rất rõ ràng ở các công trình thực tế. Đội ngũ kỹ sư làm việc tận tâm, chuyên nghiệp, giữ vững cam kết về tiến độ và tiêu chuẩn kỹ thuật khắt khe. Chúng tôi vô cùng hài lòng và mong muốn tiếp tục hợp tác trong các dự án quy mô lớn tiếp theo."
+                                    </blockquote>
+                                    <div class="pt-2">
+                                        <div class="text-sm font-bold text-[#16315E] uppercase" data-key="testimonial_pos_1">ĐẠI DIỆN BAN QUẢN LÝ DỰ ÁN ĐẦU TƯ</div>
+                                        <div class="text-xs text-[#5A6E85] mt-1" data-key="testimonial_desc_1">Đối tác chiến lược & Chủ đầu tư các khu công nghiệp trọng điểm</div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="lg:col-span-8 space-y-6">
-                        <blockquote class="text-base sm:text-lg text-[#5A6E85] italic leading-relaxed m-0 border-l-4 border-[#214080] pl-6" data-key="testimonial_quote">
-                            "Chất lượng xây dựng và năng lực điều hành dự án của VIKI được thể hiện rất rõ ràng ở các công trình thực tế. Đội ngũ kỹ sư làm việc tận tâm, chuyên nghiệp, giữ vững cam kết về tiến độ và tiêu chuẩn kỹ thuật khắt khe. Chúng tôi vô cùng hài lòng và mong muốn tiếp tục hợp tác trong các dự án quy mô lớn tiếp theo."
-                        </blockquote>
-                        <div>
-                            <div class="text-sm font-bold text-[#16315E] uppercase" data-key="testimonial_pos">ĐẠI DIỆN BAN QUẢN LÝ DỰ ÁN ĐẦU TƯ</div>
-                            <div class="text-xs text-[#5A6E85] mt-1" data-key="testimonial_desc">Đối tác chiến lược & Chủ đầu tư các khu công nghiệp trọng điểm</div>
+
+                        <!-- KHÁCH HÀNG 2 -->
+                        <div class="w-full shrink-0 px-2 sm:px-4">
+                            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
+                                <div class="lg:col-span-3 flex justify-center">
+                                    <div class="relative rounded-lg overflow-hidden shadow-md w-full max-w-[260px] aspect-square bg-slate-200">
+                                        <img src="/khachHang2.png" alt="Giám đốc Khối Hạ tầng Công nghiệp" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='/img/slide001.webp';">
+                                        <div class="absolute bottom-2 left-2 w-5 h-5 border-l-2 border-b-2 border-[#5FD1C1]"></div>
+                                    </div>
+                                </div>
+                                <div class="lg:col-span-9 space-y-4">
+                                    <blockquote class="text-base text-[#5A6E85] italic   text-justify leading-relaxed m-0 border-l-4 border-[#214080] pl-5 pr-5" data-key="testimonial_quote_2">
+                                        "VIKI đã chứng minh năng lực thi công tổng thầu vượt trội trong gói thầu mở rộng nhà xưởng sản xuất linh kiện điện tử của chúng tôi. Công tác an toàn lao động và kiểm soát chất lượng vật tư được thực hiện bài bản, giúp nhà máy đi vào vận hành đúng kế hoạch."
+                                    </blockquote>
+                                    <div class="pt-2">
+                                        <div class="text-sm font-bold text-[#16315E] uppercase" data-key="testimonial_pos_2">GIÁM ĐỐC KHỐI HẠ TẦNG & XÂY DỰNG</div>
+                                        <div class="text-xs text-[#5A6E85] mt-1" data-key="testimonial_desc_2">Tập đoàn Sản xuất Linh kiện Điện tử Công nghệ cao</div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+
+                        <!-- KHÁCH HÀNG 3 -->
+                        <div class="w-full shrink-0 px-2 sm:px-4">
+                            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
+                                <div class="lg:col-span-3 flex justify-center">
+                                    <div class="relative rounded-lg overflow-hidden shadow-md w-full max-w-[260px] aspect-square bg-slate-200">
+                                        <img src="/khachHang3.png" alt="Trưởng ban Phát triển Trang trại Chăn nuôi" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='/img/slide001.webp';">
+                                        <div class="absolute bottom-2 left-2 w-5 h-5 border-l-2 border-b-2 border-[#5FD1C1]"></div>
+                                    </div>
+                                </div>
+                                <div class="lg:col-span-9 space-y-4">
+                                    <blockquote class="text-base text-[#5A6E85] italic   text-justify leading-relaxed m-0 border-l-4 border-[#214080] pl-5 pr-5" data-key="testimonial_quote_3">
+                                        "Với đặc thù khắt khe về an toàn sinh học và kết cấu hạ tầng nông nghiệp công nghệ cao, VIKI đã đưa ra các giải pháp kỹ thuật tối ưu, tiết kiệm chi phí vận hành dài hạn. Sự phối hợp nhịp nhàng giữa ban chỉ huy công trường và chủ đầu tư là điểm cộng rất lớn."
+                                    </blockquote>
+                                    <div class="pt-2">
+                                        <div class="text-sm font-bold text-[#16315E] uppercase" data-key="testimonial_pos_3">TRƯỞNG BAN PHÁT TRIỂN DỰ ÁN NÔNG NGHIỆP</div>
+                                        <div class="text-xs text-[#5A6E85] mt-1" data-key="testimonial_desc_3">Doanh nghiệp Đầu tư Hệ thống Trang trại & Chế biến Thực phẩm</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- KHÁCH HÀNG 4 -->
+                        <div class="w-full shrink-0 px-2 sm:px-4">
+                            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
+                                <div class="lg:col-span-3 flex justify-center">
+                                    <div class="relative rounded-lg overflow-hidden shadow-md w-full max-w-[260px] aspect-square bg-slate-200">
+                                        <img src="/khachHang4.png" alt="Giám đốc Vận hành Chuỗi Kho vận" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='/img/slide001.webp';">
+                                        <div class="absolute bottom-2 left-2 w-5 h-5 border-l-2 border-b-2 border-[#5FD1C1]"></div>
+                                    </div>
+                                </div>
+                                <div class="lg:col-span-9 space-y-4">
+                                    <blockquote class="text-base text-[#5A6E85]   italic text-justify leading-relaxed m-0 border-l-4 border-[#214080] pl-5 pr-5" data-key="testimonial_quote_4">
+                                        "Hệ thống nhà kho tiêu chuẩn và hạ tầng kỹ thuật đồng bộ do VIKI thi công đáp ứng trọn vẹn các tiêu chuẩn quốc tế về tải trọng sàn và phòng cháy chữa cháy. Chúng tôi đánh giá cao tinh thần trách nhiệm và sự minh bạch trong suốt quá trình triển khai dự án."
+                                    </blockquote>
+                                    <div class="pt-2">
+                                        <div class="text-sm font-bold text-[#16315E] uppercase" data-key="testimonial_pos_4">GIÁM ĐỐC VẬN HÀNH & LOGISTICS</div>
+                                        <div class="text-xs text-[#5A6E85] mt-1" data-key="testimonial_desc_4">Công ty Cổ phần Kho vận & Trung tâm Phân phối Miền Nam</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- KHÁCH HÀNG 5 -->
+                        <div class="w-full shrink-0 px-2 sm:px-4">
+                            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
+                                <div class="lg:col-span-3 flex justify-center">
+                                    <div class="relative rounded-lg overflow-hidden shadow-md w-full max-w-[260px] aspect-square bg-slate-200">
+                                        <img src="/khachHang5.png" alt="Đại diện Chủ đầu tư Khu công nghiệp" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='/img/slide001.webp';">
+                                        <div class="absolute bottom-2 left-2 w-5 h-5 border-l-2 border-b-2 border-[#5FD1C1]"></div>
+                                    </div>
+                                </div>
+                                <div class="lg:col-span-9 space-y-4">
+                                    <blockquote class="text-base text-[#5A6E85]   italic text-justify leading-relaxed m-0 border-l-4 border-[#214080] pl-5 pr-5" data-key="testimonial_quote_5">
+                                        "Dù điều kiện thời tiết miền Trung có nhiều biến động, đội ngũ VIKI vẫn bám sát tiến độ từng hạng mục, chủ động đề xuất phương án thi công linh hoạt mà không làm ảnh hưởng đến chất lượng kết cấu công trình. Đây là đối tác xây dựng rất đáng tin cậy."
+                                    </blockquote>
+                                    <div class="pt-2">
+                                        <div class="text-sm font-bold text-[#16315E] uppercase" data-key="testimonial_pos_5">PHÓ TỔNG GIÁM ĐỐC KỸ THUẬT</div>
+                                        <div class="text-xs text-[#5A6E85] mt-1" data-key="testimonial_desc_5">Chủ đầu tư Tổ hợp Công nghiệp Chế biến Khu vực Miền Trung</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- KHÁCH HÀNG 6 -->
+                        <div class="w-full shrink-0 px-2 sm:px-4">
+                            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
+                                <div class="lg:col-span-3 flex justify-center">
+                                    <div class="relative rounded-lg overflow-hidden shadow-md w-full max-w-[260px] aspect-square bg-slate-200">
+                                        <img src="/khachHang6.png" alt="Trưởng phòng Quản lý Chất lượng Dự án" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='/img/slide001.webp';">
+                                        <div class="absolute bottom-2 left-2 w-5 h-5 border-l-2 border-b-2 border-[#5FD1C1]"></div>
+                                    </div>
+                                </div>
+                                <div class="lg:col-span-9 space-y-4">
+                                    <blockquote class="text-base text-[#5A6E85] italic text-justify leading-relaxed m-0   border-l-4 border-[#214080] pl-5 pr-5" data-key="testimonial_quote_6">
+                                        "Từ khâu lập biện pháp thi công đến nghiệm thu bàn giao và bảo hành sau dự án, VIKI luôn giữ tác phong chuẩn mực, phản hồi nhanh chóng mọi yêu cầu từ phía tư vấn giám sát. Chúng tôi hoàn toàn yên tâm khi giao phó các hạng mục trọng điểm cho VIKI."
+                                    </blockquote>
+                                    <div class="pt-2">
+                                        <div class="text-sm font-bold text-[#16315E] uppercase" data-key="testimonial_pos_6">TRƯỞNG PHÒNG QUẢN LÝ CHẤT LƯỢNG (QA/QC)</div>
+                                        <div class="text-xs text-[#5A6E85] mt-1" data-key="testimonial_desc_6">Đơn vị Tư vấn Giám sát & Phát triển Hạ tầng Khu công nghiệp</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
+
+                <!-- Dấu chấm chỉ báo trang (Dots indicator) -->
+                <div id="testimonial-dots" class="flex items-center justify-center gap-2 mt-4 pt-2"></div>
             </div>
 
         </div>
     </div>
 
 </Layout>
+
+<!-- SCRIPT: LỌC, PHÂN TRANG, CUỘN VỀ ĐẦU LƯỚI VÀ ĐA NGÔN NGỮ CHO CARD -->
+<script define:vars={{ projectsData: projects, i18nDict, SECTOR_KEYS, REGION_KEYS }}>
+    const ITEMS_PER_PAGE = 6;
+    const ACTIVE_CLASSES = ['font-bold', 'text-[#214080]', 'border-l-[3px]', 'border-solid', 'border-[#214080]', 'pl-3'];
+    const INACTIVE_CLASSES = ['text-[#5A6E85]'];
+
+    // Chữ tiếng Việt dự phòng khi không tìm thấy từ điển
+    const FALLBACK_TEXT = {
+        industrial: 'Khu công nghiệp', livestock: 'Hạ tầng chăn nuôi',
+        north: 'Miền Bắc', central: 'Miền Trung', south: 'Miền Nam'
+    };
+
+    let currentFilter = 'all';
+    let currentPage = 1;
+    let currentLang = 'vi';
+
+    const gridEl = document.getElementById('project-grid');
+    const paginationEl = document.getElementById('pagination-container');
+    const rightColumnEl = document.getElementById('right-content-column');
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const titleEl = document.getElementById('projects-page-title');
+
+    if (!Object.keys(i18nDict).length) {
+        console.warn('[projects] Không tìm thấy vi.json / en.json trong /src. Card sẽ hiển thị tiếng Việt.');
+    }
+
+    // ---------- Đa ngôn ngữ ----------
+    // Ngôn ngữ hiện tại = so khớp chữ trên tiêu đề trang (do layout dịch) với từ điển.
+    // Cách này không phụ thuộc vào cơ chế đổi ngôn ngữ của layout.
+    function detectLang() {
+        const text = (titleEl ? titleEl.textContent : '').trim();
+        for (const [code, dict] of Object.entries(i18nDict)) {
+            if (dict.projects_page_title && dict.projects_page_title === text) return code;
+        }
+        return 'vi';
+    }
+
+    function t(key, fallback) {
+        const d = i18nDict[currentLang] || {};
+        const vi = i18nDict.vi || {};
+        return d[key] ?? vi[key] ?? fallback;
+    }
+
+    function escapeHtml(s) {
+        return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    }
+
+    // ---------- Lọc ----------
+    function getFiltered() {
+        if (currentFilter === 'all') return projectsData;
+        if (currentFilter === 'featured') return projectsData.slice(0, 3);
+        return projectsData.filter(p => p.category === currentFilter || p.region === currentFilter);
+    }
+
+    // ---------- Cuộn về đầu lưới (tính theo vị trí thực, không dùng số cứng) ----------
+    function getHeaderOffset() {
+        const cssVar = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-h'));
+        if (!Number.isNaN(cssVar)) return cssVar;
+        const header = document.querySelector('header');
+        return header ? header.offsetHeight : 96;
+    }
+
+    function scrollToGridTop(smooth) {
+        const GAP = 16;
+        const top = rightColumnEl.getBoundingClientRect().top + window.scrollY - getHeaderOffset() - GAP;
+        window.scrollTo({ top: Math.max(0, top), behavior: smooth ? 'smooth' : 'auto' });
+    }
+
+    // ---------- Render ----------
+    function renderProjects() {
+        const filtered = getFiltered();
+        const totalPages = Math.max(1, Math.ceil(filtered.length / ITEMS_PER_PAGE));
+        if (currentPage > totalPages) currentPage = totalPages;
+
+        const start = (currentPage - 1) * ITEMS_PER_PAGE;
+        const items = filtered.slice(start, start + ITEMS_PER_PAGE);
+
+        gridEl.innerHTML = items.map(item => {
+            const title = escapeHtml(t(item.titleKey, item.title));
+            const sectorKey = SECTOR_KEYS[item.category];
+            const regionKey = REGION_KEYS[item.region];
+            const sectorText = escapeHtml(t(sectorKey, FALLBACK_TEXT[item.category]));
+            const regionText = escapeHtml(t(regionKey, FALLBACK_TEXT[item.region]));
+            return `
+            <div class="bg-white rounded-xl overflow-hidden border border-[#E6EAF2] shadow-sm hover:shadow-md transition flex flex-col group">
+                <div class="h-60 overflow-hidden bg-slate-100 relative">
+                    <img src="${item.image}" alt="${title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.onerror=null; this.src='/img/slide001.webp';">
+                </div>
+                <div class="p-6 flex-1 flex flex-col justify-between">
+                    <h3 data-key="${item.titleKey}" class="text-base font-bold uppercase text-[#16315E] mb-3 line-clamp-2 overflow-hidden text-ellipsis" title="${title}">
+                        ${title}
+                    </h3>
+                    <div class="flex flex-wrap gap-2 pt-3 border-t border-gray-100">
+                        <span class="inline-flex items-center gap-1 px-2.5 py-1 bg-[#FAF9F9] border border-[#E6EAF2] text-[11px] font-semibold text-[#214080]">
+                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                            <span data-key="${sectorKey}">${sectorText}</span>
+                        </span>
+                        <span class="inline-flex items-center gap-1 px-2.5 py-1 bg-[#FAF9F9] border border-[#E6EAF2] text-[11px] font-semibold text-[#214080]">
+                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/></svg>
+                            <span data-key="${regionKey}">${regionText}</span>
+                        </span>
+                    </div>
+                </div>
+            </div>`;
+        }).join('');
+
+        let html = '';
+        if (totalPages > 1) {
+            const prevDisabled = currentPage === 1 ? 'opacity-40 pointer-events-none' : '';
+            const nextDisabled = currentPage === totalPages ? 'opacity-40 pointer-events-none' : '';
+            html += `<button type="button" data-page="${currentPage - 1}" aria-label="Previous page" class="page-btn w-10 h-10 flex items-center justify-center border border-gray-300 bg-white text-gray-500 hover:bg-gray-100 transition rounded ${prevDisabled}">&larr;</button>`;
+            for (let i = 1; i <= totalPages; i++) {
+                if (i === currentPage) {
+                    html += `<button type="button" class="w-10 h-10 flex items-center justify-center bg-[#214080] text-white font-bold rounded">${i}</button>`;
+                } else {
+                    html += `<button type="button" data-page="${i}" class="page-btn w-10 h-10 flex items-center justify-center border border-gray-300 bg-white text-[#214080] hover:bg-gray-100 transition rounded font-semibold">${i}</button>`;
+                }
+            }
+            html += `<button type="button" data-page="${currentPage + 1}" aria-label="Next page" class="page-btn w-10 h-10 flex items-center justify-center border border-gray-300 bg-white text-gray-500 hover:bg-gray-100 transition rounded ${nextDisabled}">&rarr;</button>`;
+        }
+        paginationEl.innerHTML = html;
+    }
+
+    // ---------- Phân trang (event delegation) ----------
+    paginationEl.addEventListener('click', (e) => {
+        const btn = e.target.closest('.page-btn');
+        if (!btn) return;
+        const page = parseInt(btn.dataset.page, 10);
+        const totalPages = Math.max(1, Math.ceil(getFiltered().length / ITEMS_PER_PAGE));
+        if (page < 1 || page > totalPages) return;
+
+        currentPage = page;
+        renderProjects();
+        requestAnimationFrame(() => scrollToGridTop(true));
+    });
+
+    // ---------- Bộ lọc ----------
+    filterButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const target = e.currentTarget;
+
+            filterButtons.forEach(b => {
+                b.classList.remove(...ACTIVE_CLASSES);
+                b.classList.add(...INACTIVE_CLASSES);
+            });
+            target.classList.remove(...INACTIVE_CLASSES);
+            target.classList.add(...ACTIVE_CLASSES);
+
+            currentFilter = target.dataset.filter;
+            currentPage = 1;
+            renderProjects();
+
+            // Luôn đưa đầu lưới về đúng một vị trí cố định, bất kể số lượng dự án
+            requestAnimationFrame(() => scrollToGridTop(false));
+        });
+    });
+
+    // ---------- Theo dõi đổi ngôn ngữ: layout dịch tiêu đề -> dựng lại card ----------
+    if (titleEl) {
+        new MutationObserver(() => {
+            const lang = detectLang();
+            if (lang !== currentLang) {
+                currentLang = lang;
+                renderProjects();
+            }
+        }).observe(titleEl, { childList: true, characterData: true, subtree: true });
+    }
+
+    currentLang = detectLang();
+    renderProjects();
+
+    // ---------- Bộ lọc (Xử lý riêng biệt cho Desktop và Mobile không bị mất chữ) ----------
+    filterButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const clickedBtn = e.currentTarget;
+            const targetFilter = clickedBtn.getAttribute('data-filter');
+            const isDesktop = Boolean(clickedBtn.closest('#sticky-sidebar'));
+
+            // Duyệt qua tất cả các nút lọc để cập nhật trạng thái
+            filterButtons.forEach(b => {
+                const inDesktopSidebar = Boolean(b.closest('#sticky-sidebar'));
+                const isMatch = (b.getAttribute('data-filter') === targetFilter);
+
+                if (inDesktopSidebar) {
+                    // --- XỬ LÝ CHO GIAO DIỆN DESKTOP (Sidebar dọc) ---
+                    if (isMatch) {
+                        // Mục được chọn: Chữ xanh đậm, đậm nét, có viền trái nhận diện
+                        b.classList.remove('text-[#5A6E85]', 'font-normal');
+                        b.classList.add('text-[#214080]', 'font-bold', 'border-l-[3px]', 'border-solid', 'border-[#214080]', 'pl-3');
+                    } else {
+                        // Mục không chọn: Chữ xám nhạt, bỏ viền trái
+                        b.classList.remove('text-[#214080]', 'font-bold', 'border-l-[3px]', 'border-solid', 'border-[#214080]', 'pl-3');
+                        b.classList.add('text-[#5A6E85]', 'font-normal');
+                    }
+                } else {
+                    // --- XỬ LÝ CHO GIAO DIỆN MOBILE / IPAD (Nút pill ngang) ---
+                    if (isMatch) {
+                        // Mục được chọn: Nền xanh, chữ trắng
+                        b.classList.remove('bg-[#FAF9F9]', 'bg-white', 'text-[#5A6E85]', 'border-[#E6EAF2]');
+                        b.classList.add('bg-[#214080]', 'text-white', 'font-bold', 'border-[#214080]');
+                    } else {
+                        // Mục không chọn: Nền trắng/xám nhẹ, chữ xanh nhạt
+                        b.classList.remove('bg-[#214080]', 'text-white', 'font-bold');
+                        b.classList.add('bg-[#FAF9F9]', 'text-[#5A6E85]', 'border', 'border-[#E6EAF2]');
+                    }
+                }
+            });
+
+            currentFilter = targetFilter;
+            currentPage = 1;
+            renderProjects();
+
+            // Cuộn về đầu lưới mượt mà
+            requestAnimationFrame(() => scrollToGridTop(false));
+        });
+    });
+
+    // ---------- Slider Khách hàng tự động chạy (Phải -> Trái) ----------
+    const testimonialWrapper = document.getElementById('testimonial-slider-wrapper');
+    const testimonialTrack = document.getElementById('testimonial-track');
+    const prevTestimonialBtn = document.getElementById('testimonial-prev');
+    const nextTestimonialBtn = document.getElementById('testimonial-next');
+    const dotsContainer = document.getElementById('testimonial-dots');
+
+    if (testimonialTrack && testimonialTrack.children.length > 0) {
+        const totalSlides = testimonialTrack.children.length;
+        let slideIndex = 0;
+        let autoSlideTimer = null;
+
+        // Tạo các chấm chỉ báo (dots)
+        if (dotsContainer) {
+            dotsContainer.innerHTML = Array.from({ length: totalSlides }, (_, idx) =>
+                `<button type="button" data-slide="${idx}" aria-label="Slide ${idx + 1}" class="testimonial-dot h-2 rounded-full transition-all duration-300 cursor-pointer ${idx === 0 ? 'w-6 bg-[#214080]' : 'w-2 bg-gray-300 hover:bg-gray-400'}"></button>`
+            ).join('');
+        }
+
+        function updateTestimonialSlider(index) {
+            slideIndex = (index + totalSlides) % totalSlides;
+            // Dịch chuyển track sang trái (-100% * slideIndex) -> tạo hiệu ứng slide mới chạy từ phải sang trái
+            testimonialTrack.style.transform = `translateX(-${slideIndex * 100}%)`;
+
+            if (dotsContainer) {
+                dotsContainer.querySelectorAll('.testimonial-dot').forEach((dot, idx) => {
+                    if (idx === slideIndex) {
+                        dot.classList.remove('w-2', 'bg-gray-300');
+                        dot.classList.add('w-6', 'bg-[#214080]');
+                    } else {
+                        dot.classList.remove('w-6', 'bg-[#214080]');
+                        dot.classList.add('w-2', 'bg-gray-300');
+                    }
+                });
+            }
+        }
+
+        function startAutoSlide() {
+            stopAutoSlide();
+            autoSlideTimer = setInterval(() => {
+                updateTestimonialSlider(slideIndex + 1);
+            }, 5000); // Tự động chuyển sau mỗi 5 giây
+        }
+
+        function stopAutoSlide() {
+            if (autoSlideTimer) {
+                clearInterval(autoSlideTimer);
+                autoSlideTimer = null;
+            }
+        }
+
+        // Sự kiện nút Prev / Next
+        prevTestimonialBtn?.addEventListener('click', () => {
+            updateTestimonialSlider(slideIndex - 1);
+            startAutoSlide();
+        });
+
+        nextTestimonialBtn?.addEventListener('click', () => {
+            updateTestimonialSlider(slideIndex + 1);
+            startAutoSlide();
+        });
+
+        // Sự kiện bấm vào từng chấm dot
+        dotsContainer?.addEventListener('click', (e) => {
+            const dot = e.target.closest('.testimonial-dot');
+            if (!dot) return;
+            updateTestimonialSlider(parseInt(dot.dataset.slide, 10));
+            startAutoSlide();
+        });
+
+        // Tạm dừng khi rê chuột vào slider để khách dễ đọc, tiếp tục chạy khi rời chuột
+        testimonialWrapper?.addEventListener('mouseenter', stopAutoSlide);
+        testimonialWrapper?.addEventListener('mouseleave', startAutoSlide);
+
+        // Khởi chạy tự động
+        startAutoSlide();
+    }
+</script>

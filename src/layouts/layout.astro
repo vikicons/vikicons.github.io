@@ -478,6 +478,16 @@ const translationsData = {
             behavior: 'smooth'
         });
     });
+    // THÊM MỚI: cập nhật chiều cao header cho sticky sidebar
+    function setHeaderHeight() {
+        const header = document.querySelector('header');
+        if (header) {
+        document.documentElement.style.setProperty('--header-h', header.offsetHeight + 'px');
+        }
+    }
+    setHeaderHeight();
+    window.addEventListener('resize', setHeaderHeight);
+    window.addEventListener('load', setHeaderHeight); // chạy lại sau khi logo/font tải xong
 </script>
 
 </body>
