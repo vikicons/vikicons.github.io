@@ -397,13 +397,17 @@ for (const [path, json] of Object.entries(dictFiles)) {
             const regionKey = REGION_KEYS[item.region];
             const sectorText = escapeHtml(t(sectorKey, FALLBACK_TEXT[item.category]));
             const regionText = escapeHtml(t(regionKey, FALLBACK_TEXT[item.region]));
+            
+            // Đường dẫn chi tiết dự án (Bạn có thể đổi thành /du-an/${item.id} tùy theo cấu trúc trang của bạn)
+            const detailUrl = `/projects/detail?id=${item.id}`;
+
             return `
-            <div class="bg-white rounded-xl overflow-hidden border border-[#E6EAF2] shadow-sm hover:shadow-md transition flex flex-col group">
+            <a href="${detailUrl}" class="bg-white rounded-xl overflow-hidden border border-[#E6EAF2] shadow-sm hover:shadow-md transition flex flex-col group block text-decoration-none">
                 <div class="h-60 overflow-hidden bg-slate-100 relative">
                     <img src="${item.image}" alt="${title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.onerror=null; this.src='/img/slide001.webp';">
                 </div>
                 <div class="p-6 flex-1 flex flex-col justify-between">
-                    <h3 data-key="${item.titleKey}" class="text-base font-bold uppercase text-[#16315E] mb-3 line-clamp-2 overflow-hidden text-ellipsis" title="${title}">
+                    <h3 data-key="${item.titleKey}" class="text-base font-bold uppercase text-[#16315E] mb-3 line-clamp-2 overflow-hidden text-ellipsis group-hover:text-[#214080] transition" title="${title}">
                         ${title}
                     </h3>
                     <div class="flex flex-wrap gap-2 pt-3 border-t border-gray-100">
@@ -417,7 +421,7 @@ for (const [path, json] of Object.entries(dictFiles)) {
                         </span>
                     </div>
                 </div>
-            </div>`;
+            </a>`;
         }).join('');
 
         let html = '';
