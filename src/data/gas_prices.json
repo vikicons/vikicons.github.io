@@ -1,23 +1,23 @@
 {
-    "last_updated": "26/11/2026 lúc 11:00:13",
+    "last_updated": "26/11/2026 lúc 20:46:47",
     "prices": [
         {
             "stt": "1",
             "product": "Xăng E10 RON 95-III",
-            "price": "19.100 đ",
-            "change": "- 740"
+            "price": "19.050 đ",
+            "change": "- 50"
         },
         {
             "stt": "2",
             "product": "Xăng E5 RON 92",
-            "price": "18.570 đ",
-            "change": "- 820"
+            "price": "18.390 đ",
+            "change": "- 180"
         },
         {
             "stt": "3",
             "product": "Dầu Diesel",
-            "price": "26.340 đ",
-            "change": "- 480"
+            "price": "24.960 đ",
+            "change": "- 1.380"
         }
     ]
 }
